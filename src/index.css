@@ -252,11 +252,17 @@ textarea,
 	direction: initial;
 	flex-direction: row-reverse;
 }
-.css-1ooq6x7-MuiSwitch-root {
+
+/* Switch style */
+.MuiSwitch-root {
 	width: 55px !important;
 	height: 37px !important;
 }
-.css-jsexje-MuiSwitch-thumb {
+
+.MuiSwitch-track {
+	background-color: rgb(0, 0, 0) !important;
+}
+.MuiSwitch-thumb {
 	background-color: #ffffff !important;
 	box-shadow: none !important;
 	width: 12px !important;
@@ -264,7 +270,7 @@ textarea,
 	top: 3px;
 	left: 4px;
 }
-.css-1ooq6x7-MuiSwitch-root .Mui-checked .MuiSwitch-thumb {
+.Mui-checked .MuiSwitch-thumb {
 	background-color: #ffffff !important;
 	right: 0px;
 }
@@ -1219,7 +1225,8 @@ nav.navigation {
 	color: var(--white-100) !important;
 	opacity: 1 !important;
 }
-.css-8jgyx3-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+
+.Mui-checked + .MuiSwitch-track {
 	background: #3ae374 !important;
 	opacity: 1 !important;
 }
@@ -2713,7 +2720,7 @@ textarea {
 	.sidebar {
 		background: #f3fcfd !important;
 		color: var(--primary-700);
-		padding: 30px 20px 30px 20px;
+		padding: 30px 10px;
 		width: 100% !important;
 	}
 
@@ -3191,7 +3198,7 @@ textarea {
 	}
 	select.form-select {
 		padding: 0.375rem 1.25rem 0.375rem 0.75rem !important;
-		background-position: left .75rem center !important;
+		background-position: left 0.75rem center !important;
 		background-size: 20px 18px !important;
 		font-size: 20px !important;
 	}
@@ -3524,10 +3531,10 @@ textarea {
 		color: var(--white-100) !important;
 		opacity: 1 !important;
 	}
-	.css-8jgyx3-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+	/* .MuiSwitch-track {
 		background: #3ae374 !important;
 		opacity: 1 !important;
-	}
+	} */
 
 	/* ------------------------------------------------------------------------------------------------- */
 	/* Carts Page */
