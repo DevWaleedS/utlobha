@@ -571,27 +571,7 @@ textarea,
 .css-1ynch81-MuiInputBase-root-MuiOutlinedInput-root:is(:hover, :focus) {
 	border-color: #cfedfd !important;
 }
-/* .date-picker .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-	border: 1px solid var(--second-500) !important;
-}
 
-.date-picker button {
-	background: var(--primary-500);
-	background-image: url(./data/Icons/icon-date.svg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	width: 90px;
-	height: 60px;
-	top: 0px;
-	border-radius: 0 10px 10px 0;
-	right: -321px;
-}
-.date-picker button svg {
-	display: none;
-}
-.date-picker button:hover {
-	background-color: var(--primary-400);
-} */
 /*-------------------------------------------------------------------------------- */
 
 /* Details Section */
@@ -2637,6 +2617,7 @@ textarea {
 		padding-right: 10px;
 		padding-left: 10px;
 	}
+
 	/* TOP BAR STYLE */
 	.avatar-box {
 		width: 300px;
@@ -2717,7 +2698,7 @@ textarea {
 	.sidebar {
 		background: #f3fcfd !important;
 		color: var(--primary-700);
-		padding: 30px 10px;
+		padding: 30px 20px 30px 20px;
 		width: 100% !important;
 	}
 
@@ -2818,6 +2799,13 @@ textarea {
 
 	/* ------------------------------------------------------------ */
 	/* Main Content */
+	.main-content {
+		position: relative;
+		min-height: 100vh;
+		overflow: hidden;
+		padding-right: 16px;
+		padding-left: 10px;
+	}
 
 	/* Top Section */
 	.page-title svg {
@@ -3195,7 +3183,7 @@ textarea {
 	}
 	select.form-select {
 		padding: 0.375rem 1.25rem 0.375rem 0.75rem !important;
-		background-position: left 0.75rem center !important;
+		background-position: left.75rem center !important;
 		background-size: 20px 18px !important;
 		font-size: 20px !important;
 	}
@@ -3528,10 +3516,11 @@ textarea {
 		color: var(--white-100) !important;
 		opacity: 1 !important;
 	}
-	/* .MuiSwitch-track {
+
+	.Mui-checked + .MuiSwitch-track {
 		background: #3ae374 !important;
 		opacity: 1 !important;
-	} */
+	}
 
 	/* ------------------------------------------------------------------------------------------------- */
 	/* Carts Page */
@@ -3550,8 +3539,8 @@ textarea {
 		-ms-border-radius: 10px !important;
 		-o-border-radius: 10px !important;
 	}
-	.carts-page .css-17gjw9x-MuiToolbar-root,
-	.carts-page .css-huqfur-MuiToolbar-root {
+	.carts-page .MuiToolbar-root,
+	.carts-page .MuiToolbar-root {
 		padding: 20px 10px 20px 0 !important;
 	}
 
@@ -3571,7 +3560,8 @@ textarea {
 
 	/* -------------------------------------------------------------------------------------------------- */
 	/* Seo Page */
-
+	.seo-page {
+	}
 	.seo-weight-edit-box {
 		padding: 0;
 		border-radius: 10px 10px 0 0;
@@ -3660,7 +3650,16 @@ textarea {
 		padding: 12px 10px !important;
 	}
 
-	.edit-robot-teat-area .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input {
+	/* Save button */
+	.seo-weight-edit-box button.MuiButtonBase-root {
+		background-color: var(--second-500) !important;
+		font-size: 1.4rem !important;
+		min-width: 190px !important;
+		padding: 12px 10px !important;
+	}
+
+	/* text area */
+	.edit-robot-teat-area textarea {
 		text-align: left !important;
 	}
 	/* ------------------------------------------------------------------------------------------- */
@@ -3866,7 +3865,10 @@ textarea {
 	/* ----------------------------------------------------------------------------------- */
 
 	/* Academy page style */
-
+	.academy-page {
+	}
+	.academy-page .btns-group-container {
+	}
 	.academy-page .btns-group-container a {
 		background: #eaf5f6;
 		color: var(--second-600);
