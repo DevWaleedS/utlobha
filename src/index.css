@@ -1102,7 +1102,7 @@ nav.navigation {
 	-ms-border-radius: 24px !important;
 	-o-border-radius: 24px !important;
 }
-.MuiSvgIcon-root {
+.filter-wrapper .MuiSvgIcon-root {
 	display: none !important;
 }
 .filter-wrapper .MuiOutlinedInput-notchedOutline {
@@ -1297,7 +1297,7 @@ nav.navigation {
 	padding-right: 0 !important;
 }
 
-.seo-weight-edit-box .css-12vqcob-MuiInputBase-input-MuiOutlinedInput-input:focus {
+.seo-weight-edit-box .MuiInputBase-multiline:focus {
 	outline: 0;
 	padding-right: 16px !important;
 }
@@ -1316,7 +1316,7 @@ nav.navigation {
 	margin-bottom: 10px !important;
 }
 .seo-weight-edit-box .MuiFormControlLabel-root {
-	margin-left: 0 !important;
+	margin-right: 0 !important;
 }
 .seo-weight-edit-box .seo-form-check-label {
 	font-weight: 500;
@@ -1327,14 +1327,11 @@ nav.navigation {
 	font-weight: 400;
 	color: var(--black-200);
 }
-.seo-weight-edit-box .MuiButtonBase-root.MuiRadio-root {
-	border: 2px solid var(--black-500);
-}
 .seo-weight-edit-box .MuiButtonBase-root.MuiRadio-root.Mui-checked {
-	border: 2px solid var(--second-400);
+	color: var(--second-400);
 }
 
-.seo-weight-edit-box .MuiSvgIcon-root {
+.seo-weight-edit-box .css-qvhpmv-MuiSvgIcon-root {
 	width: 22px !important;
 	height: 22px !important;
 }
@@ -1345,6 +1342,12 @@ nav.navigation {
 .seo-weight-edit-box .btn-bx {
 	width: 200px;
 	margin: 0 auto;
+}
+.seo-weight-edit-box button.MuiButtonBase-root {
+	background-color: var(--second-500) !important;
+	font-size: 1.4rem !important;
+	min-width: 190px !important;
+	padding: 12px 10px !important;
 }
 
 /* Save button */
@@ -1862,11 +1865,11 @@ nav.navigation {
 .select-store-type .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
 	padding: 14.5px 14px;
 }
-.select-store-type .css-xwp2gb-MuiFormLabel-root-MuiInputLabel-root {
+.select-store-type .MuiFormLabel-root {
 	color: var(--black-600) !important;
 	font-weight: 400 !important;
 	font-size: 20px;
-	right: 40px !important;
+	left: 30px !important;
 }
 .select-store-type .MuiSvgIcon-root,
 .select-store-type .css-1jppnuu-MuiSvgIcon-root-MuiSelect-icon {
@@ -3411,7 +3414,7 @@ textarea {
 		-ms-border-radius: 24px !important;
 		-o-border-radius: 24px !important;
 	}
-	.MuiSvgIcon-root {
+	.filter-wrapper .MuiSvgIcon-root {
 		display: none !important;
 	}
 	.filter-wrapper .MuiOutlinedInput-notchedOutline {
@@ -3568,8 +3571,7 @@ textarea {
 
 	/* -------------------------------------------------------------------------------------------------- */
 	/* Seo Page */
-	.seo-page {
-	}
+
 	.seo-weight-edit-box {
 		padding: 0;
 		border-radius: 10px 10px 0 0;
@@ -3824,7 +3826,7 @@ textarea {
 
 	/* Pages styles */
 
-	.pages-search-bx .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+	.pages-search-bx .MuiFormControl-root {
 		width: 100%;
 	}
 	.pages-search-bx .MuiOutlinedInput-notchedOutline {
@@ -3864,10 +3866,7 @@ textarea {
 	/* ----------------------------------------------------------------------------------- */
 
 	/* Academy page style */
-	.academy-page {
-	}
-	.academy-page .btns-group-container {
-	}
+
 	.academy-page .btns-group-container a {
 		background: #eaf5f6;
 		color: var(--second-600);
@@ -4168,7 +4167,7 @@ textarea {
 		color: var(--black-600) !important;
 		font-weight: 400 !important;
 		font-size: 20px;
-		right: 40px !important;
+		left: 30px !important;
 	}
 	.select-store-type .MuiSvgIcon-root,
 	.select-store-type .css-1jppnuu-MuiSvgIcon-root-MuiSelect-icon {
