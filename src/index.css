@@ -239,8 +239,7 @@ textarea,
 
 /* Main styles of tables */
 
-.css-1x6dg87-MuiTableCell-root,
-.css-1m66kde-MuiTableCell-root {
+.MuiTableCell-root {
 	text-align: right !important;
 }
 
