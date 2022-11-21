@@ -239,17 +239,9 @@ textarea,
 
 /* Main styles of tables */
 
+/* table ALignment */
 .MuiTableCell-root {
 	text-align: right !important;
-}
-
-/* Table pagination */
-.css-ejfcv0-MuiTableCell-root-MuiTablePagination-root:last-child {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	direction: initial;
-	flex-direction: row-reverse;
 }
 
 /* Switch style */
@@ -1101,7 +1093,7 @@ nav.navigation {
 	justify-content: flex-end;
 }
 
-.filter-wrapper .css-1pixfn6-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+.filter-wrapper .MuiInputBase-root {
 	background-color: var(--second-300) !important;
 	height: 55px;
 	border-radius: 24px !important;
@@ -1110,14 +1102,14 @@ nav.navigation {
 	-ms-border-radius: 24px !important;
 	-o-border-radius: 24px !important;
 }
-.css-1d8wqzr-MuiSvgIcon-root-MuiSelect-icon {
+.MuiSvgIcon-root  {
 	display: none !important;
 }
-.filter-wrapper .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+.filter-wrapper .MuiOutlinedInput-notchedOutline {
 	border: none !important;
 }
 
-.filter-btn-col .css-xwp2gb-MuiFormLabel-root-MuiInputLabel-root {
+.filter-btn-col .MuiFormLabel-root {
 	color: var(--white-100) !important;
 	right: 66px !important;
 	top: 0px;
@@ -1873,7 +1865,7 @@ nav.navigation {
 	font-size: 20px;
 	right: 40px !important;
 }
-.select-store-type .css-1d8wqzr-MuiSvgIcon-root-MuiSelect-icon,
+.select-store-type .MuiSvgIcon-root ,
 .select-store-type .css-1jppnuu-MuiSvgIcon-root-MuiSelect-icon {
 	display: block !important;
 	color: var(--second-500);
@@ -3407,7 +3399,7 @@ textarea {
 		justify-content: flex-end;
 	}
 
-	.filter-wrapper .css-1pixfn6-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+	.filter-wrapper .MuiInputBase-root {
 		background-color: var(--second-300) !important;
 		height: 55px;
 		border-radius: 24px !important;
@@ -3416,14 +3408,14 @@ textarea {
 		-ms-border-radius: 24px !important;
 		-o-border-radius: 24px !important;
 	}
-	.css-1d8wqzr-MuiSvgIcon-root-MuiSelect-icon {
+	.MuiSvgIcon-root  {
 		display: none !important;
 	}
-	.filter-wrapper .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+	.filter-wrapper .MuiOutlinedInput-notchedOutline {
 		border: none !important;
 	}
 
-	.filter-btn-col .css-xwp2gb-MuiFormLabel-root-MuiInputLabel-root {
+	.filter-btn-col .MuiFormLabel-root {
 		color: var(--white-100) !important;
 		right: 66px !important;
 		top: 0px;
@@ -4178,7 +4170,7 @@ textarea {
 		font-size: 20px;
 		right: 40px !important;
 	}
-	.select-store-type .css-1d8wqzr-MuiSvgIcon-root-MuiSelect-icon,
+	.select-store-type .MuiSvgIcon-root,
 	.select-store-type .css-1jppnuu-MuiSvgIcon-root-MuiSelect-icon {
 		display: block !important;
 		color: var(--second-500);
