@@ -1316,7 +1316,7 @@ nav.navigation {
 	margin-bottom: 10px !important;
 }
 .seo-weight-edit-box .MuiFormControlLabel-root {
-	margin-right: 0 !important;
+	margin-left: 0 !important;
 }
 .seo-weight-edit-box .seo-form-check-label {
 	font-weight: 500;
@@ -1327,8 +1327,11 @@ nav.navigation {
 	font-weight: 400;
 	color: var(--black-200);
 }
+.seo-weight-edit-box .MuiButtonBase-root.MuiRadio-root {
+	border: 2px solid var(--black-500);
+}
 .seo-weight-edit-box .MuiButtonBase-root.MuiRadio-root.Mui-checked {
-	color: var(--second-400);
+	border: 2px solid var(--second-400);
 }
 
 .seo-weight-edit-box .MuiSvgIcon-root {
@@ -1518,20 +1521,17 @@ nav.navigation {
 }
 
 /* Pages styles */
-.pages-page {
-}
-.pages-search-bx {
-}
-.pages-search-bx .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+
+.pages-search-bx .MuiFormControl-root {
 	width: 100%;
 }
-.pages-search-bx .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+.pages-search-bx .MuiOutlinedInput-notchedOutline {
 	border: 1px solid var(--gray-100) !important;
 	box-shadow: 0 0 1px 0 var(--gray-400);
 }
 .pages-search-bx .MuiInputBase-root {
 	padding-right: 10px;
-	height: 55px;
+	height: 60px;
 }
 .pages-search-bx .MuiInputBase-root svg {
 	color: var(--primary-400);
@@ -3827,13 +3827,13 @@ textarea {
 	.pages-search-bx .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
 		width: 100%;
 	}
-	.pages-search-bx .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+	.pages-search-bx .MuiOutlinedInput-notchedOutline {
 		border: 1px solid var(--gray-100) !important;
 		box-shadow: 0 0 1px 0 var(--gray-400);
 	}
 	.pages-search-bx .MuiInputBase-root {
 		padding-right: 10px;
-		height: 55px;
+		height: 60px;
 	}
 	.pages-search-bx .MuiInputBase-root svg {
 		color: var(--primary-400);
