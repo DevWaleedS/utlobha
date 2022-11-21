@@ -458,7 +458,7 @@ textarea,
 	color: inherit;
 	padding-left: 14px !important;
 	padding-right: 14px !important;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 500;
 }
 .sub-menu-content .menu-anchor::after {
@@ -2790,7 +2790,7 @@ textarea {
 		color: inherit;
 		padding-left: 14px !important;
 		padding-right: 14px !important;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 500;
 	}
 	.sub-menu-content .menu-anchor::after {
