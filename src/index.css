@@ -861,7 +861,7 @@ select {
 .input-box select {
 	background-color: #ededed38 !important;
 }
-select.form-select,
+
 .form-select {
 	padding: 0.375rem 1.25rem 0.375rem 0.75rem !important;
 	background-position: left 0.75rem center !important;
@@ -3182,7 +3182,7 @@ textarea {
 	.input-box select {
 		background-color: #ededed38 !important;
 	}
-	select.form-select,
+
 	.form-select {
 		padding: 0.375rem 1.25rem 0.375rem 0.75rem !important;
 		background-position: left 0.75rem center !important;
