@@ -12,12 +12,12 @@ import TableHead from '@mui/material/TableHead';
 
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Switch } from '@mui/material';
 import TablePagination from './TablePagination';
 // import icons
 import { BsTrash } from 'react-icons/bs';
@@ -56,7 +56,6 @@ function EnhancedTableHead(props) {
 					م
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
-			
 					ID
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
@@ -107,17 +106,21 @@ function EnhancedTableToolbar(props) {
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 				<div></div>
 				{numSelected > 0 && (
-					<Tooltip onClick={onClick} title='Delete'>
-						<IconButton>
-							<DeleteIcon />
-						</IconButton>
-					</Tooltip>
-				)}
+					<div>
+						<Tooltip onClick={onClick} className='delete-all'>
+							<IconButton>
+								<BsTrash />
+								حذف الكل
+							</IconButton>
+						</Tooltip>
 
-				{numSelected > 0 && (
-					<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-						{numSelected} selected
-					</Typography>
+						<Tooltip className='switch-all'>
+							<IconButton>
+								<Switch />
+								تعطيل الكل
+							</IconButton>
+						</Tooltip>
+					</div>
 				)}
 			</div>
 

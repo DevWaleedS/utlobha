@@ -13,13 +13,13 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import TablePagination from './TablePagination';
 import { BsTrash } from 'react-icons/bs';
 
@@ -58,8 +58,7 @@ function EnhancedTableHead(props) {
 	return (
 		<TableHead sx={{ backgroundColor: '#d9f2f9' }}>
 			<TableRow>
-				<TableCell></TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					م
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
@@ -73,7 +72,7 @@ function EnhancedTableHead(props) {
 					{' '}
 					فرعي
 				</TableCell>
-				<TableCell align='center' sx={{ color: '#02466a' }}>
+				<TableCell align='right' sx={{ color: '#02466a' }}>
 					التصنيفات الفرعية
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
@@ -114,17 +113,21 @@ function EnhancedTableToolbar(props) {
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 				<div></div>
 				{numSelected > 0 && (
-					<Tooltip onClick={onClick} title='Delete'>
-						<IconButton>
-							<DeleteIcon />
-						</IconButton>
-					</Tooltip>
-				)}
+					<div>
+						<Tooltip onClick={onClick} className='delete-all'>
+							<IconButton>
+								<BsTrash />
+								حذف الكل
+							</IconButton>
+						</Tooltip>
 
-				{numSelected > 0 && (
-					<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-						{numSelected} selected
-					</Typography>
+						<Tooltip className='switch-all'>
+							<IconButton>
+								<Switch />
+								تعطيل الكل
+							</IconButton>
+						</Tooltip>
+					</div>
 				)}
 			</div>
 
@@ -256,7 +259,7 @@ export default function EnhancedTable() {
 											key={index}
 											selected={isItemSelected}
 										>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{
@@ -271,18 +274,19 @@ export default function EnhancedTable() {
 															'aria-labelledby': labelId,
 														}}
 													/>
+													{row.productNumber}
 												</div>
 											</TableCell>
-											<TableCell>{row.productNumber}</TableCell>
-											<TableCell>{row.idNumbers}</TableCell>
+
+											<TableCell align='right'>{row.idNumbers}</TableCell>
 											<TableCell>
 												<div className='cate-prim d-flex justify-content-start'>
 													<img src={row.productImg} alt='img' />
 													<span className='me-3'>{row.productName}</span>
 												</div>
 											</TableCell>
-											<TableCell>{row.subNumber}</TableCell>
-											<TableCell>
+											<TableCell align='center'>{row.subNumber}</TableCell>
+											<TableCell align='right'>
 												<div className='sub-categories'>
 													<span>{row.subCategories.subCateOne}</span>
 													<span>{row.subCategories.subCateTow}</span>

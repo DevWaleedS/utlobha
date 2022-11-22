@@ -12,13 +12,13 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { TextField } from '@mui/material';
+import { BsTrash } from 'react-icons/bs';
+import { Switch, TextField } from '@mui/material';
 
 import TablePagination from './TablePagination';
 // Import icon
@@ -58,22 +58,22 @@ function EnhancedTableHead(props) {
 	return (
 		<TableHead sx={{ backgroundColor: '#d9f2f9' }}>
 			<TableRow>
-				<TableCell></TableCell>
-				<TableCell sx={{ color: '#02466a' }} align='right'>
-					{' '}
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					م
 				</TableCell>
-				<TableCell sx={{ color: '#02466a' }} align='center'>
+				<TableCell align='right' sx={{ color: '#02466a' }}>
 					اسم العميل
 				</TableCell>
 				<TableCell sx={{ color: '#02466a' }} align='right'>
-					{' '}
 					تاريخ السلة
 				</TableCell>
-				<TableCell sx={{ color: '#02466a' }}> عدد المنتجات</TableCell>
-				<TableCell sx={{ color: '#02466a' }}> احمالي السلة</TableCell>
-				<TableCell sx={{ color: '#02466a' }} align='right'>
-					{' '}
+				<TableCell sx={{ color: '#02466a' }} align='center'>
+					عدد المنتجات
+				</TableCell>
+				<TableCell sx={{ color: '#02466a' }} align='center'>
+					احمالي السلة
+				</TableCell>
+				<TableCell sx={{ color: '#02466a' }} align='center'>
 					الحالة
 				</TableCell>
 			</TableRow>
@@ -114,17 +114,21 @@ function EnhancedTableToolbar(props) {
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 				<div></div>
 				{numSelected > 0 && (
-					<Tooltip onClick={onClick} title='Delete'>
-						<IconButton>
-							<DeleteIcon />
-						</IconButton>
-					</Tooltip>
-				)}
+					<div>
+						<Tooltip onClick={onClick} className='delete-all'>
+							<IconButton>
+								<BsTrash />
+								حذف الكل
+							</IconButton>
+						</Tooltip>
 
-				{numSelected > 0 && (
-					<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-						{numSelected} selected
-					</Typography>
+						<Tooltip className='switch-all'>
+							<IconButton>
+								<Switch />
+								تعطيل الكل
+							</IconButton>
+						</Tooltip>
+					</div>
 				)}
 			</div>
 
@@ -257,7 +261,7 @@ export default function CartsTables() {
 											key={index}
 											selected={isItemSelected}
 										>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{
@@ -272,22 +276,22 @@ export default function CartsTables() {
 															'aria-labelledby': labelId,
 														}}
 													/>
+													{row.id}
 												</div>
 											</TableCell>
-											<TableCell>{row.id}</TableCell>
 
-											<TableCell>
+											<TableCell align='right'>
 												<div className='cate-prim'>
 													<img src={row.icon} alt='img' className=' rounded-circle' />
 													<span className='me-3'>{row.name}</span>
 												</div>
 											</TableCell>
-											<TableCell>{row.cartDate}</TableCell>
+											<TableCell align='right'>{row.cartDate}</TableCell>
 											<TableCell align='center'>{row.numOfProducts}</TableCell>
 
 											<TableCell align='center'>{row.cartTotal}</TableCell>
 
-											<TableCell align='left'>{row.status}</TableCell>
+											<TableCell align='center'>{row.status}</TableCell>
 										</TableRow>
 									);
 								})}

@@ -24,6 +24,7 @@ import FilterSelect from './FilterSelect';
 
 import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-report.svg';
 import TablePagination from './TablePagination';
+import { Switch } from '@mui/material';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -68,7 +69,7 @@ function EnhancedTableHead(props) {
 				<TableCell sx={{ color: '#02466a' }} align='center'>
 					الاسم
 				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					{' '}
 					الحالة
 				</TableCell>
@@ -129,17 +130,21 @@ function EnhancedTableToolbar(props) {
 				<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 					<div></div>
 					{numSelected > 0 && (
-						<Tooltip onClick={onClick} title='Delete'>
-							<IconButton>
-								<DeleteIcon />
-							</IconButton>
-						</Tooltip>
-					)}
+						<div>
+							<Tooltip onClick={onClick} className='delete-all'>
+								<IconButton>
+									<BsTrash />
+									حذف الكل
+								</IconButton>
+							</Tooltip>
 
-					{numSelected > 0 && (
-						<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-							{numSelected} selected
-						</Typography>
+							<Tooltip className='switch-all'>
+								<IconButton>
+									<Switch />
+									تعطيل الكل
+								</IconButton>
+							</Tooltip>
+						</div>
 					)}
 				</div>
 
@@ -272,7 +277,7 @@ export default function BigOrdersTable() {
 											key={index}
 											selected={isItemSelected}
 										>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{
@@ -292,14 +297,14 @@ export default function BigOrdersTable() {
 											</TableCell>
 
 											<TableCell align='right'>{row.number}</TableCell>
-											<TableCell>
+											<TableCell align='right'>
 												<div className='cate-prim'>
 													<img src={row.icon} alt='img' className=' rounded-circle' />
 													<span className='me-3'>{row.name}</span>
 												</div>
 											</TableCell>
 
-											<TableCell align='right'>
+											<TableCell align='center'>
 												<div className='sub-categories'>
 													<span class='status' style={{ backgroundColor: row.bgColor, color: row.color }}>
 														{row.stats}
@@ -348,8 +353,8 @@ export default function BigOrdersTable() {
 						</TableBody>
 					</Table>
 				</TableContainer>
-				</Paper>
-				<TablePagination />
+			</Paper>
+			<TablePagination />
 		</Box>
 	);
 }

@@ -114,17 +114,21 @@ function EnhancedTableToolbar(props) {
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 				<div></div>
 				{numSelected > 0 && (
-					<Tooltip onClick={onClick} title='Delete'>
-						<IconButton>
-							<DeleteIcon />
-						</IconButton>
-					</Tooltip>
-				)}
+					<div>
+						<Tooltip onClick={onClick} className='delete-all'>
+							<IconButton>
+								<BsTrash />
+								حذف الكل
+							</IconButton>
+						</Tooltip>
 
-				{numSelected > 0 && (
-					<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-						{numSelected} selected
-					</Typography>
+						<Tooltip className='switch-all'>
+							<IconButton>
+								<Switch />
+								تعطيل الكل
+							</IconButton>
+						</Tooltip>
+					</div>
 				)}
 			</div>
 
@@ -249,7 +253,7 @@ export default function CouponTable() {
 
 									return (
 										<TableRow hover role='checkbox' aria-checked={isItemSelected} tabIndex={-1} key={index} selected={isItemSelected}>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{

@@ -12,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
@@ -107,17 +107,21 @@ function EnhancedTableToolbar(props) {
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 				<div></div>
 				{numSelected > 0 && (
-					<Tooltip onClick={onClick} title='Delete'>
-						<IconButton>
-							<BsTrash />
-						</IconButton>
-					</Tooltip>
-				)}
+					<div>
+						<Tooltip onClick={onClick} className='delete-all'>
+							<IconButton>
+								<BsTrash />
+								حذف الكل
+							</IconButton>
+						</Tooltip>
 
-				{numSelected > 0 && (
-					<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-						{numSelected} selected
-					</Typography>
+						<Tooltip className='switch-all'>
+							<IconButton>
+								<Switch />
+								تعطيل الكل
+							</IconButton>
+						</Tooltip>
+					</div>
 				)}
 			</div>
 

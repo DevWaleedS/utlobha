@@ -12,12 +12,11 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Switch from '@mui/material/Switch';
 import { BsTrash } from 'react-icons/bs';
 
 import TablePagination from './TablePagination';
@@ -113,17 +112,21 @@ function EnhancedTableToolbar(props) {
 				<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
 					<div></div>
 					{numSelected > 0 && (
-						<Tooltip onClick={onClick} title='Delete'>
-							<IconButton>
-								<DeleteIcon />
-							</IconButton>
-						</Tooltip>
-					)}
+						<div>
+							<Tooltip onClick={onClick} className='delete-all'>
+								<IconButton>
+									<BsTrash />
+									حذف الكل
+								</IconButton>
+							</Tooltip>
 
-					{numSelected > 0 && (
-						<Typography sx={{}} color='inherit' variant='subtitle1' component='div'>
-							{numSelected} selected
-						</Typography>
+							<Tooltip className='switch-all'>
+								<IconButton>
+									<Switch />
+									تعطيل الكل
+								</IconButton>
+							</Tooltip>
+						</div>
 					)}
 				</div>
 
@@ -255,7 +258,7 @@ const SupportTable = () => {
 											key={index}
 											selected={isItemSelected}
 										>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{

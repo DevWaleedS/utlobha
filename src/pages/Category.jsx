@@ -18,7 +18,7 @@ const Category = () => {
 								</Link>
 							</li>
 							<li className='breadcrumb-item active ' aria-current='page'>
-								الصفحات
+								التصنيفات
 							</li>
 						</ol>
 					</nav>
