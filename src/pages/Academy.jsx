@@ -9,7 +9,7 @@ import AcademyWidget from '../components/AcademyWidget';
 const Academy = () => {
   return (
 			<section className='academy-page p-3'>
-				<div className='head-category mb-4'>
+				<div className='head-category mb-5'>
 					<div className='row'>
 						<div className='col-6'>
 							<nav aria-label='breadcrumb'>
@@ -20,7 +20,7 @@ const Academy = () => {
 											الرئيسية
 										</Link>
 									</li>
-									<li className='breadcrumb-item active me-2' aria-current='page'>
+									<li className='breadcrumb-item active' aria-current='page'>
 										الأكاديمية
 									</li>
 								</ol>
@@ -46,12 +46,12 @@ const Academy = () => {
 
 				<div className='row mb-5'>
 					<div className='btns-group-container d-flex justify-content-start align-items-center'>
-						<NavLink className='' to=''>
+						<button className='active' >
 							الدورات التدريبية
-						</NavLink>
-						<NavLink className='me-5' to=''>
+						</button>
+						<button className='me-5' >
 							شروحات
-						</NavLink>
+						</button>
 					</div>
 				</div>
 				<div className='row'>

@@ -74,7 +74,6 @@ function EnhancedTableHead(props) {
 					<SortIcon />
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
-			
 					الاجراء
 				</TableCell>
 			</TableRow>
@@ -245,7 +244,7 @@ export default function UserAndManagementTable() {
 
 									return (
 										<TableRow hover role='checkbox' aria-checked={isItemSelected} tabIndex={-1} key={index} selected={isItemSelected}>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{

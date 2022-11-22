@@ -17,7 +17,8 @@ import { ReactComponent as Rating } from '../data/Icons/icon-24-ratings.svg';
 import { ReactComponent as PagesIcon } from '../data/Icons/icon-24-pages.svg';
 import { ReactComponent as Academy } from '../data/Icons/icon-24-graduatioin.svg';
 import { ReactComponent as Template } from '../data/Icons/icon-24-template.svg';
-import { ReactComponent as Store } from '../data/Icons/icon-24-management store.svg';
+import { ReactComponent as Info } from '../data/Icons/icon-24-info.svg';
+import { ReactComponent as Social } from '../data/Icons/icon-24-social.svg';
 import { ReactComponent as Support } from '../data/Icons/icon-24-support.svg';
 import { ReactComponent as Setting } from '../data/Icons/icon-24-setting.svg';
 import { ReactComponent as Clients } from '../data/Icons/icon-24-client.svg';
@@ -75,13 +76,13 @@ const SideBar = () => {
 
 				<NavLink className='menu-link' to='Orders'>
 					<MenuItem>
-						<Marketing />
+						<Orders />
 						<span className='me-2'>الطلبات </span>
 					</MenuItem>
 				</NavLink>
 
 				{/** Markting Sub menu */}
-				<SubMenu label='التسويق' icon={<Orders />}>
+				<SubMenu label='التسويق' icon={<Marketing />}>
 					<NavLink className='sub-menu-link' to='Coupon'>
 						<MenuItem>
 							<Discoint />
@@ -92,7 +93,7 @@ const SideBar = () => {
 					<NavLink className='sub-menu-link' to='Offers'>
 						<MenuItem>
 							<Offer />
-							<span className='me-2'> العروض المتاحة</span>
+							<span className='me-2'> العروض الخاصة</span>
 						</MenuItem>
 					</NavLink>
 
@@ -106,7 +107,7 @@ const SideBar = () => {
 					<NavLink className='sub-menu-link' to='Seo'>
 						<MenuItem>
 							<Seo />
-							<span className='me-2'> الكمات المفتاحية</span>
+							<span className='me-2'> الكلمات المفتاحية</span>
 						</MenuItem>
 					</NavLink>
 
@@ -154,7 +155,7 @@ const SideBar = () => {
 				</NavLink>
 
 				{/** Store Sub menu */}
-				<SubMenu label='بيانات المتجر' icon={<Store />}>
+				<SubMenu label='بيانات المتجر' icon={<Info />}>
 					<NavLink className='sub-menu-link' to='Home'>
 						<MenuItem>
 							<Verification />
@@ -171,7 +172,7 @@ const SideBar = () => {
 
 					<NavLink className='sub-menu-link' to='SocialPages'>
 						<MenuItem>
-							<Orders />
+							<Social />
 							<span className='me-2'> صفحات التواصل</span>
 						</MenuItem>
 					</NavLink>

@@ -25,7 +25,10 @@ const Offers = () => {
 									الرئيسية
 								</Link>
 							</li>
-							<li className='breadcrumb-item active me-2' aria-current='page'>
+							<li className='breadcrumb-item ' aria-current='page'>
+								التسويق 
+							</li>
+							<li className='breadcrumb-item active' aria-current='page'>
 								العروض الخاصة
 							</li>
 						</ol>

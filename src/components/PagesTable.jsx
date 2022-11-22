@@ -22,7 +22,7 @@ import Switch from '@mui/material/Switch';
 import TablePagination from './TablePagination';
 
 // Import Icons
-
+import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
 import { BsTrash } from 'react-icons/bs';
 import editIcon from '../data/Icons/editt 2.svg';
 
@@ -56,12 +56,24 @@ function EnhancedTableHead(props) {
 	return (
 		<TableHead sx={{ backgroundColor: '#c6e1f0' }}>
 			<TableRow>
-				<TableCell> م</TableCell>
-				<TableCell> العنوان</TableCell>
-				<TableCell> الناشر</TableCell>
-				<TableCell align='center'> تاريخ النشر</TableCell>
-				<TableCell align='center'> الحالة</TableCell>
-				<TableCell align='center'> الاجراء</TableCell>
+				<TableCell sx={{ color: '#02466a' }}> م</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					العنوان
+				</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					الناشر
+				</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					تاريخ النشر
+					<SortIcon />
+				</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					الحالة
+					<SortIcon />
+				</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					الاجراء
+				</TableCell>
 			</TableRow>
 		</TableHead>
 	);
@@ -232,8 +244,8 @@ export default function PagesTable() {
 											<TableCell component='th' scope='row'>
 												{row.id}
 											</TableCell>
-											<TableCell align='right'>{row.pageTitle}</TableCell>
-											<TableCell align='right'>{row.nameOfPublished}</TableCell>
+											<TableCell align='center'>{row.pageTitle}</TableCell>
+											<TableCell align='center'>{row.nameOfPublished}</TableCell>
 											<TableCell align='center'>{row.createDate}</TableCell>
 											<TableCell align='center'>
 												<span
@@ -309,7 +321,7 @@ export default function PagesTable() {
 					</Table>
 				</TableContainer>
 			</Paper>
-			<TablePagination/>
+			<TablePagination />
 		</Box>
 	);
 }

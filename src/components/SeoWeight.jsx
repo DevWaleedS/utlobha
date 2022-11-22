@@ -111,7 +111,7 @@ const SeoWeight = () => {
 
 			<div className='seo-weight-edit-box mb-4'>
 				<div className='title'>
-					<h4> ربط جوجل انليتكس Analytics Google </h4>
+					<h4> ربط جوجل انليتكس Google Analytics </h4>
 				</div>
 
 				<FormControl variant='standard'>

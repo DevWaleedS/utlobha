@@ -40,7 +40,7 @@ const Rating = () => {
 									الرئيسية
 								</Link>
 							</li>
-							<li className='breadcrumb-item active me-2' aria-current='page'>
+							<li className='breadcrumb-item active ' aria-current='page'>
 								الأسئلة والتقييمات
 							</li>
 						</ol>

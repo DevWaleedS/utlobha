@@ -51,10 +51,10 @@ const MaintenanceMode = () => {
 									الرئيسية
 								</Link>
 							</li>
-							<li className='breadcrumb-item  me-2' aria-current='page'>
+							<li className='breadcrumb-item  ' aria-current='page'>
 								الإعدادات
 							</li>
-							<li className='breadcrumb-item active me-2' aria-current='page'>
+							<li className='breadcrumb-item active ' aria-current='page'>
 								وضع الصيانة
 							</li>
 						</ol>

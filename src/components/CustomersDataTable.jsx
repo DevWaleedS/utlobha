@@ -55,14 +55,17 @@ function EnhancedTableHead(props) {
 				<TableCell align='center' sx={{ color: '#02466a' }}>
 					م
 				</TableCell>
-				<TableCell sx={{ color: '#02466a' }}> ID</TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+			
+					ID
+				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
 					اسم العميل
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
 					تاريخ التسجيل
 				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					البريد الالكتروني
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
@@ -239,7 +242,7 @@ export default function CustomersDataTable() {
 
 									return (
 										<TableRow hover role='checkbox' aria-checked={isItemSelected} tabIndex={-1} key={index} selected={isItemSelected}>
-											<TableCell component='th' id={labelId} scope='row'>
+											<TableCell component='th' id={labelId} scope='row' align='right'>
 												<div className='flex items-center gap-2'>
 													<Checkbox
 														sx={{
@@ -258,14 +261,14 @@ export default function CustomersDataTable() {
 												</div>
 											</TableCell>
 
-											<TableCell align='right'>{row.customerID}</TableCell>
+											<TableCell align='center'>{row.customerID}</TableCell>
 											<TableCell>
 												<div className='cate-prim'>
 													<img src={row.customerImage} alt='img' className=' rounded-circle' />
 													<span className='me-3'>{row.clientName}</span>
 												</div>
 											</TableCell>
-											<TableCell>{row.registerDate}</TableCell>
+											<TableCell align='center'>{row.registerDate}</TableCell>
 											<TableCell align='center'>{row.email}</TableCell>
 											<TableCell align='center'>{row.city}</TableCell>
 

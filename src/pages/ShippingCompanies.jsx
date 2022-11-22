@@ -16,10 +16,10 @@ const ShippingCompanies = () => {
 										الرئيسية
 									</Link>
 								</li>
-								<li className='breadcrumb-item  me-2' aria-current='page'>
+								<li className='breadcrumb-item ' aria-current='page'>
 									بيانات المتجر
 								</li>
-								<li className='breadcrumb-item active me-2' aria-current='page'>
+								<li className='breadcrumb-item active ' aria-current='page'>
 									شركات الشحن
 								</li>
 							</ol>

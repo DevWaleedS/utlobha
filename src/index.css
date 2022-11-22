@@ -239,10 +239,7 @@ textarea,
 
 /* Main styles of tables */
 
-/* table ALignment */
-.MuiTableCell-root {
-	text-align: right !important;
-}
+
 
 /* Switch style */
 .MuiSwitch-root {
@@ -808,7 +805,8 @@ table,
 .customer-page,
 .main-info-page,
 .management-page,
-.reports-page {
+.reports-page,
+.coupon-page {
 	width: 90%;
 }
 .head-category .breadcrumb {
@@ -828,8 +826,16 @@ table,
 /* add category form */
 .add-category {
 	background: #ededed38;
-	padding: 16px;
+	padding: 25px 16px;
+	width: 98%;
+	margin: 0 auto;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
 }
+
 .input-group {
 	align-items: flex-end !important;
 	justify-content: space-between !important;
@@ -846,18 +852,26 @@ table,
 .input-box svg {
 	position: absolute;
 	right: 10px;
-	top: 14px;
-	color: var(--black-300);
+	top: 20px;
+	color: var(--gray-300);
 }
 
 .input-box input,
 select {
 	width: 100%;
-	height: 50px;
+	height: 60px;
 	border-radius: 6px;
 	background: #ededed;
 	border: 1px solid var(--gray-300) !important;
 }
+
+.input-box input {
+	border: none !important;
+}
+.input-box input::placeholder {
+	color: var(--gray-300);
+}
+
 .input-box select {
 	background-color: #ededed38 !important;
 }
@@ -880,8 +894,9 @@ select {
 	background-color: var(--primary-500);
 	color: var(--white-100);
 	width: 100%;
+	font-size: 20px;
 	max-width: 100%;
-	height: 50px;
+	height: 60px;
 	border: 0;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -891,7 +906,7 @@ select {
 }
 .add-category-bt-box button svg {
 	color: var(--white-100);
-	width: 40px;
+	width: 22px;
 	height: 22px;
 }
 
@@ -1097,6 +1112,35 @@ nav.navigation {
 	font-size: 16px;
 	font-weight: 400;
 }
+	.filter-btn-col .MuiFormLabel-root.css-1tdodfd-MuiFormLabel-root-MuiInputLabel-root {
+		display: none !important;
+	}
+/* ------------------------------------------------------------------------------------ */
+/* Coupon page */
+.coupon-form .add-category {
+	background-color: #d9f2f9;
+	padding: 30px 16px;
+}
+.coupon-form .add-category .search-input {
+	width: 50%;
+}
+.coupon-form .add-category .select-input {
+	width: 25%;
+}
+
+.coupon-form .add-category .input-box input {
+	background-color: #f3fcfd;
+}
+.coupon-form .add-category .input-box input:is(:hover, :focus) {
+	border-color: #f3fcfd !important;
+}
+.coupon-form .add-category select {
+	border-color: var(--primary-400) !important;
+}
+.coupon-form .add-category label {
+	display: none;
+}
+/* ------------------------------------------------------------------------------------ */
 
 /* Offers pAGE */
 
@@ -1550,19 +1594,19 @@ nav.navigation {
 }
 .academy-page .btns-group-container {
 }
-.academy-page .btns-group-container a {
+.academy-page .btns-group-container button {
 	background: #eaf5f6;
 	color: var(--second-600);
-	font-size: 20px;
+	font-size: 26px;
 	font-weight: 500;
-	width: 250px;
+	width: 280px;
 	height: 150px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.academy-page .btns-group-container a.active {
+.academy-page .btns-group-container button.active {
 	background: #b4edee;
 	color: var(--second-700);
 }
@@ -2359,7 +2403,8 @@ textarea {
 	.customer-page,
 	.main-info-page,
 	.management-page,
-	.reports-page {
+	.reports-page,
+	.coupon-page {
 		width: 100%;
 	}
 	/* Aside bar */
@@ -2482,7 +2527,8 @@ textarea {
 	.customer-page,
 	.main-info-page,
 	.management-page,
-	.reports-page {
+	.reports-page,
+	.coupon-page {
 		width: 100%;
 	}
 	/* Aside bar */
@@ -3129,7 +3175,8 @@ textarea {
 	.customer-page,
 	.main-info-page,
 	.management-page,
-	.reports-page {
+	.reports-page,
+	.coupon-page {
 		width: 90%;
 	}
 	.head-category .breadcrumb {
@@ -3149,7 +3196,14 @@ textarea {
 	/* add category form */
 	.add-category {
 		background: #ededed38;
-		padding: 16px;
+		padding: 25px 16px;
+		width: 98%;
+		margin: 0 auto;
+		border-radius: 6px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		-ms-border-radius: 6px;
+		-o-border-radius: 6px;
 	}
 	.input-group {
 		align-items: flex-end !important;
@@ -3167,18 +3221,26 @@ textarea {
 	.input-box svg {
 		position: absolute;
 		right: 10px;
-		top: 14px;
-		color: var(--black-300);
+		top: 20px;
+		color: var(--gray-300);
 	}
 
 	.input-box input,
 	select {
 		width: 100%;
-		height: 50px;
+		height: 60px;
 		border-radius: 6px;
 		background: #ededed;
 		border: 1px solid var(--gray-300) !important;
 	}
+
+	.input-box input {
+		border: none !important;
+	}
+	.input-box input::placeholder {
+		color: var(--gray-300);
+	}
+
 	.input-box select {
 		background-color: #ededed38 !important;
 	}
@@ -3201,8 +3263,9 @@ textarea {
 		background-color: var(--primary-500);
 		color: var(--white-100);
 		width: 100%;
+		font-size: 20px;
 		max-width: 100%;
-		height: 50px;
+		height: 60px;
 		border: 0;
 		border-radius: 10px;
 		-webkit-border-radius: 10px;
@@ -3212,7 +3275,7 @@ textarea {
 	}
 	.add-category-bt-box button svg {
 		color: var(--white-100);
-		width: 40px;
+		width: 22px;
 		height: 22px;
 	}
 
@@ -3418,6 +3481,35 @@ textarea {
 		font-size: 16px;
 		font-weight: 400;
 	}
+	.filter-btn-col .MuiFormLabel-root.css-1tdodfd-MuiFormLabel-root-MuiInputLabel-root {
+		display: none !important;
+	}
+	/* ------------------------------------------------------------------------------------ */
+	/* Coupon page */
+	.coupon-form .add-category {
+		background-color: #d9f2f9;
+		padding: 30px 16px;
+	}
+	.coupon-form .add-category .search-input {
+		width: 50%;
+	}
+	.coupon-form .add-category .select-input {
+		width: 25%;
+	}
+
+	.coupon-form .add-category .input-box input {
+		background-color: #f3fcfd;
+	}
+	.coupon-form .add-category .input-box input:is(:hover, :focus) {
+		border-color: #f3fcfd !important;
+	}
+	.coupon-form .add-category select {
+		border-color: var(--primary-400) !important;
+	}
+	.coupon-form .add-category label {
+		display: none;
+	}
+	/* ------------------------------------------------------------------------------------ */
 
 	/* Offers pAGE */
 
@@ -3871,19 +3963,19 @@ textarea {
 	}
 	.academy-page .btns-group-container {
 	}
-	.academy-page .btns-group-container a {
+	.academy-page .btns-group-container button {
 		background: #eaf5f6;
 		color: var(--second-600);
-		font-size: 20px;
+		font-size: 26px;
 		font-weight: 500;
-		width: 250px;
+		width: 280px;
 		height: 150px;
 		border-radius: 8px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	.academy-page .btns-group-container a.active {
+	.academy-page .btns-group-container button.active {
 		background: #b4edee;
 		color: var(--second-700);
 	}

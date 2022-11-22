@@ -61,30 +61,24 @@ function EnhancedTableHead(props) {
 		<TableHead sx={{ backgroundColor: '#d9f2f9' }}>
 			<TableRow>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
-					{' '}
 					م
 				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					SKU
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
-					اسم المنتج{' '}
+					اسم المنتج
 				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
+				<TableCell align='center' sx={{ color: '#02466a' }}>
 					التصنيف
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
-					SARالسعر{' '}
+					السعر SAR
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
 					الكمية
 				</TableCell>
 				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
 					نشر
 				</TableCell>
 				<TableCell sx={{ color: '#02466a' }}> اجراء</TableCell>
@@ -282,16 +276,16 @@ export default function BigProductsTable() {
 												</div>
 											</TableCell>
 
-											<TableCell>{row.SKU}</TableCell>
-											<TableCell>
-												<div className='cate-prim'>
+											<TableCell align='center'>{row.SKU}</TableCell>
+											<TableCell align='right'>
+												<div className='cate-prim d-flex align-items-center'>
 													<img src={row.productImg} alt='img' />
 													<span className='me-3'>{row.productName}</span>
 												</div>
 											</TableCell>
 											<TableCell>{row.productCategory}</TableCell>
-											<TableCell>{row.price}</TableCell>
-											<TableCell>{row.total}</TableCell>
+											<TableCell align='center'>{row.price}</TableCell>
+											<TableCell align='center'> {row.total}</TableCell>
 
 											<TableCell align='center'>
 												<div className='form-check form-switch'>

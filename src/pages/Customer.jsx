@@ -19,7 +19,7 @@ const Customer = () => {
 									</Link>
 								</li>
 
-								<li className='breadcrumb-item active me-2' aria-current='page'>
+								<li className='breadcrumb-item active ' aria-current='page'>
 									العملاء
 								</li>
 							</ol>

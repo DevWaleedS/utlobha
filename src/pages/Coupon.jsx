@@ -16,17 +16,17 @@ const Coupon = () => {
 										الرئيسية
 									</Link>
 								</li>
-								<li className='breadcrumb-item  me-2' aria-current='page'>
+								<li className='breadcrumb-item' aria-current='page'>
 									التسويق
 								</li>
-								<li className='breadcrumb-item active me-2' aria-current='page'>
+								<li className='breadcrumb-item active' aria-current='page'>
 									كوبونات التخفيض
 								</li>
 							</ol>
 						</nav>
 					</div>
 				</div>
-				<div className='row mb-3'>
+				<div className='row mb-3 coupon-form'>
 					<FormSearchWeight type='coupon' />
 				</div>
 
