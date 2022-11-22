@@ -991,15 +991,26 @@ select {
 .sub-categories span {
 	background-color: var(--gray-200);
 	padding: 5px 10px;
-	width: 135px;
+	border-radius: 20px;
 	font-size: 16px;
 	font-weight: 500;
 	color: var(--black-500);
 	margin: 0 10px;
 	display: inline-flex;
-	justify-content: center;
-	border-radius: 20px;
+	
 }
+.support-table	.sub-categories span {
+		background-color: var(--gray-200);
+		padding: 5px 10px;
+		width: 135px;
+		font-size: 16px;
+		font-weight: 500;
+		color: var(--black-500);
+		margin: 0 10px;
+		display: inline-flex;
+		justify-content: center;
+		border-radius: 20px;
+	}
 .actions img {
 	cursor: pointer;
 }
@@ -3389,6 +3400,16 @@ textarea {
 		width: min-content !important;
 	}
 	.sub-categories span {
+		background-color: var(--gray-200);
+		padding: 5px 10px;
+		border-radius: 20px;
+		font-size: 16px;
+		font-weight: 500;
+		color: var(--black-500);
+		margin: 0 10px;
+		display: inline-flex;
+	}
+	.support-table	.sub-categories span {
 		background-color: var(--gray-200);
 		padding: 5px 10px;
 		width: 135px;
