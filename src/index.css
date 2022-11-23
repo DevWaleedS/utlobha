@@ -26,7 +26,7 @@ body,
 	margin: 0;
 }
 .content > .row > .pages-content {
-	margin: 0 -16px;
+	margin: 0 -4px 0 0;
 }
 
 body {
@@ -519,7 +519,7 @@ textarea,
 	min-height: 100vh;
 	overflow: hidden;
 	padding-right: 0px;
-	padding-left: 0px;
+	padding-left: 3px;
 }
 
 /* Top Section */
@@ -2751,7 +2751,7 @@ textarea {
 	}
 	.main-content {
 		padding-right: 0px;
-		padding-left: 0px;
+		padding-left: 3px;
 	}
 	.top-section .date-picker .rs-picker {
 		display: flex;
