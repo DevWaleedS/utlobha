@@ -515,8 +515,8 @@ textarea,
 	position: relative;
 	min-height: 100vh;
 	overflow: hidden;
-	padding-right: 16px;
-	padding-left: 10px;
+	padding-right: 0px;
+	padding-left: 0px;
 }
 
 /* Top Section */
@@ -607,6 +607,10 @@ textarea,
 /*-------------------------------------------------------------------------------- */
 
 /* Details Section */
+.charts,
+.details-section {
+	padding: 0 5px;
+}
 .data-box {
 	background: var(--white-100);
 	box-shadow: var(--bx-shadow);
@@ -997,20 +1001,19 @@ select {
 	color: var(--black-500);
 	margin: 0 10px;
 	display: inline-flex;
-	
 }
-.support-table	.sub-categories span {
-		background-color: var(--gray-200);
-		padding: 5px 10px;
-		width: 135px;
-		font-size: 16px;
-		font-weight: 500;
-		color: var(--black-500);
-		margin: 0 10px;
-		display: inline-flex;
-		justify-content: center;
-		border-radius: 20px;
-	}
+.support-table .sub-categories span {
+	background-color: var(--gray-200);
+	padding: 5px 10px;
+	width: 135px;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--black-500);
+	margin: 0 10px;
+	display: inline-flex;
+	justify-content: center;
+	border-radius: 20px;
+}
 .actions img {
 	cursor: pointer;
 }
@@ -1137,32 +1140,25 @@ nav.navigation {
 	justify-content: flex-end;
 }
 
-.filter-wrapper .MuiInputBase-root {
-	background-color: var(--second-300) !important;
+.filter-wrapper .filter-select {
+	background: var(--second-300) !important;
+	color: var(--white-100);
 	height: 55px;
+	text-align: center;
+	cursor: pointer;
+	border: none !important;
 	border-radius: 24px !important;
 	-webkit-border-radius: 24px !important;
 	-moz-border-radius: 24px !important;
 	-ms-border-radius: 24px !important;
 	-o-border-radius: 24px !important;
 }
-.filter-wrapper .MuiSvgIcon-root {
-	display: none !important;
-}
-.filter-wrapper .MuiOutlinedInput-notchedOutline {
-	border: none !important;
+.filter-wrapper .filter-select option {
+	background-color: #ffffff;
+	color: var(--black-500);
+	margin: 10px;
 }
 
-.filter-btn-col .MuiFormLabel-root {
-	color: var(--white-100) !important;
-	right: 66px !important;
-	top: 0px;
-	font-size: 16px;
-	font-weight: 400;
-}
-.filter-btn-col .MuiFormLabel-root.css-1tdodfd-MuiFormLabel-root-MuiInputLabel-root {
-	display: none !important;
-}
 /* ------------------------------------------------------------------------------------ */
 /* Coupon page */
 .coupon-form .add-category {
@@ -1320,6 +1316,7 @@ nav.navigation {
 	display: flex;
 	justify-content: flex-end;
 	flex: 1;
+	width: 39%;
 }
 
 .carts-page .MuiFormLabel-root {
@@ -2600,10 +2597,14 @@ textarea {
 		width: 100%;
 	}
 	.main-content {
-		padding-right: 35px;
-		padding-left: 0;
+		padding-right: 20px;
+		padding-left: -18px;
 	}
 	/* ------------------------------------------------------------------------------------ */
+	/* Nav bar */
+	.notification {
+		margin-right: 0;
+	}
 	/* Aside bar */
 	.sidebar {
 		padding: 30px 0px 30px 0;
@@ -2682,7 +2683,7 @@ textarea {
 /* Tablet */
 @media screen and (min-width: 1200px) {
 	.main-content {
-		padding-right: 70px;
+		padding-right: 10px;
 		padding-left: 0px;
 	}
 	.navbar-nav {
@@ -2698,13 +2699,13 @@ textarea {
 	}
 	.avatar-dropdown .nav-link {
 		font-size: 18px;
-		margin-left: 10px;
+		margin-left: 45px;
 	}
 	.navbar-nav .dropdown-menu {
 		left: -114px;
 	}
 	.search-box {
-		width: 260px;
+		width: 360px;
 		margin-right: 0px;
 	}
 
@@ -2738,8 +2739,12 @@ textarea {
 
 @media screen and (min-width: 1440px) {
 	.main-content {
-		padding-right: 10px;
-		padding-left: 10px;
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	.charts,
+	.details-section {
+		padding: 0 5px;
 	}
 
 	/* TOP BAR STYLE */
@@ -2922,14 +2927,6 @@ textarea {
 	}
 
 	/* ------------------------------------------------------------ */
-	/* Main Content */
-	.main-content {
-		position: relative;
-		min-height: 100vh;
-		overflow: hidden;
-		padding-right: 16px;
-		padding-left: 10px;
-	}
 
 	/* Top Section */
 	.page-title svg {
@@ -3409,7 +3406,7 @@ textarea {
 		margin: 0 10px;
 		display: inline-flex;
 	}
-	.support-table	.sub-categories span {
+	.support-table .sub-categories span {
 		background-color: var(--gray-200);
 		padding: 5px 10px;
 		width: 135px;
@@ -3547,32 +3544,25 @@ textarea {
 		justify-content: flex-end;
 	}
 
-	.filter-wrapper .MuiInputBase-root {
-		background-color: var(--second-300) !important;
+	.filter-wrapper .filter-select {
+		background: var(--second-300) !important;
+		color: var(--white-100);
 		height: 55px;
+		text-align: center;
+		cursor: pointer;
+		border: none !important;
 		border-radius: 24px !important;
 		-webkit-border-radius: 24px !important;
 		-moz-border-radius: 24px !important;
 		-ms-border-radius: 24px !important;
 		-o-border-radius: 24px !important;
 	}
-	.filter-wrapper .MuiSvgIcon-root {
-		display: none !important;
-	}
-	.filter-wrapper .MuiOutlinedInput-notchedOutline {
-		border: none !important;
+	.filter-wrapper .filter-select option {
+		background-color: #ffffff;
+		color: var(--black-500);
+		margin: 10px;
 	}
 
-	.filter-btn-col .MuiFormLabel-root {
-		color: var(--white-100) !important;
-		right: 66px !important;
-		top: 0px;
-		font-size: 16px;
-		font-weight: 400;
-	}
-	.filter-btn-col .MuiFormLabel-root.css-1tdodfd-MuiFormLabel-root-MuiInputLabel-root {
-		display: none !important;
-	}
 	/* ------------------------------------------------------------------------------------ */
 	/* Coupon page */
 	.coupon-form .add-category {
@@ -3738,6 +3728,7 @@ textarea {
 		display: flex;
 		justify-content: flex-end;
 		flex: 1;
+		width: 39%;
 	}
 
 	.search-input-box svg {

@@ -132,7 +132,7 @@ function EnhancedTableToolbar(props) {
 				)}
 			</div>
 
-			<div className=' d-flex align-items-center flex-row-reverse'>
+			<div className=' d-flex align-items-center flex-row-reverse pe-2'>
 				<h2
 					className='h4'
 					style={{
