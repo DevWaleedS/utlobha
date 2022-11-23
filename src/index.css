@@ -25,6 +25,9 @@ body,
 	overflow: hidden;
 	margin: 0;
 }
+.content > .row > .pages-content {
+	margin: 0 -16px;
+}
 
 body {
 	background-color: var(--white-500) !important;
@@ -528,7 +531,10 @@ textarea,
 }
 
 /* Date picker global styles */
-
+.top-section .date-picker .rs-picker {
+	display: flex;
+	justify-content: flex-end;
+}
 .date-picker .rs-picker-default .rs-picker-toggle.rs-btn {
 	background-color: #eff9ff !important;
 	color: var(--gray-100);
@@ -607,10 +613,7 @@ textarea,
 /*-------------------------------------------------------------------------------- */
 
 /* Details Section */
-.charts,
-.details-section {
-	padding: 0 5px;
-}
+
 .data-box {
 	background: var(--white-100);
 	box-shadow: var(--bx-shadow);
@@ -2738,13 +2741,21 @@ textarea {
 }
 
 @media screen and (min-width: 1440px) {
+	.content > .row {
+		width: 100%;
+		overflow: hidden;
+		margin: 0;
+	}
+	.content > .row > .pages-content {
+		margin: 0 -16px;
+	}
 	.main-content {
 		padding-right: 0px;
 		padding-left: 0px;
 	}
-	.charts,
-	.details-section {
-		padding: 0 5px;
+	.top-section .date-picker .rs-picker {
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	/* TOP BAR STYLE */
