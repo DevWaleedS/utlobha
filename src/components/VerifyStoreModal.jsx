@@ -10,7 +10,7 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 const style = {
 	position: 'absolute',
 
-	top: '18%',
+	top: '23%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
 	width: '100%',
