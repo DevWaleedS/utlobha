@@ -23,7 +23,7 @@ const TopBar = () => {
 	const colors = tokens(theme.palette);
 
 	return (
-		<Box className='' backgroundColor={colors.second[400]}>
+		<Box className='top-bar' backgroundColor={colors.second[400]}>
 			<nav className='navbar navbar-expand-lg ' dir='ltr'>
 				<div className='container'>
 					<div className='navbar-brand'>
