@@ -538,7 +538,7 @@ textarea,
 /* Main Content */
 .main-content {
 	position: relative;
-	min-height: 100vh;
+height: 100vw;
 	overflow: hidden;
 	padding-right: 0px;
 	padding-left: 3px;
@@ -2798,6 +2798,7 @@ textarea {
 		margin: 0 -15px 0 0;
 	}
 	.main-content {
+		height: 100vw;
 		padding-right: 0px;
 		padding-left: 5px;
 		width: calc(100% + 30px);
