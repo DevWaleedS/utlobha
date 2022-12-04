@@ -13,7 +13,11 @@ import PagesTableDataSlice from './slices/PagesTable-slice';
 import VerifyStoreModalSlice from './slices/VerifyStoreModal-slice';
 import supportTablesDataSlice from './slices/SupportTableData-slice';
 import CustomerTableDataSlice from './slices/CustomerTableData-slice';
-import ManagementTableDataSlice from './slices/UserAndManagementTable-slice.js'
+import ManagementTableDataSlice from './slices/UserAndManagementTable-slice.js';
+import customerDataModalSlice from './slices/CustomerDataModal-slice';
+import EditProductPageModalSlice from './slices/EditProductPage-slice';
+import EditCategoryPageSlice from './slices/EditCategoryPage-slice';
+import AddNewUserSlice from './slices/AddNewUser-slice';
 
 
 export const store = configureStore({
@@ -33,5 +37,10 @@ export const store = configureStore({
 		supportTablesData: supportTablesDataSlice,
 		CustomerTableData: CustomerTableDataSlice,
 		ManagementTableData: ManagementTableDataSlice,
+		customerDataModal: customerDataModalSlice,
+		editProductPageModal: EditProductPageModalSlice,
+		editCategoryPageModal: EditCategoryPageSlice,
+		AddNewUserModal: AddNewUserSlice,
+
 	},
 });

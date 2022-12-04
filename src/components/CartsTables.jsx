@@ -17,12 +17,14 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { BsTrash } from 'react-icons/bs';
+
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import { Switch, TextField } from '@mui/material';
 
 import TablePagination from './TablePagination';
 // Import icon
 import { FiSearch } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;
@@ -117,7 +119,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -170,7 +172,7 @@ EnhancedTableToolbar.propTypes = {
 export default function CartsTables() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CartsTablesData);
-	console.log(rows);
+
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -282,8 +284,11 @@ export default function CartsTables() {
 
 											<TableCell align='right'>
 												<div className='cate-prim'>
-													<img src={row.icon} alt='img' className=' rounded-circle' />
-													<span className='me-3'>{row.name}</span>
+												
+													<Link to={`ClientData-${row.id}`} style={{ cursor: 'pointer' }}>
+														<img src={row.icon} alt='img' className=' rounded-circle' />
+														</Link>
+														<span className='me-3'>{row.name}</span>
 												</div>
 											</TableCell>
 											<TableCell align='right'>{row.cartDate}</TableCell>

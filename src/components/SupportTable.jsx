@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -17,11 +17,14 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
-import { BsTrash } from 'react-icons/bs';
+
 
 import TablePagination from './TablePagination';
 
 import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
+import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -115,7 +118,7 @@ function EnhancedTableToolbar(props) {
 						<div>
 							<Tooltip onClick={onClick} className='delete-all'>
 								<IconButton>
-									<BsTrash />
+									<DeletteIcon />
 									حذف الكل
 								</IconButton>
 							</Tooltip>
@@ -169,6 +172,7 @@ EnhancedTableToolbar.propTypes = {
 const SupportTable = () => {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.supportTablesData);
+	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -289,7 +293,7 @@ const SupportTable = () => {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.id === row.id);
 																const arr = [...data];
@@ -301,9 +305,16 @@ const SupportTable = () => {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
-													<span>{row.reportIcon}</span>
+													<span
+														style={{ cursor: 'pointer' }}
+														onClick={() => {
+																	dispatch(openVerifyModal());
+														}}
+													>
+														{row.reportIcon}
+													</span>
 												</div>
 											</TableCell>
 										</TableRow>

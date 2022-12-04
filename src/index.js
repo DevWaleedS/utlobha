@@ -6,7 +6,7 @@ import { ProSidebarProvider } from 'react-pro-sidebar';
 import ReactDOM from 'react-dom/client';
 
 // Import these methods to create app routes
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 // use redux toolkit
 import { Provider } from 'react-redux';
@@ -19,7 +19,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 // IMPORT ALL PAGES
 import RootLayout from './pages/RootLayout';
 
-// Import All Pages to create routes 
+// Import All Pages to create routes
 import {
 	Academy,
 	Carts,
@@ -48,9 +48,11 @@ import {
 	VerifyStore,
 } from './pages';
 
+// Import Nested Pages
+import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles } from './pages/nestedPages';
+
 // INDEX CSS FILE
 import './index.css';
-
 
 // App Routes
 const router = createBrowserRouter([
@@ -61,14 +63,17 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: 'Home', element: <Home /> },
+
 			{
 				path: 'Academy',
 				element: <Academy />,
 			},
+			{ path: 'Academy/CourseDetails', element: <CourseDetails /> },
 			{
 				path: 'Category',
 				element: <Category />,
 			},
+
 			{
 				path: 'Marketing',
 				element: <Marketing />,
@@ -76,6 +81,11 @@ const router = createBrowserRouter([
 			{
 				path: 'Coupon',
 				element: <Coupon />,
+			},
+			// Coupon details page nested page for Coupon page
+			{
+				path: 'Coupon/EditCoupon-:id',
+				element: <EditCoupon />,
 			},
 			{
 				path: 'Offers',
@@ -85,6 +95,11 @@ const router = createBrowserRouter([
 				path: 'Carts',
 				element: <Carts />,
 			},
+			// ClientData page nested page for Carts page
+			{
+				path: 'Carts/ClientData-:id',
+				element: <ClientData />,
+			},
 			{
 				path: 'Seo',
 				element: <Seo />,
@@ -93,6 +108,11 @@ const router = createBrowserRouter([
 			{
 				path: 'Orders',
 				element: <Orders />,
+			},
+			// nested order page
+			{
+				path: 'Orders/OrderDetails',
+				element: <OrderDetails />,
 			},
 			{
 				path: 'Pages',
@@ -122,6 +142,17 @@ const router = createBrowserRouter([
 			{
 				path: 'Management',
 				element: <Management />,
+			},
+			// nested add users page
+			{
+				path: 'Management/user-:id',
+				element: <EditUserPage />,
+			},
+
+			// nested job title page
+			{
+				path: 'Management/JobTitles',
+				element: <JobTitles />,
 			},
 			{
 				path: 'StoreData',

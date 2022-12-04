@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// import table image
-import shose from '../../data/Icons/image shose.png';
-import carImage from '../../data/Icons/image car.png';
-import editIcon from '../../data/Icons/editt 2.svg';
+
 
 const categoriesDataTable = [
+	
 	{
 		id: '01',
 		couponName: 'DEF12',

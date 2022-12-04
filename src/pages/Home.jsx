@@ -3,7 +3,6 @@ import Details from '../components/Details';
 import TopSection from '../components/TopSection';
 import LineCharts from '../components/LineCharts';
 import { OrdersTableData, PieCharts, ProductsTableData } from '../components';
-import { useSelector } from 'react-redux';
 import VerifyStoreModal from '../components/VerifyStoreModal';
 
 const Home = () => {

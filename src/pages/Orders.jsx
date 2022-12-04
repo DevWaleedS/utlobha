@@ -1,16 +1,17 @@
 import React from 'react';
-import { DataBox, DatePickerCopm, BigOrdersTable, FilterSelect } from '../components';
+import { DataBox, BigOrdersTable } from '../components';
 
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 
-import { CategoryTable, FormSearchWeight, TopSection } from '../components';
+
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import OrderDetails from './nestedPages/OrderDetails';
 
 const Orders = () => {
 	const details = useSelector((state) => state.ordersDetails);
 	return (
-		<div className='orders-pages p-3'>
+		<section className='orders-pages p-3'>
 			<div className='head-category'>
 				<div className='row'>
 					<nav aria-label='breadcrumb'>
@@ -37,11 +38,14 @@ const Orders = () => {
 
 		
 
-			{/**table */}
+			{/** Orders table */}
 			<div className='tables'>
 				<BigOrdersTable />
 			</div>
-		</div>
+
+			{/** orders details page */}
+			<OrderDetails />
+		</section>
 	);
 };
 

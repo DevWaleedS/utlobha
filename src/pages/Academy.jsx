@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 import { BiSearch } from 'react-icons/bi';
 import { InputAdornment, TextField } from '@mui/material';
 import AcademyWidget from '../components/AcademyWidget';
+import { CourseDetails } from './nestedPages';
 
 
 const Academy = () => {
@@ -46,12 +47,8 @@ const Academy = () => {
 
 				<div className='row mb-5'>
 					<div className='btns-group-container d-flex justify-content-start align-items-center'>
-						<button className='active' >
-							الدورات التدريبية
-						</button>
-						<button className='me-5' >
-							شروحات
-						</button>
+						<button className='active'>الدورات التدريبية</button>
+						<button className='me-5'>شروحات</button>
 					</div>
 				</div>
 				<div className='row'>
@@ -70,6 +67,11 @@ const Academy = () => {
 						</div>
 					</div>
 				</div>
+
+				{/** CourseDetails page */}
+				<Outlet />
+
+	
 			</section>
 		);
 }

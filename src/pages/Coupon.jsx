@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import {  CouponTable, FormSearchWeight } from '../components';
 import howIcon from '../data/Icons/icon_24_home.svg';
+import AddCoupon from './nestedPages/AddCoupon';
 
 const Coupon = () => {
   return (
@@ -35,6 +36,8 @@ const Coupon = () => {
 						<CouponTable />
 					</div>
 				</div>
+			{/** AddCoupon form */}
+			<AddCoupon />
 			</section>
 		);
 }

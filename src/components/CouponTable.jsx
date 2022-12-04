@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -13,18 +13,22 @@ import TableHead from '@mui/material/TableHead';
 
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import TablePagination from './TablePagination';
 
 // import icons
-import { BsTrash } from 'react-icons/bs';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-report.svg';
+
+
+
+
+import { Link } from 'react-router-dom';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -117,7 +121,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -170,6 +174,8 @@ EnhancedTableToolbar.propTypes = {
 export default function CouponTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CouponTableData);
+
+
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -273,7 +279,7 @@ export default function CouponTable() {
 											</TableCell>
 
 											<TableCell align='center'>{row.couponName}</TableCell>
-											<TableCell>{row.couponType}</TableCell>
+											<TableCell align='right'>{row.couponType}</TableCell>
 											<TableCell>{row.expiryDate}</TableCell>
 											<TableCell align='center'>{row.percentage}</TableCell>
 											<TableCell align='center'>{row.price}</TableCell>
@@ -317,10 +323,14 @@ export default function CouponTable() {
 													/>
 
 													<span>
-														<ReportIcon />
+														{/** We will replace row.id to id  when Get API  */}
+
+														<Link to={`EditCoupon-${row.id}`} style={{ cursor: 'pointer' }}>
+															<ReportIcon />
+														</Link>
 													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -331,8 +341,9 @@ export default function CouponTable() {
 																cursor: 'pointer',
 																color: 'red',
 																fontSize: '1.2rem',
+																marginRight: '5px',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>
@@ -353,6 +364,8 @@ export default function CouponTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
+
+
 		</Box>
 	);
 }

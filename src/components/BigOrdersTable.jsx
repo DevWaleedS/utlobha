@@ -12,19 +12,19 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { BsTrash } from 'react-icons/bs';
 import DatePickerCopm from './DatePickerCopm';
 import FilterSelect from './FilterSelect';
 
-import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-report.svg';
+import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-actions-info_outined.svg';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import TablePagination from './TablePagination';
 import { Switch } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -133,7 +133,7 @@ function EnhancedTableToolbar(props) {
 						<div>
 							<Tooltip onClick={onClick} className='delete-all'>
 								<IconButton>
-									<BsTrash />
+									<DeletteIcon />
 									حذف الكل
 								</IconButton>
 							</Tooltip>
@@ -187,6 +187,9 @@ EnhancedTableToolbar.propTypes = {
 export default function BigOrdersTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.BigOrdersTableData);
+
+	// Use Navigate for navigate to order details page
+	const navigate = useNavigate();
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -319,10 +322,15 @@ export default function BigOrdersTable() {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<ReportIcon />
+														<ReportIcon
+															style={{ cursor: 'pointer' }}
+															onClick={() => {
+																navigate('OrderDetails');
+															}}
+														/>
 													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.id === row.id);
 																const arr = [...data];
@@ -333,8 +341,9 @@ export default function BigOrdersTable() {
 																cursor: 'pointer',
 																color: 'red',
 																fontSize: '1.2rem',
+																marginRight: '5px',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>
@@ -355,6 +364,7 @@ export default function BigOrdersTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
+			
 		</Box>
 	);
 }

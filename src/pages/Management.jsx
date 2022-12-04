@@ -5,8 +5,12 @@ import { MdAdd } from 'react-icons/md';
 import { BsSearch } from 'react-icons/bs';
 import { Button } from '@mui/material';
 import { UserAndManagementTable } from '../components';
+import { AddNewUser } from './nestedPages';
+import { useDispatch } from 'react-redux';
+import { openAddUserModal } from '../store/slices/AddNewUser-slice';
 
 const Management = () => {
+	const dispatch = useDispatch(true);
 	return (
 		<section className='management-page p-3'>
 			<div className='head-category mb-4'>
@@ -32,14 +36,16 @@ const Management = () => {
 
 					<div className='col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end'>
 						<div className='add-page-btn '>
-							<Button variant='contained' className='outline'>
+							<Button variant='contained' className='outline' onClick={() => dispatch(openAddUserModal())}>
 								<MdAdd />
 								<span>إضافة مستخدم</span>
 							</Button>
 						</div>
 						<div className='add-page-btn me-3'>
 							<Button variant='contained'>
-								<span> الأدوار</span>
+								<Link to='JobTitles' style={{ color: '#fff' }}>
+									الأدوار
+								</Link>
 							</Button>
 						</div>
 					</div>
@@ -81,9 +87,12 @@ const Management = () => {
 				</div>
 			</div>
 
-			<div className="management-table">
-				<UserAndManagementTable/>
+			<div className='management-table'>
+				<UserAndManagementTable />
 			</div>
+
+			{/**AddNewUser page */}
+			<AddNewUser />
 		</section>
 	);
 };

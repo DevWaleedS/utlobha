@@ -7,8 +7,12 @@ import { GrFormFilter } from 'react-icons/gr';
 
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 import PagesTable from '../components/PagesTable';
+import CreatePage from './nestedPages/CreatePage';
+import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
+import { useDispatch } from 'react-redux';
 
 const Pages = () => {
+	const dispatch = useDispatch(true);
 	return (
 		<section className='pages-page p-3'>
 			<div className='head-category mb-4'>
@@ -30,7 +34,12 @@ const Pages = () => {
 					</div>
 					<div className='col-6 d-flex justify-content-end'>
 						<div className='add-page-btn'></div>
-						<Button variant='contained'>
+						<Button
+							variant='contained'
+							onClick={() => {
+								dispatch(openVerifyModal());
+							}}
+						>
 							<MdAdd />
 							<span>انشاء صفحة</span>
 						</Button>
@@ -73,6 +82,9 @@ const Pages = () => {
 					<PagesTable />
 				</div>
 			</div>
+
+			{/** CreatePage form */}
+			<CreatePage />
 		</section>
 	);
 };

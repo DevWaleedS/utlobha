@@ -9,22 +9,22 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
+
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import TablePagination from './TablePagination';
 
 // import icons
-import { BsTrash } from 'react-icons/bs';
-
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
+import { Link } from 'react-router-dom';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -113,7 +113,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -277,10 +277,14 @@ export default function UserAndManagementTable() {
 
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
-													<span style={{ cursor: 'pointer' }}>{row.reportIcon}</span>
-													<span style={{ cursor: 'pointer' }}>{row.edit}</span>
+													<Link to={`user-${row.id}`}>
+														<span style={{ cursor: 'pointer' }}>{row.reportIcon}</span>
+													</Link>
+													<Link to={`user-${row.id}`}>
+														<span style={{ cursor: 'pointer' }}>{row.edit}</span>
+													</Link>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -292,7 +296,7 @@ export default function UserAndManagementTable() {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>

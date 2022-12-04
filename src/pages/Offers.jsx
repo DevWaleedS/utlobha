@@ -6,8 +6,12 @@ import howIcon from '../data/Icons/icon_24_home.svg';
 import { IoMdAdd } from 'react-icons/io';
 import { BsGift } from 'react-icons/bs';
 import { FaRegCalendarAlt } from 'react-icons/fa';
+import { CreateOffer } from './nestedPages';
+import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
+import { useDispatch } from 'react-redux';
 
 const Offers = () => {
+	const dispatch = useDispatch(true);
 	const [checked, setChecked] = React.useState(true);
 
 	const handleChange = (event) => {
@@ -38,7 +42,7 @@ const Offers = () => {
 
 			<div className='row mb-5'>
 				<div className='add-offer-btn-wrapper d-flex justify-content-end '>
-					<button type='button' className='add-offer-btn'>
+					<button type='button' className='add-offer-btn' onClick={()=>{dispatch(openVerifyModal())}}>
 						<IoMdAdd />
 						انشاء عرض
 					</button>
@@ -117,6 +121,8 @@ const Offers = () => {
 					</table>
 				</div>
 			</div>
+			{/** Create offers form */}
+			<CreateOffer/>
 		</section>
 	);
 };

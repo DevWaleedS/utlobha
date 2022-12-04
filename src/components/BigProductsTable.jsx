@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -13,7 +13,6 @@ import TableHead from '@mui/material/TableHead';
 // import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
@@ -22,8 +21,11 @@ import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
 
-import DeleteIcon from '@mui/icons-material/Delete';
-import { BsTrash } from 'react-icons/bs';
+
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
+import EditProductPage from '../pages/nestedPages/EditProductPage';
+import { openEditProductPageModal } from '../store/slices/EditProductPage-slice';
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -118,7 +120,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -171,6 +173,9 @@ EnhancedTableToolbar.propTypes = {
 export default function BigProductsTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.BigProductsTableData);
+
+	// Use Dispatch to open edit product page modal
+	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -319,10 +324,11 @@ export default function BigProductsTable() {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<img src={row.editIcon} alt='edit' title='edit' />
+														<img src={row.editIcon} alt='edit' title='edit'
+															onClick={() => dispatch(openEditProductPageModal())} />
 													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -334,7 +340,7 @@ export default function BigProductsTable() {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>
@@ -355,6 +361,9 @@ export default function BigProductsTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
+
+			{/** EditProductPage modal */}
+			<EditProductPage />
 		</Box>
 	);
 }

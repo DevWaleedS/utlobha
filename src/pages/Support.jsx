@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 import { BiSearch } from 'react-icons/bi';
 import { SupportTable } from '../components';
+import { SupportDetails } from './nestedPages';
 
 const Support = () => {
 	return (
@@ -44,12 +45,14 @@ const Support = () => {
 					</div>
 				</div>
 			</div>
-      <div className='row'>
-        <div className="support-table">
-				<SupportTable />
-        
-        </div>
+			<div className='row'>
+				<div className='support-table'>
+					<SupportTable />
+				</div>
 			</div>
+
+			{/** SupportDetails */}
+			<SupportDetails />
 		</section>
 	);
 };

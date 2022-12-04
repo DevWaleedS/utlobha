@@ -34,6 +34,7 @@ const Category = () => {
 					<CategoryTable />
 				</div>
 			</div>
+			
 		</div>
 	);
 };

@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {  CustomersDataTable, FormSearchWeight } from '../components';
+import { CustomersDataTable, FormSearchWeight } from '../components';
+import { AddCustomer } from './nestedPages';
+
+
 import howIcon from '../data/Icons/icon_24_home.svg';
 
 
@@ -35,6 +38,10 @@ const Customer = () => {
 						<CustomersDataTable />
 					</div>
 				</div>
+
+				{/** AddCustomer page */}
+				<AddCustomer />
+		
 			</section>
 		);
 }

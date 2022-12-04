@@ -13,7 +13,7 @@ import { closeModal } from '../store/slices/VideoModal-slice';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 const style = {
 	position: 'absolute',
-	top: '40%',
+	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
 	width: 700,
@@ -68,7 +68,7 @@ const Marketing = () => {
 						}}
 					>
 						<Fade in={isOpen}>
-							<Box sx={style}>
+							<Box sx={style} className='video-modal-container'>
 								<div className='close-icon-video-modal'>
 									<AiOutlineCloseCircle />
 								</div>

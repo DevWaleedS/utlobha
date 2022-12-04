@@ -1,6 +1,11 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+
+import { openCustomerDataModal } from '../store/slices/CustomerDataModal-slice';
+
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -9,7 +14,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
 
@@ -19,8 +23,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { Switch } from '@mui/material';
 import TablePagination from './TablePagination';
+
+import {CustomerData } from '../pages/nestedPages'
+
 // import icons
-import { BsTrash } from 'react-icons/bs';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -109,7 +116,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -162,6 +169,9 @@ EnhancedTableToolbar.propTypes = {
 export default function CustomersDataTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CustomerTableData);
+
+	// Use Dispatch to open edit customer page 
+	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -277,9 +287,16 @@ export default function CustomersDataTable() {
 
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
-													<span>{row.reportIcon}</span>
+													<span
+														style={{ cursor: 'pointer' }}
+														onClick={() => {
+															dispatch(openCustomerDataModal());
+														}}
+													>
+														{row.reportIcon}
+													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -291,7 +308,7 @@ export default function CustomersDataTable() {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>
@@ -312,6 +329,8 @@ export default function CustomersDataTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
+			{/** CustomerData page*/}
+			<CustomerData />
 		</Box>
 	);
 }

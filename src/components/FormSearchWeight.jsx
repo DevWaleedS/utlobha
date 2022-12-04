@@ -3,9 +3,18 @@ import { MdAdd } from 'react-icons/md';
 import { BsSearch } from 'react-icons/bs';
 import SelectIndicator from './SelectIndicator';
 
-const FormSearchWeight = ({ type }) => {
-	let data;
+import { useDispatch } from 'react-redux';
+import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
+import AddCategory from '../pages/nestedPages/AddCategory';
 
+const FormSearchWeight = ({ type }) => {
+	const dispatch = useDispatch(true);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+	};
+
+	let data;
 	switch (type) {
 		case 'category':
 			data = {
@@ -38,7 +47,7 @@ const FormSearchWeight = ({ type }) => {
 
 	return (
 		<div className='add-category'>
-			<form action=''>
+			<form onSubmit={handleSubmit}>
 				<div className='input-group'>
 					<div className='search-input input-box'>
 						<input type='text' name='search' id='search' placeholder={data.placeHolder} />
@@ -51,13 +60,21 @@ const FormSearchWeight = ({ type }) => {
 					</div>
 
 					<div className='add-category-bt-box'>
-						<button className='add-cat-btn'>
+						<button
+							className='add-cat-btn'
+							onClick={() => {
+								dispatch(openVerifyModal());
+							}}
+						>
 							<MdAdd />
 							{data.buttonValue}
 						</button>
 					</div>
 				</div>
 			</form>
+
+			{/** add category form */}
+			<AddCategory />
 		</div>
 	);
 };

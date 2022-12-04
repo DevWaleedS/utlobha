@@ -9,8 +9,12 @@ import { AiOutlineEye } from 'react-icons/ai';
 
 // IMPORT IMAGES
 import videoPreview from '../data/Icons/video-privew-image.png';
+import { useNavigate } from 'react-router-dom';
 
 const AcademyWidget = () => {
+
+	const navigate = useNavigate();
+
 	return (
 		<div className='academy-widget'>
 			<div className='row'>
@@ -58,7 +62,7 @@ const AcademyWidget = () => {
 				<div className='col-md-4 d-flex justify-content-end flex-column'>
 					<div className='row watch-course-btn  d-flex justify-content-end align-items-start'>
 						<div className='col-12 d-flex justify-content-end'>
-							<Button variant='outlined'>
+							<Button variant='outlined' onClick={()=>{navigate('CourseDetails');}}>
 								<AiOutlineEye />
 								<span className='me-2'>مشاهدة المحتوي </span>
 							</Button>

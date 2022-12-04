@@ -1,5 +1,6 @@
 import React from 'react';
 import { BigProductsTable, CategoryTable, DropCSVFiles, FormSearchWeight } from '../components';
+import AddProduct from './nestedPages/AddProduct';
 const Products = () => {
 	return (
 		<div className='products p-3'>
@@ -31,6 +32,9 @@ const Products = () => {
 					<BigProductsTable />
 				</div>
 			</div>
+
+			{/** Add Product Form */}
+			<AddProduct />
 		</div>
 	);
 };

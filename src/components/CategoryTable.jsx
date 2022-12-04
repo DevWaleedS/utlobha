@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -21,7 +21,9 @@ import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
-import { BsTrash } from 'react-icons/bs';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
+import EditCategoryPage from '../pages/nestedPages/EditCategoryPage';
+import { openEditCategoryPageModal } from '../store/slices/EditCategoryPage-slice';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -116,7 +118,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -169,6 +171,7 @@ EnhancedTableToolbar.propTypes = {
 export default function EnhancedTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CategoriesTablesData);
+		const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -322,10 +325,11 @@ export default function EnhancedTable() {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<img src={row.editIcon} alt='edit' title='edit' />
+														<img src={row.editIcon} alt='edit' title='edit'
+															onClick={() => dispatch(openEditCategoryPageModal())} />
 													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -337,7 +341,7 @@ export default function EnhancedTable() {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 												</div>
 											</TableCell>
@@ -358,6 +362,8 @@ export default function EnhancedTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
+			{/** EditCategoryPage modal */}
+			<EditCategoryPage />
 		</Box>
 	);
 }
