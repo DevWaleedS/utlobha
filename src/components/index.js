@@ -27,7 +27,7 @@ export { default as SupportTable } from './SupportTable';
 export { default as CustomersDataTable } from './CustomersDataTable';
 export { default as UserAndManagementTable } from './UserAndManagementTable';
 export { default as TablePagination } from './TablePagination';
-// export { default as DatePickerCopm } from './DatePickerCopm';
+export { default as CourseVideoModal } from './CourseVideoModal';
 
 
 

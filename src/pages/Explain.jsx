@@ -7,6 +7,9 @@ import course3 from '../data/Icons/course-3.jpg';
 
 // icons
 import { BsPlayCircle } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../store/slices/VideoModal-slice';
+import CourseVideoModal from '../components/CourseVideoModal';
 const courses = [
 	{
 		courseImg: course1,
@@ -34,6 +37,7 @@ const courses = [
 	},
 ];
 const Explain = () => {
+  	const dispatch = useDispatch(false);
 	return (
 		<div className='row'>
 			{courses.map((course) => (
@@ -41,12 +45,15 @@ const Explain = () => {
 					<figure className='course-figure'>
 						<img src={course.courseImg} className='figure-img img-fluid rounded' alt={course.courseTitle} />
 						<div className='play-video-icon'>
-							<BsPlayCircle />
+							<BsPlayCircle onClick={() => dispatch(openModal())} />
 						</div>
 						<figcaption className='figure-caption'>{course.courseTitle} </figcaption>
 					</figure>
 				</div>
 			))}
+
+      {/** CourseVideoModal */}
+      <CourseVideoModal />
 		</div>
 	);
 };
