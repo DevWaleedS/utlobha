@@ -24,8 +24,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
-	// p: 4,
+	
 };
 const EditProductPage = () => {
 	const { id } = useParams();

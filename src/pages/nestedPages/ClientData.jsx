@@ -36,7 +36,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
 	paddingBottom: '100px',
 };
 

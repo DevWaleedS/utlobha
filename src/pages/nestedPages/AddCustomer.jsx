@@ -18,8 +18,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
-	// p: 4,
+	
 };
 const AddCustomer = () => {
 	const { isOpen } = useSelector((state) => state.VerifyModal);

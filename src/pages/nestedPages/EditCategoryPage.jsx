@@ -23,8 +23,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
-	// p: 4,
+	
 };
 const EditCategoryPage = () => {
 	const { isOpen } = useSelector((state) => state.editCategoryPageModal);

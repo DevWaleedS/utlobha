@@ -19,7 +19,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
-	boxShadow: 24,
+	
 	paddingBottom: '200px',
 };
 

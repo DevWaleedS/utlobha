@@ -32,7 +32,6 @@ const style = {
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
 	borderRadius: '8px 8px 0 0',
-	boxShadow: 24,
 	paddingBottom: '200px',
 };
 

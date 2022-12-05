@@ -16,12 +16,8 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 700,
-	height: 500,
+	width: 820,
 	borderRadius: 5,
-
-	boxShadow: 24,
-	p: 0,
 };
 
 const Marketing = () => {
@@ -58,9 +54,6 @@ const Marketing = () => {
 						aria-labelledby='transition-modal-title'
 						aria-describedby='transition-modal-description'
 						open={isOpen}
-						onClick={() => {
-							dispatch(closeModal());
-						}}
 						closeAfterTransition
 						BackdropComponent={Backdrop}
 						BackdropProps={{
@@ -70,12 +63,17 @@ const Marketing = () => {
 						<Fade in={isOpen}>
 							<Box sx={style} className='video-modal-container'>
 								<div className='close-icon-video-modal'>
-									<AiOutlineCloseCircle />
+									<AiOutlineCloseCircle
+										style={{ cursor: 'pointer' }}
+										onClick={() => {
+											dispatch(closeModal());
+										}}
+									/>
 								</div>
-								<video className='video-modal' controls autoPlay>
+								<video className='video-modal' controls >
 									<source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4' />
 								</video>
-								<Button className='modal-video-btn' variant='contained' size='medium' >
+								<Button className='modal-video-btn' variant='contained' size='medium'>
 									توجه الي منصه المشاهير
 								</Button>
 							</Box>

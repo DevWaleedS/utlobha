@@ -37,13 +37,16 @@ const courses = [
 	},
 ];
 const Explain = () => {
-  	const dispatch = useDispatch(false);
+	const dispatch = useDispatch(false);
 	return (
 		<div className='row'>
 			{courses.map((course) => (
-				<div className='col-4 mb-4'>
+				<div className='col-lg-4 col-md-6 col-sm-6 col-sm-12 mb-4'>
 					<figure className='course-figure'>
-						<img src={course.courseImg} className='figure-img img-fluid rounded' alt={course.courseTitle} />
+						<div className='course-prev-image'>
+							<img src={course.courseImg} className='figure-img img-fluid rounded' alt={course.courseTitle} />
+						</div>
+
 						<div className='play-video-icon'>
 							<BsPlayCircle onClick={() => dispatch(openModal())} />
 						</div>
@@ -52,8 +55,8 @@ const Explain = () => {
 				</div>
 			))}
 
-      {/** CourseVideoModal */}
-      <CourseVideoModal />
+			{/** CourseVideoModal */}
+			<CourseVideoModal />
 		</div>
 	);
 };

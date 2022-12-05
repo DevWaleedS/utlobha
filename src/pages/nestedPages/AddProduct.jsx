@@ -17,8 +17,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
-	// p: 4,
+
 };
 const AddProduct = () => {
 	const { isOpen } = useSelector((state) => state.VerifyModal);

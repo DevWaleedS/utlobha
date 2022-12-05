@@ -16,8 +16,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	boxShadow: 24,
-	// p: 4,
+	
 };
 const CustomerData = () => {
 	const { isOpen } = useSelector((state) => state.customerDataModal);
