@@ -68,7 +68,11 @@ const VerifyStore = () => {
 				<div className='row select-store-type  form-row p-5'>
 					<form>
 						<div className='col-12'>
-							<div className='form '>{page === 1 ? <StoreActivityType /> : page === 2 ? <UploadNationalID /> : <ConfirmData />}</div>
+							<div className='form '>
+								{
+									page === 1 ? <StoreActivityType /> : page === 2 ? <UploadNationalID /> : <ConfirmData />
+								}
+							</div>
 						</div>
 						<div className='col-12 d-flex justify-content-center align-items-center '>
 							<Button className='next-btn' onClick={handleNextPage}>

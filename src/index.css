@@ -539,7 +539,8 @@ textarea,
 .main-content {
 	position: relative;
 	height: 100vw;
-	overflow: hidden;
+	overflow-y: auto;
+	overflow-x: overflow;
 	padding-right: 0px;
 	padding-left: 3px;
 	margin-top: 97px;
@@ -1365,11 +1366,11 @@ nav.navigation {
 
 /* -------------------------------------------------------------------------------------------------- */
 /* Seo Page */
-.seo-page,
+/* .seo-page,
 .template-page {
 	height: 100%;
 	overflow: auto;
-}
+} */
 .seo-weight-edit-box {
 	padding: 0;
 	border-radius: 10px 10px 0 0;
@@ -1675,10 +1676,7 @@ nav.navigation {
 /* ----------------------------------------------------------------------------------- */
 
 /* Academy page style */
-.academy-page {
-}
-.academy-page .btns-group-container {
-}
+
 .academy-page .btns-group-container button {
 	background: #eaf5f6;
 	color: var(--second-600);
@@ -1761,6 +1759,42 @@ nav.navigation {
 	background-color: var(--white--100) !important;
 	border: 1.5px solid var(--second-500);
 	color: var(--second-500);
+}
+
+/* Explain page */
+.course-figure {
+	background-color: var(--white-100);
+	position: relative;
+	width: 350px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.course-figure .figure-caption {
+	font-size: 22px;
+	text-align: center;
+	color: var(--black-500);
+	padding: 16px 16px 20px;
+}
+.course-figure .play-video-icon {
+	background: #01172312;
+	position: absolute;
+	width: 100%;
+	height: 350px;
+	border-radius: inherit;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.course-figure .play-video-icon svg {
+	color: var(--white-100);
+	z-index: 1;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------- */
@@ -5249,11 +5283,11 @@ textarea {
 
 	/* -------------------------------------------------------------------------------------------------- */
 	/* Seo Page */
-	.seo-page,
+	/* .seo-page,
 	.template-page {
 		height: 100%;
 		overflow: auto;
-	}
+	} */
 	.seo-weight-edit-box {
 		padding: 0;
 		border-radius: 10px 10px 0 0;
