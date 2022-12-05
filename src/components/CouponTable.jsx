@@ -278,9 +278,9 @@ export default function CouponTable() {
 												</div>
 											</TableCell>
 
-											<TableCell align='center'>{row.couponName}</TableCell>
+											<TableCell align='right'>{row.couponName}</TableCell>
 											<TableCell align='right'>{row.couponType}</TableCell>
-											<TableCell>{row.expiryDate}</TableCell>
+											<TableCell align='right'>{row.expiryDate}</TableCell>
 											<TableCell align='center'>{row.percentage}</TableCell>
 											<TableCell align='center'>{row.price}</TableCell>
 											<TableCell align='center'>

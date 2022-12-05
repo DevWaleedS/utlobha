@@ -9,10 +9,11 @@ import Modal from '@mui/material/Modal';
 
 // icons and images
 import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
-import ProductImage from '../../data/Icons/person.jpg'
+import ProductImage from '../../data/Icons/person.jpg';
 
-// close page modal function  
+// close page modal function
 import { closeEditProductPageModal } from '../../store/slices/EditProductPage-slice';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const style = {
 	position: 'absolute',
@@ -27,8 +28,15 @@ const style = {
 	// p: 4,
 };
 const EditProductPage = () => {
-	const { isOpen } = useSelector((state) => state.editProductPageModal);
-	const dispatch = useDispatch(false);
+	const { id } = useParams();
+	const navigate = useNavigate();
+
+	// Get Data From Redux Store
+	const ProductData = useSelector((state) => state.BigProductsTableData);
+
+	const Products = ProductData.filter((coupon) => {
+		return coupon.productNumber === id;
+	});
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -77,8 +85,8 @@ const EditProductPage = () => {
 	}, []);
 
 	return (
-		<div className='add-category-form' open={isOpen}>
-			<Modal open={isOpen} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+		<div className='add-category-form' open={true}>
+			<Modal open={true} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
 				<Box sx={style}>
 					<div className='add-form-wrapper'>
 						<div className='row '>
@@ -89,84 +97,133 @@ const EditProductPage = () => {
 								</div>
 							</div>
 						</div>
-						<form onSubmit={handleSubmit}>
-							<div className='form-body'>
-								<div className='row mb-5'>
-									<div className='col-3'>
-										<label htmlFor='product-image'> صورة المنتج</label>
-									</div>
-									<div className='col-7'>
-										<div {...getRootProps()}>
-											<div className='add-image-btn-box '>
-												<UploadIcon />
-												<div className='add-image-btn'>
-													<label htmlFor='add-image'> اسحب الصورة هنا</label>
-													<input {...getInputProps()} id='add-image' />
-												</div>
-												<span>( سيتم قبول الصور jpeg & png )</span>
-											</div>
+						{Products.map((currentProduct) => (
+							<form onSubmit={handleSubmit}>
+								<div className='form-body'>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='product-image'> صورة المنتج</label>
 										</div>
+										<div className='col-7'>
+											<div {...getRootProps()}>
+												<div className='add-image-btn-box '>
+													<UploadIcon />
+													<div className='add-image-btn'>
+														<label htmlFor='add-image'> اسحب الصورة هنا</label>
+														<input {...getInputProps()} id='add-image' />
+													</div>
+													<span>( سيتم قبول الصور jpeg & png )</span>
+												</div>
+											</div>
 
-										{/** preview banner here */}
-										<div className=' banners-preview-container'>{bannersImage.length === 0 ?
-											<img src={ProductImage} alt='' /> : bannersImage}</div>
+											{/** preview banner here */}
+											<div className=' banners-preview-container'>{bannersImage.length === 0 ? <img src={currentProduct.productImg} alt={currentProduct.productName} /> : bannersImage}</div>
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='product-number'> رقم المنتج SKU </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='product-number' placeholder='  رقم المنتج SKU' value={currentProduct.SKU} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='product-name'> أسم المنتح </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='product-name' placeholder=' أسم المنتج' value={currentProduct.productName} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='product-desc'> وصف المنتح </label>
+										</div>
+										<div className='col-7'>
+											<textarea id='product-desc' placeholder='  قم بكتابه واضح للمنتج'>
+												هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
+												.يولدها التطبيق
+											</textarea>
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='product-category'> التصنيف </label>
+										</div>
+										<div className='col-7'>
+											<select className='form-select' id='product-category' value={currentProduct.productCategory}>
+												<option defaultValue={'الكل'}>الكل</option>
+												<option value={'اجهزة جوال'}>اجهزة جوال </option>
+												<option value={'اكسسوارات'}>اكسسوارات</option>
+												<option value={'لابتوب'}>لابتوب</option>
+											</select>
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='sub-category'> التصنيفات الفرعية </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='sub-category' value={' جوالات   أجهزة ذكية   iphone'} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='price'> السعر SAR </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='price' value={currentProduct.price} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='low-price'> سعر التخفيض SAR </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='low-price' value={'0'} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='discount'> نسبة التخفيض % </label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='discount' value={'0'} />
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'>
+											<label htmlFor='count'> أقصي كمية لكل عميل</label>
+										</div>
+										<div className='col-7'>
+											<input type='text' id='count' value={'10'} />
+										</div>
+									</div>
+									<div className='row mb-2'>
+										<div className='col-3'>
+											<label htmlFor='seo'> وصف محركات البحث SEO </label>
+										</div>
+										<div className='col-7'>
+											<textarea id='seo'>جوال حديث، أجهزة لوحية، ايفون12</textarea>
+										</div>
 									</div>
 								</div>
-								<div className='row mb-5'>
-									<div className='col-3'>
-										<label htmlFor='product-number'> رقم المنتج SKU </label>
-									</div>
-									<div className='col-7'>
-										<input type='text' id='product-number' placeholder='  رقم المنتج SKU' value='9AF428' />
-									</div>
-								</div>
-								<div className='row mb-5'>
-									<div className='col-3'>
-										<label htmlFor='product-name'> أسم المنتح </label>
-									</div>
-									<div className='col-7'>
-										<input type='text' id='product-name' placeholder=' أسم المنتج' value='سماعة هدفون' />
-									</div>
-								</div>
-								<div className='row mb-5'>
-									<div className='col-3'>
-										<label htmlFor='product-desc'> وصف المنتح </label>
-									</div>
-									<div className='col-7'>
-										<textarea id='product-desc' placeholder='  قم بكتابه واضح للمنتج'>
-											هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
-											.يولدها التطبيق
-										</textarea>
-									</div>
-								</div>
-								<div className='row mb-5'>
-									<div className='col-3'>
-										<label htmlFor='product-category'> التصنيف </label>
-									</div>
-									<div className='col-7'>
-										<select className='form-select' id='product-category'>
-											<option defaultValue={'الكل'}>الكل</option>
-											<option value={'اجهزة جوال'}>اجهزة جوال </option>
-											<option value={'اكسسوارات'}>اكسسوارات</option>
-											<option value={'لابتوب'}>لابتوب</option>
-										</select>
-									</div>
-								</div>
-							</div>
 
-							<div className='form-footer'>
-								<div className='row d-flex justify-content-center align-items-center'>
-									<div className='col-4'>
-										<button className='save-btn'>حفظ</button>
-									</div>
-									<div className='col-4'>
-										<button className='close-btn' onClick={() => dispatch(closeEditProductPageModal())}>
-											إلغاء
-										</button>
+								<div className='form-footer'>
+									<div className='row d-flex justify-content-center align-items-center'>
+										<div className='col-4'>
+											<button className='save-btn'>حفظ</button>
+										</div>
+										<div className='col-4'>
+											<button className='close-btn' onClick={() => navigate('/Products')}>
+												إلغاء
+											</button>
+										</div>
 									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						))}
 					</div>
 				</Box>
 			</Modal>

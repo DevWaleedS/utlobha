@@ -53,6 +53,7 @@ import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobT
 
 // INDEX CSS FILE
 import './index.css';
+import EditProductPage from './pages/nestedPages/EditProductPage';
 
 // App Routes
 const router = createBrowserRouter([
@@ -122,6 +123,12 @@ const router = createBrowserRouter([
 				path: 'Products',
 				element: <Products />,
 			},
+			// nested Edit Product Page
+			{
+				path: 'Products/EditProduct-:id',
+				element: <EditProductPage />,
+			},
+
 			{
 				path: 'Rating',
 				element: <Rating />,

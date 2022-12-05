@@ -8,14 +8,31 @@ import Modal from '@mui/material/Modal';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel } from '@mui/material';
+// MUI
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import OutlinedInput from '@mui/material/OutlinedInput';
+
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
+import Select from '@mui/material/Select';
 
 // ICONS
 import howIcon from '../../data/Icons/icon_24_home.svg';
-
 import { ReactComponent as SearchIcon } from '../../data/Icons/icon_24_search.svg';
 import { ReactComponent as OffersIcon } from '../../data/Icons/icon-24-offer.svg';
 import { ReactComponent as GiftIcon } from '../../data/Icons/icon-offer gift.svg';
 import { ReactComponent as ArrowIcon } from '../../data/Icons/icon-30-arrwos back.svg';
+import { ReactComponent as ArrowIconDown } from '../../data/Icons/icon-24-chevron_down.svg';
+import { ReactComponent as Quantity } from '../../data/Icons/icon-24-Quantity.svg';
+import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
+import { ReactComponent as MultiDevices } from '../../data/Icons/laptop icon-24.svg';
+import { ReactComponent as MobileIcon } from '../../data/Icons/mobile-icon-24.svg';
+import { ReactComponent as LaptopIcon } from '../../data/Icons/laptop-icon-24.svg';
 
 // Modal Style
 const style = {
@@ -35,6 +52,16 @@ const CreateOffer = () => {
 	const { isOpen } = useSelector((state) => state.VerifyModal);
 	const dispatch = useDispatch(false);
 
+	const [offerPlatform, setOfferPlatform] = React.useState('');
+
+	const handleChange = (event) => {
+		setOfferPlatform(event.target.value);
+	};
+
+	//
+	const [startDate, setStartDate] = React.useState('');
+	const [endDate, setEndDate] = React.useState('');
+
 	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -42,7 +69,6 @@ const CreateOffer = () => {
 
 	//
 	const [price, setPrice] = React.useState('price');
-
 	const [radioValue, setRadioValue] = React.useState('');
 
 	// Handler for radio button
@@ -81,7 +107,7 @@ const CreateOffer = () => {
 
 						<form onSubmit={handleSubmit}>
 							{/** Offers Details */}
-							<div className='create-offer-form-wrapper '>
+							<div className='create-offer-form-wrapper add-form-wrapper '>
 								<div className='row '>
 									<div className='col-12'>
 										<div className='form-title  '>
@@ -142,15 +168,24 @@ const CreateOffer = () => {
 												منصة العرض
 												<span className='sub-label'> ( اختر أين ترغب ان يظهر العرض للعملاء )</span>
 											</label>
-											<select className='form-select' id='offer-platform'>
-												<option defaultValue={'موقع المتجر'}>
-													<span className='me-2'>موقع المتجر</span>
-												</option>
-												<option value='1'>1</option>
-												<option value='2'>3</option>
-												<option value='3'>1</option>
-												<option value='3'>2</option>
-											</select>
+
+											<FormControl>
+												<Select className='select-offer-platform ' labelId='demo-simple-select-label' id='demo-simple-select' value={offerPlatform} onChange={handleChange} IconComponent={ArrowIconDown}>
+													<MenuItem value={'website'}>
+														<LaptopIcon />
+														<span className='me-3'>موقع المتجر</span>
+													</MenuItem>
+													<MenuItem value={'app'}>
+														<MobileIcon />
+														<span className='me-3'>تطبيق المتجر</span>
+													</MenuItem>
+
+													<MenuItem value={'app-and-website'}>
+														<MultiDevices />
+														<span className='me-3'>موقع و تطبيق المتجر</span>
+													</MenuItem>
+												</Select>
+											</FormControl>
 										</div>
 									</div>
 									<div className='row  d-flex  justify-content-evenly'>
@@ -158,13 +193,38 @@ const CreateOffer = () => {
 											<label htmlFor='start-offer-date ' className='d-block mb-2'>
 												تاريخ بداية العرض
 											</label>
-											<input type='date' id='start-offer-date' />
+											<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
+												<DatePicker
+													label='تاريخ بداية العرض '
+													value={startDate}
+													onChange={(newValue) => {
+														setStartDate(newValue);
+													}}
+													components={{
+														OpenPickerIcon: DateIcon,
+													}}
+													renderInput={(params) => <TextField {...params} />}
+												/>
+											</LocalizationProvider>
 										</div>
 										<div className='col-6'>
 											<label htmlFor='end-offer-date ' className='d-block mb-2'>
 												تاريخ انتهاء العرض
 											</label>
-											<input type='date' id='end-offer-date' />
+											<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
+												<DatePicker
+													label='تاريخ نهاية العرض
+'
+													value={endDate}
+													onChange={(newValue) => {
+														setEndDate(newValue);
+													}}
+													components={{
+														OpenPickerIcon: DateIcon,
+													}}
+													renderInput={(params) => <TextField {...params} />}
+												/>
+											</LocalizationProvider>
 										</div>
 									</div>
 								</div>
@@ -196,20 +256,14 @@ const CreateOffer = () => {
 												الكمية
 											</label>
 											<div className='input-icon'>
-												<OffersIcon />
+												<Quantity className='quantity' />
 											</div>
 											<input type='text' id='count' placeholder='0' />
 										</div>
 									</div>
 									{/** --- */}
 									<div className='row mb-1 d-flex  justify-content-evenly'>
-										<RadioGroup
-											className=' d-flex flex-row'
-											aria-labelledby='demo-controlled-radio-buttons-group'
-											name='controlled-radio-buttons-group'
-											value={radioValue}
-											onChange={handleRadioSelect}
-										>
+										<RadioGroup className=' d-flex flex-row' aria-labelledby='demo-controlled-radio-buttons-group' name='controlled-radio-buttons-group' value={radioValue} onChange={handleRadioSelect}>
 											<div className='col-6'>
 												<div className='radio-box mb-1 '>
 													<FormControlLabel value='select-products' id='select-products' control={<Radio />} />
@@ -265,20 +319,14 @@ const CreateOffer = () => {
 												الكمية
 											</label>
 											<div className='input-icon'>
-												<OffersIcon />
+												<Quantity className='quantity' />
 											</div>
 											<input type='text' id='count' placeholder='0' />
 										</div>
 									</div>
 									{/** --- */}
 									<div className='row mb-1 d-flex  justify-content-evenly'>
-										<RadioGroup
-											className=' d-flex flex-row'
-											aria-labelledby='demo-controlled-radio-buttons-group'
-											name='controlled-radio-buttons-group'
-											value={radioValue}
-											onChange={handleRadioSelect}
-										>
+										<RadioGroup className=' d-flex flex-row' aria-labelledby='demo-controlled-radio-buttons-group' name='controlled-radio-buttons-group' value={radioValue} onChange={handleRadioSelect}>
 											<div className='col-6'>
 												<div className='radio-box mb-1 '>
 													<FormControlLabel value='select-products' id='select-products' control={<Radio />} />
@@ -323,13 +371,7 @@ const CreateOffer = () => {
 										<div className='col-12 mb-2'>
 											<h4>نوع الخصم</h4>
 										</div>
-										<RadioGroup
-											className=' d-flex flex-row'
-											aria-labelledby='demo-controlled-radio-buttons-group'
-											name='controlled-radio-buttons-group'
-											value={radioValue}
-											onChange={handleRadioSelect}
-										>
+										<RadioGroup className=' d-flex flex-row' aria-labelledby='demo-controlled-radio-buttons-group' name='controlled-radio-buttons-group' value={radioValue} onChange={handleRadioSelect}>
 											<div className='col-6'>
 												<div className='radio-box mb-1 '>
 													<FormControlLabel id='discount' control={<Radio />} value='discount' />

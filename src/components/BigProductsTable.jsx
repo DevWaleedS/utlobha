@@ -23,8 +23,8 @@ import TablePagination from './TablePagination';
 
 
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
-import EditProductPage from '../pages/nestedPages/EditProductPage';
-import { openEditProductPageModal } from '../store/slices/EditProductPage-slice';
+
+import { Link } from 'react-router-dom';
 
 
 function descendingComparator(a, b, orderBy) {
@@ -174,8 +174,6 @@ export default function BigProductsTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.BigProductsTableData);
 
-	// Use Dispatch to open edit product page modal
-	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -292,7 +290,7 @@ export default function BigProductsTable() {
 													<span className='me-3'>{row.productName}</span>
 												</div>
 											</TableCell>
-											<TableCell>{row.productCategory}</TableCell>
+											<TableCell align='center'>{row.productCategory}</TableCell>
 											<TableCell align='center'>{row.price}</TableCell>
 											<TableCell align='center'> {row.total}</TableCell>
 
@@ -323,10 +321,9 @@ export default function BigProductsTable() {
 
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
-													<span>
-														<img src={row.editIcon} alt='edit' title='edit'
-															onClick={() => dispatch(openEditProductPageModal())} />
-													</span>
+													<Link to={`EditProduct-${row.productNumber}`} style={{ cursor: 'pointer' }}>
+														<img src={row.editIcon} alt='edit' title='edit' />
+													</Link>
 													<span>
 														<DeletteIcon
 															onClick={() => {
@@ -362,8 +359,7 @@ export default function BigProductsTable() {
 			</Paper>
 			<TablePagination />
 
-			{/** EditProductPage modal */}
-			<EditProductPage />
+	
 		</Box>
 	);
 }

@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+
 // Icons
 import { ReactComponent as StatusIcon } from '../../data/Icons/status.svg';
 import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
@@ -18,8 +23,14 @@ import { ReactComponent as ListIcon } from '../../data/Icons/icon-24-circlr.svg'
 
 // Image
 import UserImage from '../../data/Icons/person.jpg';
+import { InputAdornment } from '@mui/material';
 
 const OrderDetails = () => {
+	const [orderStatus, setOrderStatus] = React.useState('');
+
+	const handleChange = (event) => {
+		setOrderStatus(event.target.value);
+	};
 	return (
 		<section className='order-details-page orders-pages p-3 '>
 			<div className='head-category mb-5 pt-4'>
@@ -154,15 +165,36 @@ const OrderDetails = () => {
 							<h5> خيارات الطلب</h5>
 						</div>
 						<div className='row px-3'>
-							<div className='order-action-box mb-3'>
-								<div className='action-title'>
-									<ListIcon className='list-icon' />
-									<span className='me-2'>تعديل حالة الطلب</span>
-								</div>
-								<div className='action-icon'>
-									<ArrowDown />
+							<div className='order-action-box accordion-box mb-3' id='accordionExample'>
+								<div className='accordion-item w-100'>
+									<button className='accordion-button  text-end ' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
+										<div className='action-title w-100'>
+											<ListIcon className='list-icon' />
+											<span className='me-2'> تعديل حالة الطلب</span>
+										</div>
+										<div className='action-icon'>
+											<ArrowDown />
+										</div>
+									</button>
+
+									<div id='collapseOne' className='accordion-collapse collapse ' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
+										<div className='accordion-body'>
+											<ul className='select-status p-0'>
+												<li value={'قيد التنفيذ'}>قيد التنفيذ</li>
+												<li value={'بانتظار الدفع'}>بانتظار الدفع</li>
+												<li value={'بانتظار المراجعة'}>بانتظار المراجعة</li>
+												<li value={' تم التنفيذ'}>تم التنفيذ</li>
+												<li value={'  جاري التوصيل'}> جاري التوصيل</li>
+												<li value={' تم الشحن'}>تم الشحن</li>
+												<li value={'  ملغي'}> ملغي</li>
+												<li value={'  تم التوصيل'}> تم التوصيل</li>
+												<li value={'   مسترجع'}> مسترجع </li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
+
 							<div className='order-action-box mb-3'>
 								<div className='action-title'>
 									<ListIcon className='list-icon' />

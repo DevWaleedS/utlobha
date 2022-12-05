@@ -137,7 +137,8 @@ const TemplateUpdate = () => {
 						<div className='col-12 '>
 							<div className='input-bx'>
 								{/** preview banner here */}
-								<div className=' banners-preview-container'>{bannersImage.length === 0 ? <img src={BannerImage} alt='' /> : bannersImage}</div>
+								<div className=' banners-preview-container'>{bannersImage.length === 0 ?
+									<img style={{borderRadius: "18px"}} src={BannerImage} alt='' /> : bannersImage}</div>
 							</div>
 						</div>
 						<div className='col-12 mb-5'>

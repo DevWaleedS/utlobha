@@ -3,11 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
 
 // MUI
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
+
+// icons
+
+import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
 
 // Modal Style
 const style = {
@@ -37,12 +46,11 @@ const AddCoupon = () => {
 	const [lowPrice, setLowPrice] = React.useState('no');
 	const [isEnable, setIsEnable] = React.useState('true');
 
+	//
+	const [date, setDate] = React.useState('');
+
 	return (
-		<div
-			className=''
-			open={isOpen}
-		
-		>
+		<div className='' open={isOpen}>
 			<Modal open={isOpen} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
 				<Box sx={style}>
 					<div className='add-form-wrapper add-coupon-form'>
@@ -114,7 +122,19 @@ const AddCoupon = () => {
 											تاريخ الانتهاء
 										</label>
 
-										<input type='date' name='expire-date' id='expire-date' />
+										<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
+											<DatePicker
+												placeholder='30/Sep/2022'
+												value={date}
+												onChange={(newValue) => {
+													setDate(newValue);
+												}}
+												components={{
+													OpenPickerIcon: DateIcon,
+												}}
+												renderInput={(params) => <TextField {...params} />}
+											/>
+										</LocalizationProvider>
 									</div>
 
 									<div className='col-5'>

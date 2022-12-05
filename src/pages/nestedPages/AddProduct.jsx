@@ -110,7 +110,7 @@ const AddProduct = () => {
 										<label htmlFor='product-number'> رقم المنتج SKU </label>
 									</div>
 									<div className='col-7'>
-										<input type='text' id='product-number' placeholder='  رقم المنتج SKU' />
+										<input type='text' id='product-number' placeholder=' رقم المنتج SKU ادخل ' />
 									</div>
 								</div>
 								<div className='row mb-5'>
@@ -140,6 +140,54 @@ const AddProduct = () => {
 											<option value={'اكسسوارات'}>اكسسوارات</option>
 											<option value={'لابتوب'}>لابتوب</option>
 										</select>
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='sub-category'> التصنيفات الفرعية </label>
+									</div>
+									<div className='col-7'>
+										<input type='text' id='sub-category' />
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='price'> السعر SAR </label>
+									</div>
+									<div className='col-7'>
+										<input type='text' id='price' />
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='low-price'> سعر التخفيض SAR </label>
+									</div>
+									<div className='col-7'>
+										<input type='text' id='low-price' />
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='discount'> نسبة التخفيض % </label>
+									</div>
+									<div className='col-7'>
+										<input type='text' id='discount' />
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='count'> أقصي كمية لكل عميل</label>
+									</div>
+									<div className='col-7'>
+										<input type='text' id='count' />
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'>
+										<label htmlFor='seo'> وصف محركات البحث SEO </label>
+									</div>
+									<div className='col-7'>
+										<textarea id='seo' ></textarea>
 									</div>
 								</div>
 							</div>

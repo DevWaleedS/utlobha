@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import DateRangePicker from 'rsuite/DateRangePicker';
-import 'rsuite/dist/rsuite.min.css';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -11,6 +9,14 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+// icons
+
+import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
 
 // Modal Style
 const style = {
@@ -28,33 +34,33 @@ const style = {
 const EditCoupon = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	// 
+	//
 	const couponData = useSelector((state) => state.CouponTableData);
 
 	const coupon = couponData.filter((coupon) => {
 		return coupon.id === id;
 	});
 
-	
-
 	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
 	};
 
-  // 
-  const confirmAlert = () => {
-    Swal.fire({
-      title: 'هل ترغب حقاً في إعادة تفعيل الكوبون !',
-      
-				});
-  }
+	//
+	const confirmAlert = () => {
+		Swal.fire({
+			title: 'هل ترغب حقاً في إعادة تفعيل الكوبون !',
+		});
+	};
 
 	//
 	const [price, setPrice] = React.useState('price');
 	const [shipping, setShipping] = React.useState('accept');
 	const [lowPrice, setLowPrice] = React.useState('no');
 	const [isEnable, setIsEnable] = React.useState('true');
+
+	//
+	const [date, setDate] = React.useState('');
 
 	return (
 		<div className='' open={true}>
@@ -180,11 +186,35 @@ const EditCoupon = () => {
 												تاريخ الانتهاء
 											</label>
 
-                      {currentCoupon.status === 'منتهي' || currentCoupon.status === 'معطل' ? (
-                        
-												<DateRangePicker dir='rtl' placeholder='اختر الفترة من - إلي' name='expire-date' id='expire-date' disabled />
+											{currentCoupon.status === 'منتهي' || currentCoupon.status === 'معطل' ? (
+												<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
+													<DatePicker
+														placeholder='30/Sep/2022'
+														value={date}
+														onChange={(newValue) => {
+															setDate(newValue);
+														}}
+														components={{
+															OpenPickerIcon: DateIcon,
+														}}
+														disabled
+														renderInput={(params) => <TextField {...params} />}
+													/>
+												</LocalizationProvider>
 											) : (
-												<DateRangePicker dir='rtl' placeholder='اختر الفترة من - إلي' name='expire-date' id='expire-date'  />
+												<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
+													<DatePicker
+														placeholder='30/Sep/2022'
+														value={date}
+														onChange={(newValue) => {
+															setDate(newValue);
+														}}
+														components={{
+															OpenPickerIcon: DateIcon,
+														}}
+														renderInput={(params) => <TextField {...params} />}
+													/>
+												</LocalizationProvider>
 											)}
 										</div>
 

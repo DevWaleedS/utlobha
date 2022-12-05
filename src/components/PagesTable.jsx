@@ -23,7 +23,7 @@ import TablePagination from './TablePagination';
 
 // Import Icons
 import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
-import { BsTrash } from 'react-icons/bs';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import editIcon from '../data/Icons/editt 2.svg';
 
 function descendingComparator(a, b, orderBy) {
@@ -110,7 +110,7 @@ function EnhancedTableToolbar(props) {
 					<div>
 						<Tooltip onClick={onClick} className='delete-all'>
 							<IconButton>
-								<BsTrash />
+								<DeletteIcon />
 								حذف الكل
 							</IconButton>
 						</Tooltip>
@@ -273,7 +273,7 @@ export default function PagesTable() {
 														<img src={editIcon} alt='' />
 													</span>
 													<span>
-														<BsTrash
+														<DeletteIcon
 															onClick={() => {
 																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
 																const arr = [...data];
@@ -285,7 +285,7 @@ export default function PagesTable() {
 																color: 'red',
 																fontSize: '1.2rem',
 															}}
-														></BsTrash>
+														></DeletteIcon>
 													</span>
 													<Switch
 														// checked={row.opened}
