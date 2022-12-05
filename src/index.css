@@ -2738,6 +2738,13 @@ textarea {
 	height: 26px;
 	border: none !important;
 	box-shadow: none !important;
+	padding-right: 100px;
+}
+.add-form-wrapper .MuiOutlinedInput-root .MuiInputBase-input .MuiFormLabel-root {
+	left: 270px !important;
+}
+.add-form-wrapper .MuiOutlinedInput-root .MuiInputBase-input.Mui-error {
+	color: #011723 !important;
 }
 .add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root {
 	background: var(--second-500);
