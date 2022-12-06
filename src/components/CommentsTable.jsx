@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
+
 import { alpha } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -23,12 +24,7 @@ import TablePagination from './TablePagination';
 
 // import icons
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
-import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-report.svg';
-
-
-
-
-import { Link } from 'react-router-dom';
+import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -58,29 +54,26 @@ function stableSort(array, comparator) {
 
 function EnhancedTableHead(props) {
 	return (
-		<TableHead sx={{ backgroundColor: '#d9f2f9' }}>
+		<TableHead sx={{ backgroundColor: '#ebebeb' }}>
 			<TableRow>
-				<TableCell></TableCell>
+				<TableCell align='center' sx={{ color: '#02466a' }}>
+					م
+				</TableCell>
+				<TableCell align='right' sx={{ color: '#02466a' }}>
+					{' '}
+					اسم المستخدم
+				</TableCell>
+				<TableCell align='right' sx={{ color: '#02466a' }}>
+					المدينة
+				</TableCell>
+				<TableCell align='right' sx={{ color: '#02466a' }}>
+					{' '}
+					التعليق
+				</TableCell>
 
-				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
-					اسم الكوبون
-				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
-					نوع الكوبون
-				</TableCell>
-				<TableCell align='right' sx={{ color: '#02466a' }}>
-					{' '}
-					تاريخ الانتهاء
-				</TableCell>
-				<TableCell align='center' sx={{ color: '#02466a' }}>
-					النسبة %
-				</TableCell>
-				<TableCell align='center' sx={{ color: '#02466a' }}>
-					المبلغ
-				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
 					الحالة
+					<SortIcon />
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
 					الإجراء
@@ -113,6 +106,7 @@ function EnhancedTableToolbar(props) {
 				display: 'flex',
 				justifyContent: 'space-between',
 				flexDirection: 'row-reverse',
+				backgroundColor: '#fcfcfc',
 			}}
 		>
 			<div className=' d-flex flex-row-reverse  justify-content-between align-items-center '>
@@ -171,11 +165,9 @@ EnhancedTableToolbar.propTypes = {
 	numSelected: PropTypes.number.isRequired,
 };
 
-export default function CouponTable() {
+export default function CommentsTable() {
 	// Get Data From Redux Store
-	const rows = useSelector((state) => state.CouponTableData);
-
-
+	const rows = useSelector((state) => state.CommentsTable);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -278,40 +270,47 @@ export default function CouponTable() {
 												</div>
 											</TableCell>
 
-											<TableCell align='right'>{row.couponName}</TableCell>
-											<TableCell align='right'>{row.couponType}</TableCell>
-											<TableCell align='right'>{row.expiryDate}</TableCell>
-											<TableCell align='center'>{row.percentage}</TableCell>
-											<TableCell align='center'>{row.price}</TableCell>
+											<TableCell align='right' style={{ width: '300px' }}>
+												{row.userName}
+											</TableCell>
+											<TableCell align='right'>{row.city}</TableCell>
+											
+											<TableCell align='right'>
+												<div className='comments-wrapper' data-bs-toggle='tooltip' data-bs-placement='bottom' title={row.comment}>
+													{row.comment}
+												</div>
+											</TableCell>
+
 											<TableCell align='center'>
-												<span
-													align='center'
-													className='status'
-													style={{
-														backgroundColor: row.bgcolor,
-														color: row.color,
-														borderRadius: '16px',
-														padding: '5px 25px',
-														fontWeight: 500,
-													}}
-												>
-													{row.status}
-												</span>
+												<div className='comment-status d-flex justify-content-center'>
+													<span
+														align='center'
+														className='status'
+														style={{
+															backgroundColor: row.bgcolor,
+															color: row.color,
+															width: '100px',
+															display: 'flex',
+															justifyContent: 'center',
+															borderRadius: '16px',
+															padding: '5px 25px',
+															fontWeight: 500,
+														}}
+													>
+														{row.status}
+													</span>
+												</div>
 											</TableCell>
 
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<Switch
-														// checked={row.opened}
 														onChange={() => {
-															const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
-
+															const findIndex = data.findIndex((item) => item.isActive === row.isActive);
 															const arr = [...data];
-
-															arr[findIndex].opened = !arr[findIndex].opened;
+															arr[findIndex].isActive = !arr[findIndex].isActive;
 															setData(arr);
 														}}
-														className=''
 														sx={{
 															'& .Mui-checked .MuiSwitch-thumb': {
 																backgroundColor: '#3AE374',
@@ -322,13 +321,6 @@ export default function CouponTable() {
 														}}
 													/>
 
-													<span>
-														{/** We will replace row.id to id  when Get API  */}
-
-														<Link to={`EditCoupon-${row.id}`} style={{ cursor: 'pointer' }}>
-															<ReportIcon />
-														</Link>
-													</span>
 													<span>
 														<DeletteIcon
 															onClick={() => {
@@ -341,7 +333,6 @@ export default function CouponTable() {
 																cursor: 'pointer',
 																color: 'red',
 																fontSize: '1.2rem',
-																marginRight: '5px',
 															}}
 														></DeletteIcon>
 													</span>
@@ -364,8 +355,6 @@ export default function CouponTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
-
-
 		</Box>
 	);
 }

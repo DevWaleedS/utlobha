@@ -1942,6 +1942,15 @@ nav.navigation {
 	color: #38dd73 !important;
 }
 
+/* Comments pages */
+.comments-wrapper{    
+	width: 160px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	}
+
 /* Verify Store Page Styles */
 
 .verify-message-box .verify-message {

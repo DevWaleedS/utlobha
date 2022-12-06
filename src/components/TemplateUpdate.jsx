@@ -97,7 +97,6 @@ const TemplateUpdate = () => {
 											<div className='logo-preview-container'>
 												{imageList.map((image, index) => (
 													<div key={index} className='upload-image-bx mb-2'>
-												
 														<img src={image['data_url']} alt='' className='logo-img-uploaded' />
 													</div>
 												))}
@@ -137,8 +136,7 @@ const TemplateUpdate = () => {
 						<div className='col-12 '>
 							<div className='input-bx'>
 								{/** preview banner here */}
-								<div className=' banners-preview-container'>{bannersImage.length === 0 ?
-									<img style={{borderRadius: "18px"}} src={BannerImage} alt='' /> : bannersImage}</div>
+								<div className=' banners-preview-container'>{bannersImage.length === 0 ? <img style={{ borderRadius: '18px' }} src={BannerImage} alt='' /> : bannersImage}</div>
 							</div>
 						</div>
 						<div className='col-12 mb-5'>
@@ -206,7 +204,7 @@ const TemplateUpdate = () => {
 						التعليقات والعملاء <span> (تستطيع تفعيل وتعطيل العملاء المميزين والتعليقات )</span>
 					</h4>
 					<div className='view-more-btn mx-4'>
-						<Link to='' variant='contained'>
+						<Link to='Comments' variant='contained'>
 							<span>عرض التفاصيل</span>
 							<BsArrowLeft className='me-2' />
 						</Link>

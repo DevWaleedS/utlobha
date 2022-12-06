@@ -49,7 +49,7 @@ import {
 } from './pages';
 
 // Import Nested Pages
-import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles } from './pages/nestedPages';
+import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments } from './pages/nestedPages';
 
 // INDEX CSS FILE
 import './index.css';
@@ -184,6 +184,11 @@ const router = createBrowserRouter([
 			{
 				path: 'Template',
 				element: <Template />,
+			},
+			// nested Comments page
+			{
+				path: 'Template/Comments',
+				element: <Comments />,
 			},
 			{
 				path: 'Customer',
