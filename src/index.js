@@ -46,6 +46,8 @@ import {
 	Support,
 	Template,
 	VerifyStore,
+	MarketingCampaign,
+	BranchesAndWarehouses,
 } from './pages';
 
 // Import Nested Pages
@@ -54,6 +56,7 @@ import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobT
 // INDEX CSS FILE
 import './index.css';
 import EditProductPage from './pages/nestedPages/EditProductPage';
+import CreateRole from './pages/nestedPages/CreateRole';
 
 // App Routes
 const router = createBrowserRouter([
@@ -105,6 +108,10 @@ const router = createBrowserRouter([
 				path: 'Seo',
 				element: <Seo />,
 			},
+			{
+				path: 'MarketingCampaign',
+				element: <MarketingCampaign />,
+			},
 
 			{
 				path: 'Orders',
@@ -135,6 +142,11 @@ const router = createBrowserRouter([
 			},
 
 			{
+				path: 'BranchesAndWarehouses',
+				element: <BranchesAndWarehouses />,
+			},
+
+			{
 				path: 'Support',
 				element: <Support />,
 			},
@@ -150,6 +162,7 @@ const router = createBrowserRouter([
 				path: 'Management',
 				element: <Management />,
 			},
+
 			// nested add users page
 			{
 				path: 'Management/user-:id',
@@ -160,6 +173,11 @@ const router = createBrowserRouter([
 			{
 				path: 'Management/JobTitles',
 				element: <JobTitles />,
+			},
+			// CreateRole page
+			{
+				path: 'Management/JobTitles/CreateRole',
+				element: <CreateRole />,
 			},
 			{
 				path: 'StoreData',

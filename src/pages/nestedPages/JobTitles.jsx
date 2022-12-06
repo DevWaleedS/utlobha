@@ -19,18 +19,13 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
-	
+
 	paddingBottom: '200px',
 };
 
 const JobTitles = () => {
 	const dispatch = useDispatch(false);
 	const navigate = useNavigate();
-
-	//
-	const handleSubmit = (event) => {
-		event.preventDefault();
-	};
 
 	return (
 		<div className='' open={true}>
@@ -61,7 +56,7 @@ const JobTitles = () => {
 								</div>
 								<div className='col-6 d-flex justify-content-end'>
 									<div className='create-job-title-btn'>
-										<button>إنشاء دور</button>
+										<button onClick={() => navigate('CreateRole')}>إنشاء دور</button>
 									</div>
 								</div>
 							</div>

@@ -77,7 +77,7 @@ const AddCategory = () => {
 						<div className='row '>
 							<div className='col-12'>
 								<div className='form-title  '>
-									<h5 className='mb-3'> تعديل تصنيف</h5>
+									<h5 className='mb-3'> اضافة تصنيف</h5>
 									<p>قم بتحديث التصنيف والمعلومات الضرورية من هنا</p>
 								</div>
 							</div>

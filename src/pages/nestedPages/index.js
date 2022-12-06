@@ -17,7 +17,7 @@ export { default as CustomerData } from './CustomerData';
 export { default as ClientData } from './ClientData';
 export { default as JobTitles } from './JobTitles';
 export { default as Comments } from './Comments';
-// export { default as SalesReport } from './SalesReport';
+export { default as CreateRole } from './CreateRole';
 // export { default as SalesReport } from './SalesReport';
 // export { default as SalesReport } from './SalesReport';
 // export { default as SalesReport } from './SalesReport';

@@ -42,11 +42,9 @@ const Management = () => {
 							</Button>
 						</div>
 						<div className='add-page-btn me-3'>
-							<Button variant='contained'>
-								<Link to='JobTitles' style={{ color: '#fff' }}>
-									الأدوار
-								</Link>
-							</Button>
+							<Link to='JobTitles' style={{ color: '#fff' }}>
+								<Button variant='contained'>الأدوار</Button>
+							</Link>
 						</div>
 					</div>
 				</div>

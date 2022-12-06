@@ -1,4 +1,3 @@
-
 export { default as Home } from './Home';
 export { default as ErrorPage } from './ErrorPage';
 export { default as Academy } from './Academy';
@@ -19,6 +18,7 @@ export { default as Coupon } from './Coupon';
 export { default as Offers } from './Offers';
 export { default as Carts } from './Carts';
 export { default as Seo } from './Seo';
+export { default as MarketingCampaign } from './MarketingCampaign';
 export { default as VerifyStore } from './VerifyStore';
 export { default as SocialPages } from './SocialPages';
 export { default as ShippingCompanies } from './ShippingCompanies';
@@ -28,15 +28,9 @@ export { default as MaintenanceMode } from './MaintenanceMode';
 export { default as Management } from './Management';
 export { default as Explain } from './Explain';
 export { default as CoursesTraining } from './CoursesTraining';
+export { default as BranchesAndWarehouses } from './BranchesAndWarehouses';
 // export { default as ErrorPage } from './ErrorPage';
 // export { default as ErrorPage } from './ErrorPage';
 // export { default as ErrorPage } from './ErrorPage';
 // export { default as ErrorPage } from './ErrorPage';
 // export { default as ErrorPage } from './ErrorPage';
-// export { default as ErrorPage } from './ErrorPage';
-// export { default as ErrorPage } from './ErrorPage';
-
-
-
-
-

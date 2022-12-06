@@ -13,9 +13,11 @@ import { ReactComponent as Category } from '../data/Icons/icon-24-Category.svg';
 import { ReactComponent as Products } from '../data/Icons/product-24.svg';
 import { ReactComponent as Orders } from '../data/Icons/icon-24-order.svg';
 import { ReactComponent as Marketing } from '../data/Icons/icon-24-marketing.svg';
+import { ReactComponent as MarketingCampain } from '../data/Icons/icon-24-marketing campain.svg';
 import { ReactComponent as Rating } from '../data/Icons/icon-24-ratings.svg';
 import { ReactComponent as PagesIcon } from '../data/Icons/icon-24-pages.svg';
 import { ReactComponent as Academy } from '../data/Icons/icon-24-graduatioin.svg';
+import { ReactComponent as BranchesAndWarehouses } from '../data/Icons/icon-24-Company Branch.svg';
 import { ReactComponent as Template } from '../data/Icons/icon-24-template.svg';
 import { ReactComponent as Info } from '../data/Icons/icon-24-info.svg';
 import { ReactComponent as Social } from '../data/Icons/icon-24-social.svg';
@@ -36,8 +38,6 @@ import { FaCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../store/slices/VideoModal-slice';
 import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
-
-
 
 const SideBar = () => {
 	const dispatch = useDispatch(false);
@@ -124,6 +124,12 @@ const SideBar = () => {
 							</span>
 						</MenuItem>
 					</NavLink>
+					<NavLink className='sub-menu-link disabled-menu-link' to='MarketingCampaign'>
+						<MenuItem>
+							<MarketingCampain />
+							<span className='me-2'>الحملة التسويقية</span>
+						</MenuItem>
+					</NavLink>
 				</SubMenu>
 
 				<NavLink className='menu-link' to='Rating'>
@@ -156,17 +162,16 @@ const SideBar = () => {
 
 				{/** Store Sub menu */}
 				<SubMenu label='بيانات المتجر' icon={<Info />}>
-					<NavLink className='sub-menu-link' to='Home'>
+					<NavLink
+						className='sub-menu-link'
+						to='Home'
+						onClick={() => {
+							dispatchVerifyModal(openVerifyModal());
+						}}
+					>
 						<MenuItem>
 							<Verification />
-							<span
-								className='me-2'
-								onClick={() => {
-									dispatchVerifyModal(openVerifyModal());
-								}}
-							>
-								توثيق المتجر
-							</span>
+							<span className='me-2'>توثيق المتجر</span>
 						</MenuItem>
 					</NavLink>
 
@@ -190,6 +195,12 @@ const SideBar = () => {
 							<span className='me-2'> بوابات الدفع</span>
 						</MenuItem>
 					</NavLink>
+					<NavLink className='sub-menu-link disabled-menu-link' to='BranchesAndWarehouses'>
+						<MenuItem>
+							<BranchesAndWarehouses />
+							<span className='me-2'>الفروع والمستودعات </span>
+						</MenuItem>
+					</NavLink>
 				</SubMenu>
 
 				<NavLink className='menu-link' to='Support'>
@@ -208,17 +219,16 @@ const SideBar = () => {
 						</MenuItem>
 					</NavLink>
 
-					<NavLink className='sub-menu-link' to='MaintenanceMode'>
+					<NavLink
+						className='sub-menu-link'
+						to='MaintenanceMode'
+						onClick={() => {
+							dispatch(openModal());
+						}}
+					>
 						<MenuItem>
 							<FaCircle style={{ width: '14px' }} />
-							<span
-								className='me-2'
-								onClick={() => {
-									dispatch(openModal());
-								}}
-							>
-								وضع الصيانة
-							</span>
+							<span className='me-2'>وضع الصيانة</span>
 						</MenuItem>
 					</NavLink>
 

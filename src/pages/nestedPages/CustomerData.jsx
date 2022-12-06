@@ -49,7 +49,7 @@ const CustomerData = () => {
 												<label htmlFor='id-number' className='d-block mb-1'>
 													الرقم ID
 												</label>
-												<input type='text' id='id-number' name='id-number' placeholder='DA88' value='DA88' />
+												<input type='text' id='id-number' name='id-number' placeholder='DA88' value='DA88' disabled />
 											</div>
 										</div>
 										<div className='row mb-4'>
@@ -57,7 +57,7 @@ const CustomerData = () => {
 												<label htmlFor='first-name' className='d-block mb-1'>
 													الاسم الأول
 												</label>
-												<input type='text' id='first-name' name='first-name' placeholder='الاسم الأول' value='محمد' />
+												<input type='text' id='first-name' name='first-name' placeholder='الاسم الأول' value='محمد' disabled />
 											</div>
 										</div>
 										<div className='row mb-4'>
@@ -65,7 +65,7 @@ const CustomerData = () => {
 												<label htmlFor='last-name' className='d-block mb-2'>
 													الاسم الثاني
 												</label>
-												<input type='text' id='last-name' name='last-name' placeholder='الاسم الثاني' value='عبدالرحمن' />
+												<input type='text' id='last-name' name='last-name' placeholder='الاسم الثاني' value='عبدالرحمن' disabled />
 											</div>
 										</div>
 									</div>
@@ -87,14 +87,14 @@ const CustomerData = () => {
 										<label htmlFor='email' className='d-block mb-2'>
 											البريد الالكتروني
 										</label>
-										<input type='email' id='email' name='email' placeholder='sample@gmail.com' value='sample@gmail.com' />
+										<input type='email' id='email' name='email' placeholder='sample@gmail.com' value='sample@gmail.com' disabled />
 									</div>
 
 									<div className='col-4'>
 										<label htmlFor='city' className='d-block mb-1'>
 											المدينة
 										</label>
-										<select className='form-select' type='text' id='city' name='city' value='الرياض'>
+										<select className='form-select' type='text' id='city' name='city' value='الرياض' disabled>
 											<option defaultValue='المدينه'>المدينة</option>
 											<option defaultValue='الرياض'>الرياض</option>
 											<option defaultValue='جده'>جده</option>
@@ -108,14 +108,14 @@ const CustomerData = () => {
 										<label htmlFor='phone-number' className='d-block mb-1'>
 											رقم الجوال
 										</label>
-										<input type='text' id='phone-number' name='phone-number' placeholder='رقم الجوال' value='966516840132' />
+										<input type='text' id='phone-number' name='phone-number' placeholder='رقم الجوال' value='966516840132' disabled />
 									</div>
 
 									<div className='col-4'>
 										<label htmlFor='gender' className='d-block mb-1'>
 											الجنس
 										</label>
-										<select className='form-select' type='text' id='gender' name='gender' value='ذكر'>
+										<select className='form-select' type='text' id='gender' name='gender' value='ذكر' disabled>
 											<option defaultValue='الجنس'>الجنس</option>
 											<option defaultValue='ذكر'>ذكر</option>
 											<option defaultValue='أنثي'>أنثي</option>

@@ -35,7 +35,7 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
-	
+
 	paddingBottom: '200px',
 };
 
@@ -85,78 +85,81 @@ const SupportDetails = () => {
 									</div>
 									<div className='col-12'>
 										<div className='issue-details-box'>
-											<div className='row mb-4'>
-												<div className='col-2'>
-													<div className='box'>
-														<Client className='client-icon' />
-														<span className='me-2'>اسم العميل</span>
+											<div className='row justify-content-between'>
+												<div className='col-lg-6  col-sm-12'>
+													<div className='row mb-4'>
+														<div className='data-row d-flex'>
+															<div className='box label-box'>
+																<Client className='client-icon' />
+																<span className='me-2'>اسم العميل</span>
+															</div>
+
+															<div className='box success-box d-flex justify-content-center'>
+																<span>عبد الرحمن محمد</span>
+															</div>
+														</div>
+													</div>
+
+													<div className='row mb-4'>
+														<div className='data-row d-flex'>
+															<div className='box label-box'>
+																<Phone className='phone-icon' />
+																<span className='me-2'> الهاتف</span>
+															</div>
+
+															<div className='box success-box d-flex justify-content-center'>
+																<span> 9663222335</span>
+															</div>
+														</div>
+													</div>
+
+													<div className='row mb-4'>
+														<div className='data-row d-flex'>
+															<div className='box label-box'>
+																<StatusIcon className='status' />
+																<span className='me-2'> الحالة</span>
+															</div>
+															<div className='box pending-box d-flex justify-content-center'>
+																<span> جاري المعالجة</span>
+															</div>
+														</div>
 													</div>
 												</div>
-												<div className='col-3'>
-													<div className='box success-box d-flex justify-content-center'>
-														<span>عبد الرحمن محمد</span>
+
+												<div className='col-lg-6 col-sm-12 '>
+													<div className='row mb-4'>
+														<div className='data-row d-flex justify-content-end'>
+															<div className='box label-box'>
+																<DateIcon className='date-icon' />
+																<span className='me-2'> تاريخ الشكوى</span>
+															</div>
+															<div className='box success-box d-flex justify-content-center'>
+																<span>20/08/2022</span>
+															</div>
+														</div>
 													</div>
-												</div>
-												<div className='col-2 '></div>
-												<div className='col-2 '>
-													<div className='box'>
-														<DateIcon className='date-icon' />
-														<span className='me-2'> تاريخ الشكوى</span>
+													<div className='row mb-4'>
+														<div className='data-row d-flex justify-content-end'>
+															<div className='box label-box'>
+																<TypeSuport className='support-icon' />
+																<span className='me-2'> نوع الاتصال</span>
+															</div>
+
+															<div className='box wring-box d-flex justify-content-center'>
+																<span>استفسار </span>
+															</div>
+														</div>
 													</div>
-												</div>
-												<div className='col-3'>
-													<div className='box success-box d-flex justify-content-center'>
-														<span>20/08/2022</span>
-													</div>
-												</div>
-											</div>
-											<div className='row mb-4'>
-												<div className='col-2'>
-													<div className='box'>
-														<Phone className='phone-icon' />
-														<span className='me-2'> الهاتف</span>
-													</div>
-												</div>
-												<div className='col-3'>
-													<div className='box success-box d-flex justify-content-center'>
-														<span> 9663222335</span>
-													</div>
-												</div>
-												<div className='col-2 '></div>
-												<div className='col-2 '>
-													<div className='box'>
-														<TypeSuport className='support-icon' />
-														<span className='me-2'> نوع الاتصال</span>
-													</div>
-												</div>
-												<div className='col-3'>
-													<div className='box wring-box d-flex justify-content-center'>
-														<span>استفسار </span>
-													</div>
-												</div>
-											</div>
-											<div className='row'>
-												<div className='col-2'>
-													<div className='box'>
-														<StatusIcon className='status' />
-														<span className='me-2'> الحالة</span>
-													</div>
-												</div>
-												<div className='col-3'>
-													<div className='box pending-box d-flex justify-content-center'>
-														<span> جاري المعالجة</span>
-													</div>
-												</div>
-												<div className='col-2 '></div>
-												<div className='col-2'>
-													<div className='box'>
-														<Customer className='customer-icon' />
-														<span className='me-2'>عنوان الشكوى </span>
-													</div>
-												</div>
-												<div className='col-3'>
-													<div className='box success-box d-flex justify-content-center'>
-														<span>خدمات السيرفر</span>
+													<div className='row mb-4'>
+														<div className='data-row d-flex justify-content-end'>
+															<div className='box label-box'>
+																<Customer className='customer-icon' />
+																<span className='me-2'>عنوان الشكوى </span>
+															</div>
+															<div className='box success-box d-flex justify-content-center'>
+																<span>خدمات السيرفر</span>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -170,6 +173,7 @@ const SupportDetails = () => {
 									<div className='col-12 mb-3'>
 										<h4 className='issue-title'>محتوي الشكوي</h4>
 									</div>
+
 									<div className='col-12'>
 										<div className='text-editor-icons'>
 											<BoldIcon />
@@ -181,6 +185,7 @@ const SupportDetails = () => {
 											<FormatTextPoint className='me-3' />
 										</div>
 									</div>
+
 									<div className='col-12'>
 										<textarea name='page-content-input' id='page-content-input'>
 											هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث .يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
