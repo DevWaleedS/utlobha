@@ -132,10 +132,11 @@ const CourseDetails = () => {
 							</div>
 						</div>
 					</div>
+
 					<div className='col-12'>
 						<div className='accordion-item course-unites d-flex justify-content-between order-action-box accordion-box ' id='accordionExample'>
 							<div className='accordion-item w-100'>
-								<button className='accordion-button  text-end ' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
+								<button className='accordion-button  text-end ' type='button' data-bs-toggle='collapse' data-bs-target='#collapseTow' aria-expanded='true' aria-controls='collapseTow'>
 									<div className='action-title w-100'>
 										<span className='unite-name'> الوحدة الثانية</span>
 										<span className='course-count'>( 4 دروس )</span>
@@ -146,7 +147,7 @@ const CourseDetails = () => {
 									</div>
 								</button>
 
-								<div id='collapseOne' className='accordion-collapse collapse ' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
+								<div id='collapseTow' className='accordion-collapse collapse ' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>
 									<div className='accordion-body'>
 										<ul className='select-status p-0'>
 											<li className='d-flex justify-content-between align-items-center'>

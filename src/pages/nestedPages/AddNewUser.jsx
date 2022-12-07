@@ -5,6 +5,9 @@ import { closeAddUserModal } from '../../store/slices/AddNewUser-slice';
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -23,7 +26,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	
 };
 const AddNewUser = () => {
 	const { isOpen } = useSelector((state) => state.AddNewUserModal);
@@ -33,6 +35,35 @@ const AddNewUser = () => {
 		event.preventDefault();
 	};
 
+	// Sweet alert function
+	const succMessage = () => {
+		dispatch(closeAddUserModal());
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم اضافة مستخدم جديد  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
+	};
+	
 	//  use dropzone to get personal image
 	const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
@@ -173,7 +204,14 @@ const AddNewUser = () => {
 							<div className='form-footer'>
 								<div className='row d-flex justify-content-center align-items-center'>
 									<div className='col-4'>
-										<button className='save-btn'>حفظ</button>
+										<button
+											className='save-btn'
+											onClick={() => {
+												succMessage();
+											}}
+										>
+											حفظ
+										</button>
 									</div>
 									<div className='col-4'>
 										<button className='close-btn' onClick={() => dispatch(closeAddUserModal())}>

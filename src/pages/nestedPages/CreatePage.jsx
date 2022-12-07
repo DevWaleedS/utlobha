@@ -2,15 +2,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Checkbox } from '@mui/material';
 
 // ICONS
-
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-
 import { ReactComponent as DocsIcon } from '../../data/Icons/icon-24-write.svg';
 import { ReactComponent as PaperIcon } from '../../data/Icons/icon-24- details.svg';
 import { ReactComponent as BoldIcon } from '../../data/Icons/icon-24-Bold.svg';
@@ -44,6 +45,34 @@ const CreatePage = () => {
 		event.preventDefault();
 	};
 
+	// Sweet alert function
+	const succMessage = () => {
+		dispatch(closeVerifyModal());
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم حفظ  الصفحة   بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
+	};
 
 	return (
 		<div className='' open={isOpen}>
@@ -176,7 +205,15 @@ const CreatePage = () => {
 						<div className='form-footer-btn'>
 							<div className='row d-flex justify-content-center align-items-center'>
 								<div className='col-2'>
-									<button className='create-page-btn save-btn'> حفظ</button>
+									<button
+										className='create-page-btn save-btn'
+										onClick={() => {
+											succMessage();
+										}}
+									>
+										{' '}
+										حفظ
+									</button>
 								</div>
 								<div className='col-2'>
 									<button

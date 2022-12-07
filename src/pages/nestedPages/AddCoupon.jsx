@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // MUI
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -15,7 +18,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
 
 // icons
-
 import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
 
 // Modal Style
@@ -28,7 +30,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-
 };
 
 const AddCoupon = () => {
@@ -38,6 +39,35 @@ const AddCoupon = () => {
 	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Sweet alert function
+	const succMessage = () => {
+		dispatch(closeVerifyModal());
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم إضافه  كوبون جديد  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
 	};
 
 	//
@@ -216,7 +246,14 @@ const AddCoupon = () => {
 							<div className='form-footer'>
 								<div className='row d-flex justify-content-center align-items-center'>
 									<div className='col-4'>
-										<button className='save-btn'>حفظ</button>
+										<button
+											className='save-btn'
+											onClick={() => {
+												succMessage();
+											}}
+										>
+											حفظ
+										</button>
 									</div>
 									<div className='col-4'>
 										<button className='close-btn' onClick={() => dispatch(closeVerifyModal())}>

@@ -4,15 +4,16 @@ import { closeEditCategoryPageModal } from '../../store/slices/EditCategoryPage-
 
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
+// sweet alert
+import Swal from 'sweetalert2';
 
-// 
+//
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 // icons
 import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
 import CategoryImage from '../../data/Icons/person.jpg';
-
 
 const style = {
 	position: 'absolute',
@@ -23,7 +24,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	
 };
 const EditCategoryPage = () => {
 	const { isOpen } = useSelector((state) => state.editCategoryPageModal);
@@ -31,6 +31,35 @@ const EditCategoryPage = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Sweet alert function
+	const succMessage = () => {
+		dispatch(closeEditCategoryPageModal());
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم  تعديل التصنيف  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
 	};
 
 	// Use state with useDropzone library to set banners
@@ -139,7 +168,14 @@ const EditCategoryPage = () => {
 							<div className='form-footer'>
 								<div className='row d-flex justify-content-center align-items-center'>
 									<div className='col-4'>
-										<button className='save-btn'>حفظ</button>
+										<button
+											className='save-btn'
+											onClick={() => {
+												succMessage();
+											}}
+										>
+											حفظ
+										</button>
 									</div>
 									<div className='col-4'>
 										<button className='close-btn' onClick={() => dispatch(closeEditCategoryPageModal())}>

@@ -46,13 +46,37 @@ const EditCoupon = () => {
 		event.preventDefault();
 	};
 
-	//
-	const confirmAlert = () => {
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/Coupon');
+		let timerInterval;
+
 		Swal.fire({
-			title: 'هل ترغب حقاً في إعادة تفعيل الكوبون !',
+			title: 'تم تعديل  الكوبون   بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
 		});
 	};
 
+	
 	//
 	const [price, setPrice] = React.useState('price');
 	const [shipping, setShipping] = React.useState('accept');
@@ -84,14 +108,14 @@ const EditCoupon = () => {
 									) : currentCoupon.status === 'منتهي' ? (
 										<Fragment>
 											<div className='coupon-status pending'>{currentCoupon.status}</div>
-											<button className='enable-coupon-btn' onClick={() => confirmAlert()}>
+											<button className='enable-coupon-btn' >
 												إعادة تفعيل الكوبون
 											</button>
 										</Fragment>
 									) : currentCoupon.status === 'معطل' ? (
 										<Fragment>
 											<div className='coupon-status disabled'>{currentCoupon.status}</div>
-											<button className='enable-coupon-btn' onClick={() => confirmAlert()}>
+											<button className='enable-coupon-btn' >
 												إعادة تفعيل الكوبون
 											</button>
 										</Fragment>
@@ -317,7 +341,14 @@ const EditCoupon = () => {
 								<div className='form-footer'>
 									<div className='row d-flex justify-content-center align-items-center'>
 										<div className={currentCoupon.status === 'منتهي' || currentCoupon.status === 'معطل' ? 'd-none ' : 'col-4'}>
-											<button className='save-btn'>حفظ</button>
+											<button
+												className='save-btn'
+												onClick={() => {
+													succMessage();
+												}}
+											>
+												حفظ
+											</button>
 										</div>
 										<div className='col-4'>
 											<button className='close-btn' onClick={() => navigate('/Coupon')}>

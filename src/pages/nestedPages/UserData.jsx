@@ -1,13 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { closeAddUserModal } from '../../store/slices/AddNewUser-slice';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
-
-// sweet alert
-import Swal from 'sweetalert2';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -28,9 +24,8 @@ const style = {
 	overflow: 'auto',
 	bgcolor: '#fff',
 };
-const EditUserPage = () => {
+const UserData = () => {
 	const { id } = useParams();
-	
 	const navigate = useNavigate();
 
 	// Get Data From Redux Store
@@ -39,35 +34,6 @@ const EditUserPage = () => {
 	const userData = usersData.filter((user) => {
 		return user.id === id;
 	});
-
-	// Sweet alert function
-	const succMessage = () => {
-		navigate('/Management');
-		let timerInterval;
-
-		Swal.fire({
-			title: 'تم تعديل المستخدم  بنجاح',
-			icon: 'success',
-			timer: 4000,
-			showCloseButton: true,
-			timerProgressBar: true,
-			showConfirmButton: false,
-			didOpen: () => {
-				const b = Swal.getHtmlContainer().querySelector('b');
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft();
-				}, 100);
-			},
-			willClose: () => {
-				clearInterval(timerInterval);
-			},
-		}).then((result) => {
-			/* Read more about handling dismissals below */
-			if (result.dismiss === Swal.DismissReason.timer) {
-				console.log('I was closed by the timer');
-			}
-		});
-	};
 
 	//
 	const handleSubmit = (event) => {
@@ -91,7 +57,7 @@ const EditUserPage = () => {
 						<div className='row '>
 							<div className='col-12'>
 								<div className='form-title  '>
-									<h5 className='mb-3'> تعديل بيانات المستخدم </h5>
+									<h5 className='mb-3'> عرض بيانات المستخدم </h5>
 									<p> اضافة مستخدم لفريق إدارة المتجر </p>
 								</div>
 							</div>
@@ -109,7 +75,7 @@ const EditUserPage = () => {
 											<div className='input-icons'>
 												<User />
 											</div>
-											<input type='text' id='full-name' name='full-name' placeholder='' value={user.userName} />
+											<input type='text' id='full-name' name='full-name' placeholder='' value={user.userName} disabled />
 										</div>
 									</div>
 
@@ -123,7 +89,7 @@ const EditUserPage = () => {
 											<div className='input-icons'>
 												<User />
 											</div>
-											<input type='text' id='user-name' name='user-name' placeholder='' value={'k22'} />
+											<input type='text' id='user-name' name='user-name' placeholder='' value={'k22'} disabled />
 										</div>
 									</div>
 									<div className='row mb-4'>
@@ -133,7 +99,7 @@ const EditUserPage = () => {
 											</label>
 										</div>
 										<div className='col-9'>
-											<select className='form-select' id='job-title' name='job-title' placeholder=''>
+											<select className='form-select' id='job-title' name='job-title' placeholder='' disabled>
 												<option defaultValue='اختر نوع الدور الوظيفي'>اختر نوع الدور الوظيفي</option>
 												<option value='آدمن'> آدمن</option>
 												<option value='سوبر آدمن'> سوبر آدمن</option>
@@ -150,7 +116,7 @@ const EditUserPage = () => {
 											<div className='input-icons password-icon'>
 												<Password />
 											</div>
-											<input type='password' id='password' name='password' placeholder='' />
+											<input type='password' id='password' name='password' placeholder='' disabled />
 										</div>
 									</div>
 									<div className='row mb-4'>
@@ -163,7 +129,7 @@ const EditUserPage = () => {
 											<div className='input-icons'>
 												<Message />
 											</div>
-											<input type='email' id='email' name='email' placeholder='' value={user.email} />
+											<input type='email' id='email' name='email' placeholder='' value={user.email} disabled />
 										</div>
 									</div>
 									<div className='row mb-4'>
@@ -176,7 +142,7 @@ const EditUserPage = () => {
 											<div className='input-icons'>
 												<Mobile />
 											</div>
-											<input type='text' id='phone-number' name='phone-number' placeholder='' value={'96654845613'} />
+											<input type='text' id='phone-number' name='phone-number' placeholder='' value={'96654845613'} disabled />
 										</div>
 									</div>
 									<div className='row mb-4'>
@@ -187,7 +153,7 @@ const EditUserPage = () => {
 										</div>
 										<div className='col-9'>
 											<div {...getRootProps({ className: 'upload-personal-image d-flex justify-content-between' })}>
-												<input {...getInputProps()} id='personal-image' name='personal-image' />
+												<input {...getInputProps()} id='personal-image' name='personal-image' disabled />
 												{files.length <= 0 ? <p className='helper'>اختر صورة PNG أو JPG فقط </p> : <p className='d-none'>اختر صورة PNG أو JPG فقط </p>}
 
 												<span> استعراض</span>
@@ -203,7 +169,7 @@ const EditUserPage = () => {
 										</div>
 
 										<div className='col-9'>
-											<select className='form-select' id='status' name='status' placeholder=''>
+											<select className='form-select' id='status' name='status' placeholder='' disabled>
 												<option defaultValue='   مفعل'> مفعل</option>
 												<option value='   غير مفعل'> غير مفعل</option>
 											</select>
@@ -213,16 +179,6 @@ const EditUserPage = () => {
 
 								<div className='form-footer'>
 									<div className='row d-flex justify-content-center align-items-center'>
-										<div className='col-4'>
-											<button
-												className='save-btn'
-												onClick={() => {
-													succMessage();
-												}}
-											>
-												حفظ
-											</button>
-										</div>
 										<div className='col-4'>
 											<button className='close-btn' onClick={() => navigate('/Management')}>
 												إلغاء
@@ -239,4 +195,4 @@ const EditUserPage = () => {
 	);
 };
 
-export default EditUserPage;
+export default UserData;

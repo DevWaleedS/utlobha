@@ -10,6 +10,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { Button, Switch } from '@mui/material';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // Import ICONS
 import { ReactComponent as TextIcon } from '../data/Icons/icon-24-format text right.svg';
 import { RiText } from 'react-icons/ri';
@@ -27,16 +30,44 @@ const style = {
 };
 
 const MaintenanceMode = () => {
-	// create video modal funcation
+	// create video modal function
 	const { isOpen } = useSelector((state) => state.VideoModal);
 	const dispatch = useDispatch(false);
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	// Handle Form Submit
-
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/');
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم اجراء وضع الصيانة علي المتجر     بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
 	};
 
 	return (
@@ -129,7 +160,9 @@ const MaintenanceMode = () => {
 											<div className='modal-input-button d-flex justify-content-center'>
 												<Button
 													className='next-btn'
-													onClick={() => {navigate('/');}}
+													onClick={() => {
+														succMessage();
+													}}
 												>
 													حفظ
 												</Button>

@@ -277,7 +277,7 @@ export default function UserAndManagementTable() {
 
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
-													<Link to={`user-${row.id}`}>
+													<Link to={`info-${row.id}`}>
 														<span style={{ cursor: 'pointer' }}>{row.reportIcon}</span>
 													</Link>
 													<Link to={`user-${row.id}`}>

@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
 
@@ -9,10 +12,8 @@ import Modal from '@mui/material/Modal';
 
 // icons and images
 import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
-import ProductImage from '../../data/Icons/person.jpg';
 
 // close page modal function
-import { closeEditProductPageModal } from '../../store/slices/EditProductPage-slice';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const style = {
@@ -24,7 +25,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	
 };
 const EditProductPage = () => {
 	const { id } = useParams();
@@ -39,6 +39,35 @@ const EditProductPage = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/Products');
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم تعديل المنتج بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
 	};
 
 	// Use state with useDropzone library to set banners
@@ -212,7 +241,14 @@ const EditProductPage = () => {
 								<div className='form-footer'>
 									<div className='row d-flex justify-content-center align-items-center'>
 										<div className='col-4'>
-											<button className='save-btn'>حفظ</button>
+											<button
+												className='save-btn'
+												onClick={() => {
+													succMessage();
+												}}
+											>
+												حفظ
+											</button>
 										</div>
 										<div className='col-4'>
 											<button className='close-btn' onClick={() => navigate('/Products')}>
