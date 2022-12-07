@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 // MUI
 import Box from '@mui/material/Box';
@@ -19,12 +19,14 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
-
 	paddingBottom: '200px',
 };
 
 const JobTitles = () => {
-	const dispatch = useDispatch(false);
+	// get data from redux store
+	const jobTitle = useSelector((state) => state.jobTitleData);
+
+	//
 	const navigate = useNavigate();
 
 	return (
@@ -63,91 +65,25 @@ const JobTitles = () => {
 						</div>
 
 						<div className='job-titles-wrapper mb-5'>
-							<div className='row mb-2'>
-								<div className='col-12'>
-									<div className='job-box d-flex justify-content-between align-items-center'>
-										<span className='job-name'>آدمن</span>
-										<div className='job-btn-group'>
-											<button className='edit-btn'>
-												<EditIcon />
-												<span className='me-2'>تحرير</span>
-											</button>
-											<button className='delete-btn me-3'>
-												<DeleteIcon />
-												<span className='me-2'>حذف</span>
-											</button>
+							{jobTitle.map((job) => (
+								<div className='row mb-2' key={job.id}>
+									<div className='col-12'>
+										<div className='job-box d-flex justify-content-between align-items-center'>
+											<span className='job-name'>{job.title}</span>
+											<div className='job-btn-group'>
+												<button className='edit-btn' onClick={() => navigate(`EditRole-${job.title}`)}>
+													<EditIcon />
+													<span className='me-2'>تحرير</span>
+												</button>
+												<button className='delete-btn me-3'>
+													<DeleteIcon />
+													<span className='me-2'>حذف</span>
+												</button>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div className='row mb-2'>
-								<div className='col-12'>
-									<div className='job-box d-flex justify-content-between align-items-center'>
-										<span className='job-name'>سوبر آدمن</span>
-										<div className='job-btn-group'>
-											<button className='edit-btn'>
-												<EditIcon />
-												<span className='me-2'>تحرير</span>
-											</button>
-											<button className='delete-btn me-3'>
-												<DeleteIcon />
-												<span className='me-2'>حذف</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className='row mb-2'>
-								<div className='col-12'>
-									<div className='job-box d-flex justify-content-between align-items-center'>
-										<span className='job-name'>دعم فني</span>
-										<div className='job-btn-group'>
-											<button className='edit-btn'>
-												<EditIcon />
-												<span className='me-2'>تحرير</span>
-											</button>
-											<button className='delete-btn me-3'>
-												<DeleteIcon />
-												<span className='me-2'>حذف</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className='row mb-2'>
-								<div className='col-12'>
-									<div className='job-box d-flex justify-content-between align-items-center'>
-										<span className='job-name'>خدمات العملاء</span>
-										<div className='job-btn-group'>
-											<button className='edit-btn'>
-												<EditIcon />
-												<span className='me-2'>تحرير</span>
-											</button>
-											<button className='delete-btn me-3'>
-												<DeleteIcon />
-												<span className='me-2'>حذف</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className='row mb-2'>
-								<div className='col-12'>
-									<div className='job-box d-flex justify-content-between align-items-center'>
-										<span className='job-name'>تسويق</span>
-										<div className='job-btn-group'>
-											<button className='edit-btn '>
-												<EditIcon />
-												<span className='me-2'>تحرير</span>
-											</button>
-											<button className='delete-btn me-3'>
-												<DeleteIcon />
-												<span className='me-2'>حذف</span>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							))}
 						</div>
 
 						<div className='row'>

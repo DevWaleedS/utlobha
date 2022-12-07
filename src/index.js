@@ -51,7 +51,7 @@ import {
 } from './pages';
 
 // Import Nested Pages
-import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments } from './pages/nestedPages';
+import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments, EditRole } from './pages/nestedPages';
 
 // INDEX CSS FILE
 import './index.css';
@@ -174,6 +174,12 @@ const router = createBrowserRouter([
 				path: 'Management/JobTitles',
 				element: <JobTitles />,
 			},
+			// nested job title page
+			{
+				path: 'Management/JobTitles/EditRole-:title',
+				element: <EditRole />,
+			},
+
 			// CreateRole page
 			{
 				path: 'Management/JobTitles/CreateRole',

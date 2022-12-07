@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import howIcon from '../data/Icons/icon_24_home.svg';
 import { MdAdd } from 'react-icons/md';
 import { BsSearch } from 'react-icons/bs';
@@ -11,6 +11,7 @@ import { openAddUserModal } from '../store/slices/AddNewUser-slice';
 
 const Management = () => {
 	const dispatch = useDispatch(true);
+	const navigate = useNavigate();
 	return (
 		<section className='management-page p-3'>
 			<div className='head-category mb-4'>
@@ -42,9 +43,14 @@ const Management = () => {
 							</Button>
 						</div>
 						<div className='add-page-btn me-3'>
-							<Link to='JobTitles' style={{ color: '#fff' }}>
-								<Button variant='contained'>الأدوار</Button>
-							</Link>
+							<Button
+								variant='contained'
+								onClick={() => {
+									navigate('JobTitles');
+								}}
+							>
+								الأدوار
+							</Button>
 						</div>
 					</div>
 				</div>

@@ -3985,11 +3985,13 @@ textarea {
 }
 .create-role .MuiToolbar-root {
 	justify-content: flex-start !important;
+	margin-right: -16px !important;
 }
 .create-role .MuiToolbar-root .MuiFormControlLabel-root {
 	margin-right: 0 !important;
 }
-.create-role-wrapper .MuiTableCell-root {
+.create-role .MuiToolbar-root .MuiFormControlLabel-root span{font-weight: 500;}
+.create-role-wrapper .MuiTableCell-root  , .create-role .MuiToolbar-root .MuiFormControlLabel-root span{
 	font-size: 22px;
 }
 
@@ -4011,6 +4013,78 @@ textarea {
 	-o-border-radius: 8px;
 }
 /* -------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Edit job title Page */
+.edit-job-title-modal {
+	background-color: #fff !important;
+}
+.edit-job-title {
+	width: 85%;
+	margin: 30px auto;
+	border-radius: 14px;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	-ms-border-radius: 14px;
+	-o-border-radius: 14px;
+}
+.edit-job-title .page-wrapper {
+	padding: 30px 0;
+}
+.edit-job-title .page-header {
+	background-color: var(--second-500);
+	padding: 40px 40px 40px 30px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.edit-job-title .page-header span {
+	font-size: 32px;
+	font-weight: 500;
+	color: var(--white-100);
+}
+.edit-job-title .page-header .search .input-icon {
+	position: absolute;
+	z-index: 1;
+	top: 14px;
+	right: 30px;
+}
+.edit-job-title .page-header .search .input-icon svg {
+	width: 26px;
+	height: 26px;
+}
+.edit-job-title .page-header .search .input-icon svg path {
+	fill: var(--gray-300);
+}
+
+.edit-job-title .page-header .search .save-btn,
+.edit-job-title .page-header .search input {
+	height: 60px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+
+.edit-job-title .page-header .search input {
+	background: var(--white-100);
+	padding: 18px 50px 18px 18px;
+	font-size: 18px;
+}
+.edit-job-title .page-header .search input::placeholder {
+	color: var(--gray-300);
+}
+.edit-job-title .page-header .search .save-btn {
+	background-color: var(--primary-500);
+	color: var(--white-100);
+	font-size: 26px;
+	font-weight: 400;
+}
+.edit-job-wrapper .MuiToolbar-root {
+	background-color: transparent !important;
+}
 /* -------------------------------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -7777,14 +7851,16 @@ textarea {
 		box-shadow: 0 0 20px 1px #f4f2f2;
 	}
 	.create-role .MuiToolbar-root {
-		justify-content: flex-start !important;
-	}
-	.create-role .MuiToolbar-root .MuiFormControlLabel-root {
-		margin-right: 0 !important;
-	}
-	.create-role-wrapper .MuiTableCell-root {
-		font-size: 22px;
-	}
+	justify-content: flex-start !important;
+	margin-right: -16px !important;
+}
+.create-role .MuiToolbar-root .MuiFormControlLabel-root {
+	margin-right: 0 !important;
+}
+.create-role .MuiToolbar-root .MuiFormControlLabel-root span{font-weight: 500;}
+.create-role-wrapper .MuiTableCell-root  , .create-role .MuiToolbar-root .MuiFormControlLabel-root span{
+	font-size: 22px;
+}
 
 	.create-role-wrapper .create-role-tables .role-wrapper {
 		background-color: var(--white-100);

@@ -19,6 +19,7 @@ import EditProductPageModalSlice from './slices/EditProductPage-slice';
 import EditCategoryPageSlice from './slices/EditCategoryPage-slice';
 import AddNewUserSlice from './slices/AddNewUser-slice';
 import CommentsTableDataSlice from './slices/CommentsTable-slice';
+import jobTitleDataSlice from './slices/jobTitle-slice'
 
 
 export const store = configureStore({
@@ -43,5 +44,6 @@ export const store = configureStore({
 		editCategoryPageModal: EditCategoryPageSlice,
 		AddNewUserModal: AddNewUserSlice,
 		CommentsTable: CommentsTableDataSlice,
+		jobTitleData: jobTitleDataSlice,
 	},
 });
