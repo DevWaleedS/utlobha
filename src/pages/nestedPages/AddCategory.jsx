@@ -41,16 +41,11 @@ const AddCategory = () => {
 		Swal.fire({
 			title: 'تم إضافه التصنيف بنجاح',
 			icon: 'success',
-			timer: 4000,
+			timer: 400000,
 			showCloseButton: true,
 			timerProgressBar: true,
 			showConfirmButton: false,
-			didOpen: () => {
-				const b = Swal.getHtmlContainer().querySelector('b');
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft();
-				}, 100);
-			},
+
 			willClose: () => {
 				clearInterval(timerInterval);
 			},

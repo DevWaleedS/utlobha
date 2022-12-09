@@ -4093,12 +4093,12 @@ textarea {
 /* Success Alert */
 .swal2-popup {
 	width: 38em !important;
-	height: 14em !important;
+	height: 13em !important;
+	top: -40%;
 }
 .swal2-title {
 	font-weight: 500 !important;
-	font-size: 24px !important;
-	margin-right: 30px !important;
+	font-size: 26px !important;
 }
 .swal2-timer-progress-bar {
 	background-color: var(--green-500) !important;
@@ -4106,9 +4106,26 @@ textarea {
 }
 .swal2-icon {
 	position: absolute !important;
-	top: 25px !important;
+	top: 40px !important;
 	right: 25px !important;
+	width: 3em;
+	height: 3em;
 }
+.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+	left: 0.875em;
+}
+
+.swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
+	top: 30px;
+	left: 8px;
+	width: 0.5625em;
+}
+.swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
+	top: 1.375em;
+	right: 0.5em;
+	width: 1.9375em;
+}
+
 .swal2-icon.swal2-success .swal2-success-ring {
 	border: 0.25em solid var(--green-500) !important;
 }
@@ -7914,112 +7931,122 @@ textarea {
 		-o-border-radius: 8px;
 	}
 
-
 	/* -------------------------------------------------------------------------------------------------------------------------------- */
 
-/* Edit job title Page */
-.edit-job-title-modal {
-	background-color: #fff !important;
-}
-.edit-job-title {
-	width: 85%;
-	margin: 30px auto;
-	border-radius: 14px;
-	-webkit-border-radius: 14px;
-	-moz-border-radius: 14px;
-	-ms-border-radius: 14px;
-	-o-border-radius: 14px;
-}
-.edit-job-title .page-wrapper {
-	padding: 30px 0;
-}
-.edit-job-title .page-header {
-	background-color: var(--second-500);
-	padding: 40px 40px 40px 30px;
-	border-radius: 8px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	-ms-border-radius: 8px;
-	-o-border-radius: 8px;
-}
-.edit-job-title .page-header span {
-	font-size: 32px;
-	font-weight: 500;
-	color: var(--white-100);
-}
-.edit-job-title .page-header .search .input-icon {
-	position: absolute;
-	z-index: 1;
-	top: 14px;
-	right: 30px;
-}
-.edit-job-title .page-header .search .input-icon svg {
-	width: 26px;
-	height: 26px;
-}
-.edit-job-title .page-header .search .input-icon svg path {
-	fill: var(--gray-300);
-}
+	/* Edit job title Page */
+	.edit-job-title-modal {
+		background-color: #fff !important;
+	}
+	.edit-job-title {
+		width: 85%;
+		margin: 30px auto;
+		border-radius: 14px;
+		-webkit-border-radius: 14px;
+		-moz-border-radius: 14px;
+		-ms-border-radius: 14px;
+		-o-border-radius: 14px;
+	}
+	.edit-job-title .page-wrapper {
+		padding: 30px 0;
+	}
+	.edit-job-title .page-header {
+		background-color: var(--second-500);
+		padding: 40px 40px 40px 30px;
+		border-radius: 8px;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		-ms-border-radius: 8px;
+		-o-border-radius: 8px;
+	}
+	.edit-job-title .page-header span {
+		font-size: 32px;
+		font-weight: 500;
+		color: var(--white-100);
+	}
+	.edit-job-title .page-header .search .input-icon {
+		position: absolute;
+		z-index: 1;
+		top: 14px;
+		right: 30px;
+	}
+	.edit-job-title .page-header .search .input-icon svg {
+		width: 26px;
+		height: 26px;
+	}
+	.edit-job-title .page-header .search .input-icon svg path {
+		fill: var(--gray-300);
+	}
 
-.edit-job-title .page-header .search .save-btn,
-.edit-job-title .page-header .search input {
-	height: 60px;
-	border-radius: 8px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	-ms-border-radius: 8px;
-	-o-border-radius: 8px;
-}
+	.edit-job-title .page-header .search .save-btn,
+	.edit-job-title .page-header .search input {
+		height: 60px;
+		border-radius: 8px;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		-ms-border-radius: 8px;
+		-o-border-radius: 8px;
+	}
 
-.edit-job-title .page-header .search input {
-	background: var(--white-100);
-	padding: 18px 50px 18px 18px;
-	font-size: 18px;
-}
-.edit-job-title .page-header .search input::placeholder {
-	color: var(--gray-300);
-}
-.edit-job-title .page-header .search .save-btn {
-	background-color: var(--primary-500);
-	color: var(--white-100);
-	font-size: 26px;
-	font-weight: 400;
-}
-.edit-job-wrapper .MuiToolbar-root {
-	background-color: transparent !important;
-}
-/* -------------------------------------------------------------------------------------------------------------------------------- */
-/* Success Alert */
-.swal2-popup {
-	width: 38em !important;
-	height: 14em !important;
-}
-.swal2-title {
-	font-weight: 500 !important;
-	font-size: 24px !important;
-	margin-right: 30px !important;
-}
-.swal2-timer-progress-bar {
-	background-color: var(--green-500) !important;
-	height: 1rem;
-}
-.swal2-icon {
-	position: absolute !important;
-	top: 25px !important;
-	right: 25px !important;
-}
-.swal2-icon.swal2-success .swal2-success-ring {
-	border: 0.25em solid var(--green-500) !important;
-}
-.swal2-icon.swal2-success [class^='swal2-success-line'] {
-	background-color: var(--green-500) !important;
-}
+	.edit-job-title .page-header .search input {
+		background: var(--white-100);
+		padding: 18px 50px 18px 18px;
+		font-size: 18px;
+	}
+	.edit-job-title .page-header .search input::placeholder {
+		color: var(--gray-300);
+	}
+	.edit-job-title .page-header .search .save-btn {
+		background-color: var(--primary-500);
+		color: var(--white-100);
+		font-size: 26px;
+		font-weight: 400;
+	}
+	.edit-job-wrapper .MuiToolbar-root {
+		background-color: transparent !important;
+	}
+	/* -------------------------------------------------------------------------------------------------------------------------------- */
+	/* Success Alert */
+	.swal2-popup {
+		width: 38em !important;
+		height: 13em !important;
+		top: -40%;
+	}
+	.swal2-title {
+		font-weight: 500 !important;
+		font-size: 26px !important;
+	}
+	.swal2-timer-progress-bar {
+		background-color: var(--green-500) !important;
+		height: 1rem;
+	}
 
+	.swal2-icon {
+		position: absolute !important;
+		top: 40px !important;
+		right: 25px !important;
+		width: 3em;
+		height: 3em;
+	}
+	.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+		left: 0.875em;
+	}
 
-
-
-
-
+	.swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
+		top: 30px;
+		left: 8px;
+		width: 0.5625em;
+	}
+	.swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
+		top: 1.375em;
+		right: 0.5em;
+		width: 1.9375em;
+	}
+	.swal2-icon.swal2-success .swal2-success-ring {
+		border: 0.25em solid var(--green-500) !important;
+	}
+	.swal2-icon.swal2-success [class^='swal2-success-line'] {
+		background-color: var(--green-500) !important;
+	}
 
 	/* video-modal-container */
 	.video-modal-container {
