@@ -3,7 +3,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-
 import { openCustomerDataModal } from '../store/slices/CustomerDataModal-slice';
 
 import PropTypes from 'prop-types';
@@ -24,7 +23,10 @@ import Tooltip from '@mui/material/Tooltip';
 import { Switch } from '@mui/material';
 import TablePagination from './TablePagination';
 
-import {CustomerData } from '../pages/nestedPages'
+import { CustomerData } from '../pages/nestedPages';
+
+// Sweet alert function
+import Swal from 'sweetalert2';
 
 // import icons
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
@@ -170,7 +172,7 @@ export default function CustomersDataTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CustomerTableData);
 
-	// Use Dispatch to open edit customer page 
+	// Use Dispatch to open edit customer page
 	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
@@ -194,15 +196,45 @@ export default function CustomersDataTable() {
 		}
 		setSelected([]);
 	};
-
+	
 	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.idx);
-			array.splice(findIndex, 1);
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع  بيانات العملاء وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
+
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم حذف جميع البيانات  بنجاح',
+					icon: 'success',
+					timer: 400000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
 		});
-		setData(array);
-		setSelected([]);
 	}
 
 	const handleClick = (event, id) => {

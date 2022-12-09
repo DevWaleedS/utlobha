@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 
@@ -10,17 +9,21 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
-
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
 
+//
 import TablePagination from './TablePagination';
+
+// Sweet alert function
+import Swal from 'sweetalert2';
+
+// ICONS
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import EditCategoryPage from '../pages/nestedPages/EditCategoryPage';
 import { openEditCategoryPageModal } from '../store/slices/EditCategoryPage-slice';
@@ -171,7 +174,7 @@ EnhancedTableToolbar.propTypes = {
 export default function EnhancedTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CategoriesTablesData);
-		const dispatch = useDispatch(true);
+	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
@@ -194,14 +197,45 @@ export default function EnhancedTable() {
 		}
 		setSelected([]);
 	};
+
 	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.idx);
-			array.splice(findIndex, 1);
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع التصنيفات وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
+
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم حذف جميع التصنيفات بنجاح',
+					icon: 'success',
+					timer: 400000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
 		});
-		setData(array);
-		setSelected([]);
 	}
 
 	const handleClick = (event, name) => {
@@ -325,8 +359,7 @@ export default function EnhancedTable() {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<img src={row.editIcon} alt='edit' title='edit'
-															onClick={() => dispatch(openEditCategoryPageModal())} />
+														<img src={row.editIcon} alt='edit' title='edit' onClick={() => dispatch(openEditCategoryPageModal())} />
 													</span>
 													<span>
 														<DeletteIcon

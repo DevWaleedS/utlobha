@@ -22,6 +22,9 @@ import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
 
+// Sweet alert function
+import Swal from 'sweetalert2';
+
 // import icons
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
@@ -192,13 +195,43 @@ export default function CommentsTable() {
 	};
 
 	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.idx);
-			array.splice(findIndex, 1);
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع  التعليقات وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
+
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم حذف جميع التعليقات  بنجاح',
+					icon: 'success',
+					timer: 400000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
 		});
-		setData(array);
-		setSelected([]);
 	}
 
 	const handleClick = (event, id) => {
@@ -274,7 +307,7 @@ export default function CommentsTable() {
 												{row.userName}
 											</TableCell>
 											<TableCell align='right'>{row.city}</TableCell>
-											
+
 											<TableCell align='right'>
 												<div className='comments-wrapper' data-bs-toggle='tooltip' data-bs-placement='bottom' title={row.comment}>
 													{row.comment}

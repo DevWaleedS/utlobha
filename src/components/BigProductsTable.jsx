@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
-
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
@@ -21,11 +19,13 @@ import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
 
-
+// Icons
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 
 import { Link } from 'react-router-dom';
 
+// Sweet alert function
+import Swal from 'sweetalert2';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -174,7 +174,6 @@ export default function BigProductsTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.BigProductsTableData);
 
-
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
 	const [selected, setSelected] = React.useState([]);
@@ -196,6 +195,7 @@ export default function BigProductsTable() {
 		}
 		setSelected([]);
 	};
+
 	function deleteItems() {
 		const array = [...data];
 		selected.forEach((item, idx) => {
@@ -204,6 +204,46 @@ export default function BigProductsTable() {
 		});
 		setData(array);
 		setSelected([]);
+	}
+
+	function deleteItems() {
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع منتجات المتجر وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
+
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم حذف جميع منتجات المتجر بنجاح',
+					icon: 'success',
+					timer: 400000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
+		});
 	}
 
 	const handleClick = (event, name) => {
@@ -358,8 +398,6 @@ export default function BigProductsTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
-
-	
 		</Box>
 	);
 }

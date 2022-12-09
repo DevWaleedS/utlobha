@@ -21,6 +21,9 @@ import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
 
+// Sweet alert function
+import Swal from 'sweetalert2';
+
 // Import Icons
 import { ReactComponent as SortIcon } from '../data/Icons/icon-24-sort.svg';
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
@@ -187,15 +190,45 @@ export default function PagesTable() {
 		setSelected([]);
 	};
 
-	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.idx);
-			array.splice(findIndex, 1);
-		});
-		setData(array);
-		setSelected([]);
-	}
+function deleteItems() {
+	Swal.fire({
+		title: 'هل أنت متأكد!',
+		text: 'سيتم حذف جميع   الصفحات وهذةالخظوة غير قابلة للرجوع',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#02466a',
+		cancelButtonColor: '#ffffff',
+		confirmButtonText: 'تأكيد الحذف',
+		cancelButtonText: 'الغاء الحذف',
+	}).then((result) => {
+		// Delete ALL function
+		if (result.isConfirmed) {
+			const array = [...data];
+			selected.forEach((item, idx) => {
+				const findIndex = array.findIndex((i) => item === i.idx);
+				array.splice(findIndex, 1);
+			});
+			setData(array);
+			setSelected([]);
+
+			let timerInterval;
+
+			// success message
+			Swal.fire({
+				title: 'تم حذف جميع الصفحات  بنجاح',
+				icon: 'success',
+				timer: 400000,
+				showCloseButton: true,
+				timerProgressBar: true,
+				showConfirmButton: false,
+
+				willClose: () => {
+					clearInterval(timerInterval);
+				},
+			});
+		}
+	});
+}
 
 	const handleClick = (event, id) => {
 		const selectedIndex = selected.indexOf(id);

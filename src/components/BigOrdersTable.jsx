@@ -9,7 +9,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
@@ -24,6 +23,11 @@ import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg'
 import TablePagination from './TablePagination';
 import { Switch } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+
+
+// Sweet alert function
+import Swal from 'sweetalert2';
 
 
 function descendingComparator(a, b, orderBy) {
@@ -212,15 +216,46 @@ export default function BigOrdersTable() {
 		}
 		setSelected([]);
 	};
-	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.name);
-			array.splice(findIndex, 1);
-		});
-		setData(array);
-		setSelected([]);
-	}
+	
+function deleteItems() {
+	Swal.fire({
+		title: 'هل أنت متأكد!',
+		text: 'سيتم حذف جميع طلبات المتجر وهذةالخظوة غير قابلة للرجوع',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#02466a',
+		cancelButtonColor: '#ffffff',
+		confirmButtonText: 'تأكيد الحذف',
+		cancelButtonText: 'الغاء الحذف',
+	}).then((result) => {
+		// Delete ALL function
+		if (result.isConfirmed) {
+			const array = [...data];
+			selected.forEach((item, idx) => {
+				const findIndex = array.findIndex((i) => item === i.idx);
+				array.splice(findIndex, 1);
+			});
+			setData(array);
+			setSelected([]);
+
+			let timerInterval;
+
+			// success message
+			Swal.fire({
+				title: 'تم حذف جميع طلبات المتجر بنجاح',
+				icon: 'success',
+				timer: 400000,
+				showCloseButton: true,
+				timerProgressBar: true,
+				showConfirmButton: false,
+
+				willClose: () => {
+					clearInterval(timerInterval);
+				},
+			});
+		}
+	});
+}
 
 	const handleClick = (event, name) => {
 		const selectedIndex = selected.indexOf(name);

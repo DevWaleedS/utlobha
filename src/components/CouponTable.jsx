@@ -21,6 +21,10 @@ import Switch from '@mui/material/Switch';
 
 import TablePagination from './TablePagination';
 
+
+// Sweet alert function
+import Swal from 'sweetalert2';
+
 // import icons
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-report.svg';
@@ -199,15 +203,45 @@ export default function CouponTable() {
 		setSelected([]);
 	};
 
-	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.idx);
-			array.splice(findIndex, 1);
-		});
-		setData(array);
-		setSelected([]);
-	}
+function deleteItems() {
+	Swal.fire({
+		title: 'هل أنت متأكد!',
+		text: 'سيتم حذف جميع كوبونات المتجر وهذةالخظوة غير قابلة للرجوع',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#02466a',
+		cancelButtonColor: '#ffffff',
+		confirmButtonText: 'تأكيد الحذف',
+		cancelButtonText: 'الغاء الحذف',
+	}).then((result) => {
+		// Delete ALL function
+		if (result.isConfirmed) {
+			const array = [...data];
+			selected.forEach((item, idx) => {
+				const findIndex = array.findIndex((i) => item === i.idx);
+				array.splice(findIndex, 1);
+			});
+			setData(array);
+			setSelected([]);
+
+			let timerInterval;
+
+			// success message
+			Swal.fire({
+				title: 'تم حذف جميع كوبونات المتجر بنجاح',
+				icon: 'success',
+				timer: 400000,
+				showCloseButton: true,
+				timerProgressBar: true,
+				showConfirmButton: false,
+
+				willClose: () => {
+					clearInterval(timerInterval);
+				},
+			});
+		}
+	});
+}
 
 	const handleClick = (event, id) => {
 		const selectedIndex = selected.indexOf(id);

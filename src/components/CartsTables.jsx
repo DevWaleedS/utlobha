@@ -9,7 +9,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
 
@@ -22,9 +21,14 @@ import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg'
 import { Switch, TextField } from '@mui/material';
 
 import TablePagination from './TablePagination';
+
+// Sweet alert function
+import Swal from 'sweetalert2';
+
 // Import icon
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;
@@ -173,7 +177,6 @@ export default function CartsTables() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CartsTablesData);
 
-
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
 	const [selected, setSelected] = React.useState([]);
@@ -195,14 +198,54 @@ export default function CartsTables() {
 		}
 		setSelected([]);
 	};
+	// function deleteItems() {
+	// 	const array = [...data];
+	// 	selected.forEach((item, idx) => {
+	// 		const findIndex = array.findIndex((i) => item === i.name);
+	// 		array.splice(findIndex, 1);
+	// 	});
+	// 	setData(array);
+	// 	setSelected([]);
+	// }
+
 	function deleteItems() {
-		const array = [...data];
-		selected.forEach((item, idx) => {
-			const findIndex = array.findIndex((i) => item === i.name);
-			array.splice(findIndex, 1);
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع التصنيفات وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
+
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم إضافه التصنيف بنجاح',
+					icon: 'success',
+					timer: 400000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
 		});
-		setData(array);
-		setSelected([]);
 	}
 
 	const handleClick = (event, name) => {
@@ -284,11 +327,10 @@ export default function CartsTables() {
 
 											<TableCell align='right'>
 												<div className='cate-prim'>
-												
 													<Link to={`ClientData-${row.id}`} style={{ cursor: 'pointer' }}>
 														<img src={row.icon} alt='img' className=' rounded-circle' />
-														</Link>
-														<span className='me-3'>{row.name}</span>
+													</Link>
+													<span className='me-3'>{row.name}</span>
 												</div>
 											</TableCell>
 											<TableCell align='right'>{row.cartDate}</TableCell>
