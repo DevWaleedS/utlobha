@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
+// to create pdf file
+
+import * as htmlToImage from 'html-to-image';
+import { jsPDF } from 'jspdf';
 
 // Icons
 import { ReactComponent as StatusIcon } from '../../data/Icons/status.svg';
@@ -23,16 +23,27 @@ import { ReactComponent as ListIcon } from '../../data/Icons/icon-24-circlr.svg'
 
 // Image
 import UserImage from '../../data/Icons/person.jpg';
-import { InputAdornment } from '@mui/material';
 
 const OrderDetails = () => {
-	const [orderStatus, setOrderStatus] = React.useState('');
+	// download order details pdf  function
+	// const printOrderDocument = () => {
+	// 	let domElement = document.getElementById('report');
+	// 	htmlToImage
+	// 		.toPng(domElement)
+	// 		.then(function (dataUrl) {
+	// 			const pdf = new jsPDF();
 
-	const handleChange = (event) => {
-		setOrderStatus(event.target.value);
-	};
+	// 			pdf.addImage(dataUrl, 'PNG', 0, 0, 500, 0);
+
+	// 			pdf.save('order-details.pdf');
+	// 		})
+	// 		.catch(function (error) {
+	// 			console.error('oops, something went wrong!', error);
+	// 		});
+	// };
+
 	return (
-		<section className='order-details-page orders-pages p-3 '>
+		<section className='order-details-page orders-pages p-3 ' id='report'>
 			<div className='head-category mb-5 pt-4'>
 				<div className='row '>
 					<div className='col-6'>
@@ -63,7 +74,7 @@ const OrderDetails = () => {
 				</div>
 			</div>
 
-			<div className='order-details-body'>
+			<div className='order-details-body' id='report'>
 				{/** */}
 				<div className='row mb-5'>
 					<div className='order-details-box '>
@@ -158,6 +169,7 @@ const OrderDetails = () => {
 						</div>
 					</div>
 				</div>
+
 				{/** */}
 				<div className='row mb-5'>
 					<div className='order-details-box'>
@@ -198,6 +210,7 @@ const OrderDetails = () => {
 							<div className='order-action-box mb-3'>
 								<div className='action-title'>
 									<ListIcon className='list-icon' />
+
 									<span className='me-2'> طباعة الفاتورة</span>
 								</div>
 								<div className='action-icon'>

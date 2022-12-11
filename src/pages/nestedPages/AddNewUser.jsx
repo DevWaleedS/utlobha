@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeAddUserModal } from '../../store/slices/AddNewUser-slice';
 
@@ -17,6 +17,8 @@ import { ReactComponent as User } from '../../data/Icons/icon-24-user.svg';
 import { ReactComponent as Password } from '../../data/Icons/icon-24-invisible.svg';
 import { ReactComponent as Mobile } from '../../data/Icons/mobile-icon-24.svg';
 
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+
 const style = {
 	position: 'absolute',
 	top: '97px',
@@ -33,6 +35,20 @@ const AddNewUser = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Show and hidden password function
+	const [passwordType, setPasswordType] = useState('password');
+	const [showPasswordIcon, setShowPasswordIcon] = useState(<Password />);
+
+	const showPasswordToggle = () => {
+		if (passwordType === 'password') {
+			setPasswordType('text');
+			setShowPasswordIcon(<AiOutlineEyeInvisible />);
+		} else {
+			setPasswordType('password');
+			setShowPasswordIcon(<Password />);
+		}
 	};
 
 	// Sweet alert function
@@ -63,7 +79,7 @@ const AddNewUser = () => {
 			}
 		});
 	};
-	
+
 	//  use dropzone to get personal image
 	const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
@@ -137,10 +153,10 @@ const AddNewUser = () => {
 										</label>
 									</div>
 									<div className='col-9'>
-										<div className='input-icons password-icon'>
-											<Password />
+										<div className='input-icons password-icon' onClick={showPasswordToggle}>
+											{showPasswordIcon}
 										</div>
-										<input type='password' id='password' name='password' placeholder='' />
+										<input type={passwordType} id='password' name='password' placeholder='' />
 									</div>
 								</div>
 								<div className='row mb-4'>

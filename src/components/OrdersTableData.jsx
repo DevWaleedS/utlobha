@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-actions-info_outined.svg';
+import { ReactComponent as DeleteIcon } from '../data/Icons/icon-24-delete.svg';
 
 const OrdersTableData = () => {
 	const orderData = useSelector((state) => state.ordersTablesData);
@@ -50,7 +54,26 @@ const OrdersTableData = () => {
 											</span>
 										</td>
 										<td> {order.location}</td>
-										<td className=' text-start action-icon'> {order.actionIcon}</td>
+										<td className=' text-start action-icon'>
+											<div className='dropdown'>
+												<div className='' data-bs-toggle='dropdown' aria-expanded='false'>
+													{order.actionIcon}
+												</div>
+
+												<ul className='dropdown-menu new-orders-dropdown-menu'>
+													<li>
+														<Link className='dropdown-item' to='Orders/OrderDetails'>
+															<ReportIcon className='report-icon' />
+														</Link>
+													</li>
+													<li className='delete'>
+														<button className='dropdown-item'>
+															<DeleteIcon />
+														</button>
+													</li>
+												</ul>
+											</div>
+										</td>
 									</tr>
 								</React.Fragment>
 							))}

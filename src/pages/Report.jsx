@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button } from '@mui/material';
+
+// TO print this page
+import ReactToPrint from 'react-to-print';
 
 import { Link } from 'react-router-dom';
 
@@ -14,11 +17,8 @@ import { CustomersReports, SalesReports } from './nestedPages';
 import { DatePickerCopm } from '../components';
 
 const Report = () => {
+	const componentRef = useRef();
 	const [value, setValue] = React.useState(0);
-
-	const handleChange = (event, newValue) => {
-		setValue(newValue);
-	};
 
 	return (
 		<section className='reports-page p-3'>
@@ -50,10 +50,18 @@ const Report = () => {
 					</div>
 					<div className='col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end'>
 						<div className='add-page-btn '>
-							<Button variant='contained'>
-								<PrintIcon />
-								<span className='me-1'> طباعه التقرير</span>
-							</Button>
+							<ReactToPrint
+								trigger={() => {
+									return (
+										<Button variant='contained'>
+											<PrintIcon />
+											<span className='me-1'> طباعه التقرير</span>
+										</Button>
+									);
+								}}
+								content={() => componentRef.current}
+								documentTitle= 'report'
+							/>
 						</div>
 					</div>
 				</div>
@@ -87,7 +95,7 @@ const Report = () => {
 				</div>
 			</div>
 
-			<div className='reports-wrapper'>
+			<div className='reports-wrapper' ref={componentRef}>
 				<div class='tab-content reports-content' id='pills-tabContent'>
 					<div class='tab-pane fade show active' id='pills-sales-tab' role='tabpanel' aria-labelledby='sales-tab'>
 						<SalesReports />

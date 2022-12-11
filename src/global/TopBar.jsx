@@ -1,22 +1,21 @@
 import React from 'react';
 
-import { Box, Divider, IconButton, Menu, TextField, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 import { tokens } from '../Theme';
 import { Avatar } from '@mui/material';
 
-
-
-// images
+// images and icons
 import avatarImage from '../data/Icons/person.jpg';
 import notification from '../data/Icons/icon-Notification.svg';
-
 import logo from '../data/Icons/logo.png';
 import { Link } from 'react-router-dom';
 
 // Icons
 import { IoIosArrowDown } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { ReactComponent as LogOutIcon } from '../data/Icons/icon-24-sign out.svg';
+import { ReactComponent as UserIcon } from '../data/Icons/icon-24-client.svg';
 
 const TopBar = () => {
 	const theme = useTheme();
@@ -59,20 +58,16 @@ const TopBar = () => {
 										<Avatar alt='avatarImage' src={avatarImage} />
 									</Box>
 									<ul className='dropdown-menu'>
-										<li>
-											<Link className='dropdown-item' to='_'>
-												Action
+										<li className=''>
+											<Link className='dropdown-item d-flex justify-content-end align-items-center' to='_'>
+												<span className='me-2'>حسابي</span>
+												<UserIcon />
 											</Link>
 										</li>
-										<li>
-											<Link className='dropdown-item' to='_'>
-												Another action
-											</Link>
-										</li>
-
-										<li>
-											<Link className='dropdown-item' to='_'>
-												Something else here
+										<li className=''>
+											<Link className='dropdown-item d-flex justify-content-end align-items-center' to='_'>
+												<span className='me-2'>تسجيل الخروج</span>
+												<LogOutIcon />
 											</Link>
 										</li>
 									</ul>

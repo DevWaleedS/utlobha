@@ -41,7 +41,7 @@ const AddCategory = () => {
 		Swal.fire({
 			title: 'تم إضافه التصنيف بنجاح',
 			icon: 'success',
-			timer: 400000,
+			timer: 4000,
 			showCloseButton: true,
 			timerProgressBar: true,
 			showConfirmButton: false,
@@ -50,7 +50,6 @@ const AddCategory = () => {
 				clearInterval(timerInterval);
 			},
 		}).then((result) => {
-			
 			/* Read more about handling dismissals below */
 			if (result.dismiss === Swal.DismissReason.timer) {
 				console.log('I was closed by the timer');

@@ -370,6 +370,26 @@ textarea:disabled,
 }
 .navbar-nav .dropdown-menu {
 	position: absolute !important;
+	padding: 10px;
+}
+.dropdown-item:focus,
+.dropdown-item:hover {
+	background-color: transparent;
+}
+.navbar-nav .dropdown-menu li {
+	padding: 12px;
+	border-radius: 4px;
+	background-color: #fafafa;
+}
+.navbar-nav .dropdown-menu li:hover {
+	background-color: var(--second-100);
+}
+.navbar-nav .dropdown-menu span {
+	font-weight: 500;
+	color: var(--black-300);
+}
+.navbar-nav .dropdown-menu svg path {
+	fill: var(--black-300);
 }
 .avatar-dropdown .nav-link:hover {
 	color: var(--white-100) !important;
@@ -867,6 +887,36 @@ table,
 .action-icon svg {
 	cursor: pointer;
 	font-size: 20px;
+}
+.new-orders-dropdown-menu {
+	--bs-dropdown-min-width: none !important;
+	border: none;
+	padding: 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+.new-orders-dropdown-menu li,
+.new-orders-dropdown-menu li .dropdown-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.new-orders-dropdown-menu li {
+	background-color: var(--second-100);
+	padding: 10px;
+}
+.new-orders-dropdown-menu li.delete:hover {
+	background-color: var(--red-100);
+}
+.new-orders-dropdown-menu li:hover {
+	background-color: var(--gray-100);
+}
+
+.new-orders-dropdown-menu li .report-icon path {
+	fill: var(--black-300);
 }
 
 /* */
@@ -4140,7 +4190,7 @@ textarea {
 	color: var(--primary-500);
 	border: 1px solid var(--primary-500);
 }
-.swal2-styled.swal2-cancel:hover{
+.swal2-styled.swal2-cancel:hover {
 	background-color: none !important;
 }
 
@@ -4232,9 +4282,7 @@ textarea {
 		font-size: 16px;
 		margin-left: 10px;
 	}
-	.navbar-nav .dropdown-menu {
-		left: -124px;
-	}
+
 	.search-box {
 		width: 260px;
 		margin-right: 0px;
@@ -4455,9 +4503,7 @@ textarea {
 		font-size: 18px;
 		margin-left: 45px;
 	}
-	.navbar-nav .dropdown-menu {
-		left: -114px;
-	}
+
 	.search-box {
 		width: 360px;
 		margin-right: 0px;
@@ -8038,6 +8084,7 @@ textarea {
 		width: 3em;
 		height: 3em;
 	}
+
 	.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
 		left: 0.875em;
 	}
@@ -8064,9 +8111,9 @@ textarea {
 		color: var(--primary-500);
 		border: 1px solid var(--primary-500);
 	}
-	.swal2-styled.swal2-cancel:hover{
-	background-color: none !important;
-}
+	.swal2-styled.swal2-cancel:hover {
+		background-color: none !important;
+	}
 
 	/* video-modal-container */
 	.video-modal-container {
