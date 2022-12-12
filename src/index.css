@@ -522,14 +522,6 @@ textarea:disabled,
 .menu-anchor svg {
 	fill: var(--primary-500);
 }
-.disabled-menu-link .menu-item .menu-anchor {
-	background-color: var(--gray-100) !important;
-	opacity: 0.8;
-}
-.disabled-menu-link .menu-item .menu-anchor:hover,
-.disabled-menu-link.active {
-	background-color: var(--gray-100) !important;
-}
 
 /* Sub menu */
 .sidebar-inner .sub-menu .menu-icon {
@@ -563,6 +555,18 @@ textarea:disabled,
 	background-color: #03787a !important;
 	color: var(--white-100) !important;
 }
+
+/* disabled menu link */
+.sub-menu-link.disabled-menu-link .menu-item,
+.sub-menu-link.disabled-menu-link .menu-anchor:hover,
+.sub-menu-link.disabled-menu-link.active .menu-anchor {
+	background-color: var(--gray-100) !important;
+	color: var(--primary-500) !important;
+}
+.disabled-menu-link .menu-item .menu-anchor {
+	opacity: 0.5;
+}
+
 /* log out tab */
 .logout-tab {
 	border-top: 2px solid var(--primary-300);
@@ -644,6 +648,17 @@ textarea:disabled,
 
 .css-169iwlq-MuiCalendarPicker-root {
 	width: 330px !important;
+}
+
+.rs-picker-daterange-header {
+    
+    text-align: right !important;
+}
+.rs-calendar-header-has-month:not(.rs-calendar-header-has-time) .rs-calendar-header-backward {
+	float: right;
+}
+.rs-calendar-header-has-month:not(.rs-calendar-header-has-time) .rs-calendar-header-forward {
+	float: left;
 }
 .css-1ynch81-MuiInputBase-root-MuiOutlinedInput-root {
 	width: 420px !important;
@@ -2836,61 +2851,23 @@ textarea {
 	width: 25px;
 }
 /* Date-picker input style */
-.add-form-wrapper .MuiTextField-root,
-.add-form-wrapper .MuiOutlinedInput-root {
-	width: 100% !important;
-}
-.add-form-wrapper .MuiOutlinedInput-root {
-	background-color: #efeff0 !important;
-	box-shadow: 0 0 1px 1px var(--gray-200) !important;
-	border-color: #efeff0;
-	overflow: hidden;
-	border-radius: 8px !important;
-	-webkit-border-radius: 8px !important;
-	-moz-border-radius: 8px !important;
-	-ms-border-radius: 8px !important;
-	-o-border-radius: 8px !important;
-}
 
-.add-form-wrapper .MuiOutlinedInput-root:is(:hover, :focus),
-.add-form-wrapper .MuiOutlinedInput-notchedOutline,
-.add-form-wrapper .MuiOutlinedInput-notchedOutline:is(:hover, :focus),
-.add-form-wrapper .MuiOutlinedInput-root:is(:hover, :focus) {
-	border-color: #efeff0 !important;
+.react-datepicker-wrapper input {
+	padding-right: 100px !important;
 }
-
-.add-form-wrapper .MuiOutlinedInput-root .MuiInputBase-input {
-	width: 100%;
-	height: 26px;
-	border: none !important;
-	box-shadow: none !important;
-	padding-right: 100px;
-}
-.add-form-wrapper .MuiOutlinedInput-root .MuiFormLabel-root {
-	left: 270px !important;
-}
-.add-form-wrapper .MuiOutlinedInput-root .MuiFormLabel-root.Mui-error {
-	color: #011723 !important;
-}
-.add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root {
-	background: var(--second-500);
-	right: -383px;
-	width: 100px;
+.add-coupon-form .date-icon {
+	background-color: #00ccf2;
+	position: absolute;
+	width: 90px;
 	height: 60px;
+	display: flex;
+	z-index: 1;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
 	border-radius: 0 8px 8px 0;
-	-webkit-border-radius: 0 8px 8px 0;
-	-moz-border-radius: 0 8px 8px 0;
-	-ms-border-radius: 0 8px 8px 0;
-	-o-border-radius: 0 8px 8px 0;
 }
 
-.add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root svg {
-	fill: #fff;
-}
-.MuiPickersArrowSwitcher-root,
-.MuiPickersCalendarHeader-labelContainer {
-	flex-direction: row-reverse !important;
-}
 /* ---------------- */
 .add-coupon-form .radio-box .MuiRadio-root.Mui-checked {
 	color: var(--black-500);
@@ -3019,6 +2996,11 @@ textarea {
 }
 .create-offer-form-wrapper .form-body .input-icon .search-icon path {
 	fill: var(--gray-300);
+}
+/* Date-picker input style */
+
+.create-offer-form-wrapper .form-body .date-icon {
+	background-color: var(--primary-500);
 }
 .offers-options .form-body .radio-box {
 	margin-right: -15px;
@@ -3965,11 +3947,11 @@ textarea {
 	-o-border-radius: 6px;
 }
 .job-title-page .job-titles-wrapper .job-box .job-btn-group .edit-btn {
-	background: #d2f1f28c;
-	color: var(--second-500);
+	background: #ebf7ff;
+	color: #1da5fb;
 }
 .job-title-page .job-titles-wrapper .job-box .job-btn-group .edit-btn svg path {
-	stroke: var(--second-500);
+	stroke: #1da5fb;
 }
 .job-title-page .job-titles-wrapper .job-box .job-btn-group .delete-btn {
 	background-color: #ffd7d738;
@@ -4036,10 +4018,13 @@ textarea {
 }
 .create-role .MuiToolbar-root {
 	justify-content: flex-start !important;
-	margin-right: -16px !important;
+	/* margin-right: -16px !important; */
 }
 .create-role .MuiToolbar-root .MuiFormControlLabel-root {
 	margin-right: 0 !important;
+}
+.create-role .MuiToolbar-root .MuiFormControlLabel-root .MuiSwitch-root {
+	margin-right: -15px;
 }
 .create-role .MuiToolbar-root .MuiFormControlLabel-root span {
 	font-weight: 500;
@@ -4141,7 +4126,9 @@ textarea {
 }
 /* -------------------------------------------------------------------------------------------------------------------------------- */
 /* Success Alert */
-
+.swal2-container {
+	z-index: 9999 !important;
+}
 .swal2-popup.swal2-icon-success {
 	width: 38em !important;
 	height: 13em !important;
@@ -4185,6 +4172,7 @@ textarea {
 }
 
 /* Wrong alert  */
+
 .swal2-styled.swal2-cancel {
 	background-color: transparent;
 	color: var(--primary-500);
@@ -4463,10 +4451,6 @@ textarea {
 
 /* Tablet */
 @media screen and (min-width: 1200px) {
-	/* .add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root */
-	.add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root {
-		right: -314px;
-	}
 	.content > .row > .pages-content {
 		margin: 0 -50px 0 0;
 	}
@@ -4570,10 +4554,6 @@ textarea {
 }
 
 @media screen and (min-width: 1440px) {
-	/* .add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root */
-	.add-form-wrapper .MuiOutlinedInput-root .MuiButtonBase-root {
-		right: -383px;
-	}
 	.content > .row {
 		width: 100%;
 		overflow: hidden;
@@ -4745,16 +4725,6 @@ textarea {
 	.menu-anchor svg {
 		fill: var(--primary-500);
 	}
-	.disabled-menu-link .menu-item {
-		background-color: var(--gray-100) !important;
-	}
-	.disabled-menu-link .menu-item .menu-anchor {
-		opacity: 0.5;
-	}
-	.disabled-menu-link .menu-item .menu-anchor:hover,
-	.disabled-menu-link.active {
-		background-color: var(--gray-100) !important;
-	}
 
 	/* Sub menu */
 	.sidebar-inner .sub-menu .menu-icon {
@@ -4788,6 +4758,18 @@ textarea {
 		background-color: #03787a !important;
 		color: var(--white-100) !important;
 	}
+
+	/* disabled menu link */
+	.sub-menu-link.disabled-menu-link .menu-item,
+	.sub-menu-link.disabled-menu-link .menu-anchor:hover,
+	.sub-menu-link.disabled-menu-link.active .menu-anchor {
+		background-color: var(--gray-100) !important;
+		color: var(--primary-500) !important;
+	}
+	.disabled-menu-link .menu-item .menu-anchor {
+		opacity: 0.5;
+	}
+
 	/* log out tab */
 	.logout-tab {
 		border-top: 2px solid var(--primary-300);
@@ -4856,6 +4838,16 @@ textarea {
 
 	.css-169iwlq-MuiCalendarPicker-root {
 		width: 330px !important;
+	}
+.rs-picker-daterange-header {
+    
+    text-align: right !important;
+}
+	.rs-calendar-header-has-month:not(.rs-calendar-header-has-time) .rs-calendar-header-backward {
+		float: right;
+	}
+	.rs-calendar-header-has-month:not(.rs-calendar-header-has-time) .rs-calendar-header-forward {
+		float: left;
 	}
 	.css-1ynch81-MuiInputBase-root-MuiOutlinedInput-root {
 		width: 420px !important;
@@ -6840,6 +6832,24 @@ textarea {
 		width: 25px;
 	}
 
+	/* Date-picker input style */
+
+	.react-datepicker-wrapper input {
+		padding-right: 100px !important;
+	}
+	.add-coupon-form .date-icon {
+		background-color: #00ccf2;
+		position: absolute;
+		width: 90px;
+		height: 60px;
+		display: flex;
+		z-index: 1;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		border-radius: 0 8px 8px 0;
+	}
+
 	.add-coupon-form .radio-box .MuiRadio-root.Mui-checked {
 		color: var(--black-500);
 	}
@@ -6957,6 +6967,12 @@ textarea {
 	.create-offer-form-wrapper .form-body .input-icon .search-icon path {
 		fill: var(--gray-300);
 	}
+
+	/* Date-picker input style */
+
+	.create-offer-form-wrapper .form-body .date-icon {
+		background-color: var(--primary-500);
+	}
 	.offers-options .form-body .radio-box {
 		margin-right: -15px;
 	}
@@ -6990,8 +7006,7 @@ textarea {
 		-ms-border-radius: 4px;
 		-o-border-radius: 4px;
 	}
-	.offers-data .form-body .offer-terms {
-	}
+
 	.offers-data .form-body .arrow-icon {
 		position: absolute;
 		z-index: 1;
@@ -7886,11 +7901,11 @@ textarea {
 		-o-border-radius: 6px;
 	}
 	.job-title-page .job-titles-wrapper .job-box .job-btn-group .edit-btn {
-		background: #d2f1f28c;
-		color: var(--second-500);
+		background: #ebf7ff;
+		color: #1da5fb;
 	}
 	.job-title-page .job-titles-wrapper .job-box .job-btn-group .edit-btn svg path {
-		stroke: var(--second-500);
+		stroke: #1da5fb;
 	}
 	.job-title-page .job-titles-wrapper .job-box .job-btn-group .delete-btn {
 		background-color: #ffd7d738;
@@ -7957,10 +7972,13 @@ textarea {
 	}
 	.create-role .MuiToolbar-root {
 		justify-content: flex-start !important;
-		margin-right: -16px !important;
+		/* margin-right: -16px !important; */
 	}
 	.create-role .MuiToolbar-root .MuiFormControlLabel-root {
 		margin-right: 0 !important;
+	}
+	.create-role .MuiToolbar-root .MuiFormControlLabel-root .MuiSwitch-root {
+		margin-right: -15px;
 	}
 	.create-role .MuiToolbar-root .MuiFormControlLabel-root span {
 		font-weight: 500;
@@ -8063,6 +8081,9 @@ textarea {
 	}
 	/* -------------------------------------------------------------------------------------------------------------------------------- */
 	/* Success Alert */
+	.swal2-container {
+		z-index: 9999 !important;
+	}
 	.swal2-popup.swal2-icon-success {
 		width: 38em !important;
 		height: 13em !important;

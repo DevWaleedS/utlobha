@@ -5,6 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
@@ -38,6 +41,35 @@ const UserData = () => {
 	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
+	};
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/Management');
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم حفظ بيانات المستخدم  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+			didOpen: () => {
+				const b = Swal.getHtmlContainer().querySelector('b');
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
 	};
 
 	//  use dropzone to get personal image
@@ -179,6 +211,16 @@ const UserData = () => {
 
 								<div className='form-footer'>
 									<div className='row d-flex justify-content-center align-items-center'>
+										<div className='col-4'>
+											<button
+												className='save-btn'
+												onClick={() => {
+													succMessage();
+												}}
+											>
+												حفظ
+											</button>
+										</div>
 										<div className='col-4'>
 											<button className='close-btn' onClick={() => navigate('/Management')}>
 												إلغاء

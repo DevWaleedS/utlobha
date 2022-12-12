@@ -1,6 +1,6 @@
 import { theme } from '../Theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import TopBar from '../global/TopBar';
 import SideBar from '../global/SideBar';
 
@@ -17,6 +17,9 @@ const RootLayout = () => {
 							</div>
 							<div className='col-lg-10 col-md-9 col-sm-9 col-9 pages-content'>
 								<div className='main-content'>
+									{/** use ScrollRestoration from react router dom to fix scrolling issue */}
+									<ScrollRestoration />
+
 									<Outlet />
 								</div>
 							</div>

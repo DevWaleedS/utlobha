@@ -12,9 +12,10 @@ import { FormControlLabel } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import OutlinedInput from '@mui/material/OutlinedInput';
+// Datepicker
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -58,9 +59,9 @@ const CreateOffer = () => {
 		setOfferPlatform(event.target.value);
 	};
 
-	//
-	const [startDate, setStartDate] = React.useState('');
-	const [endDate, setEndDate] = React.useState('');
+	//to set date
+	const [startDate, setStartDate] = React.useState();
+	const [endDate, setEndDate] = React.useState();
 
 	//
 	const handleSubmit = (event) => {
@@ -193,38 +194,20 @@ const CreateOffer = () => {
 											<label htmlFor='start-offer-date ' className='d-block mb-2'>
 												تاريخ بداية العرض
 											</label>
-											<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
-												<DatePicker
-													label='تاريخ بداية العرض '
-													value={startDate}
-													onChange={(newValue) => {
-														setStartDate(newValue);
-													}}
-													components={{
-														OpenPickerIcon: DateIcon,
-													}}
-													renderInput={(params) => <TextField {...params} />}
-												/>
-											</LocalizationProvider>
+											<div className='date-icon'>
+												<DateIcon />
+											</div>
+											<DatePicker selected={startDate} placeholderText='تاريخ بداية العرض ' onChange={(date) => setStartDate(date)} dateFormat='dd/MM/yyyy' />
 										</div>
 										<div className='col-6'>
 											<label htmlFor='end-offer-date ' className='d-block mb-2'>
 												تاريخ انتهاء العرض
 											</label>
-											<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
-												<DatePicker
-													label='تاريخ نهاية العرض
-'
-													value={endDate}
-													onChange={(newValue) => {
-														setEndDate(newValue);
-													}}
-													components={{
-														OpenPickerIcon: DateIcon,
-													}}
-													renderInput={(params) => <TextField {...params} />}
-												/>
-											</LocalizationProvider>
+
+											<div className='date-icon'>
+												<DateIcon />
+											</div>
+											<DatePicker selected={endDate} placeholderText='تاريخ  نهاية العرض ' onChange={(date) => setEndDate(date)} dateFormat='dd/MM/yyyy' />
 										</div>
 									</div>
 								</div>

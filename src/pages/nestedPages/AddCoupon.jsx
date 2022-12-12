@@ -6,16 +6,15 @@ import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
 import Swal from 'sweetalert2';
 
 // MUI
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
+
+// Datepicker
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 // icons
 import { ReactComponent as DateIcon } from '../../data/Icons/icon-date.svg';
@@ -53,12 +52,7 @@ const AddCoupon = () => {
 			showCloseButton: true,
 			timerProgressBar: true,
 			showConfirmButton: false,
-			didOpen: () => {
-				const b = Swal.getHtmlContainer().querySelector('b');
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft();
-				}, 100);
-			},
+
 			willClose: () => {
 				clearInterval(timerInterval);
 			},
@@ -76,8 +70,8 @@ const AddCoupon = () => {
 	const [lowPrice, setLowPrice] = React.useState('no');
 	const [isEnable, setIsEnable] = React.useState('true');
 
-	//
-	const [date, setDate] = React.useState('');
+	//to set date
+	const [startDate, setStartDate] = React.useState();
 
 	return (
 		<div className='' open={isOpen}>
@@ -152,19 +146,10 @@ const AddCoupon = () => {
 											تاريخ الانتهاء
 										</label>
 
-										<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
-											<DatePicker
-												placeholder='30/Sep/2022'
-												value={date}
-												onChange={(newValue) => {
-													setDate(newValue);
-												}}
-												components={{
-													OpenPickerIcon: DateIcon,
-												}}
-												renderInput={(params) => <TextField {...params} />}
-											/>
-										</LocalizationProvider>
+										<div className='date-icon'>
+											<DateIcon />
+										</div>
+										<DatePicker selected={startDate} placeholderText='30/Sep/2022' onChange={(date) => setStartDate(date)} dateFormat='dd/MM/yyyy' />
 									</div>
 
 									<div className='col-5'>

@@ -5,8 +5,11 @@ import CommentsTable from '../../components/CommentsTable';
 // ICONS
 import arrowBack from '../../data/Icons/icon-30-arrwos back.svg';
 const Comments = () => {
+
+
+
 	return (
-		<section className='orders-pages p-3'>
+		<section className='orders-pages p-3' >
 			<div className='head-category mb-5'>
 				<div className='row'>
 					<nav aria-label='breadcrumb'>

@@ -2,6 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -193,16 +196,38 @@ function EnhancedTableToolbar({ label }) {
 const EditRole = () => {
 	const { title } = useParams();
 
-
 	const navigate = useNavigate();
 
 	// get data from redux store
 	const jobTitle = useSelector((state) => state.jobTitleData);
 
 	const jobs = jobTitle.filter((job) => {
-		
 		return job.title === title;
 	});
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/Management/JobTitles');
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم تحديث  الصلاحية  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
+	};
 
 	return (
 		<div className='' open={true}>
@@ -229,7 +254,7 @@ const EditRole = () => {
 														<button
 															className='save-btn w-100'
 															onClick={() => {
-																navigate('/Management/JobTitles');
+																succMessage();
 															}}
 														>
 															حفظ واعتماد

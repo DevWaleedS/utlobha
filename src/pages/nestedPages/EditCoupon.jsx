@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+
+// Sweet alert
 import Swal from 'sweetalert2';
+
+// Datepicker
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -9,10 +15,6 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 // icons
 
@@ -28,7 +30,6 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#fff',
-	
 };
 
 const EditCoupon = () => {
@@ -46,6 +47,8 @@ const EditCoupon = () => {
 		event.preventDefault();
 	};
 
+	//to set date
+	const [startDate, setStartDate] = React.useState();
 
 	// Sweet alert function
 	const succMessage = () => {
@@ -59,12 +62,7 @@ const EditCoupon = () => {
 			showCloseButton: true,
 			timerProgressBar: true,
 			showConfirmButton: false,
-			didOpen: () => {
-				const b = Swal.getHtmlContainer().querySelector('b');
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft();
-				}, 100);
-			},
+
 			willClose: () => {
 				clearInterval(timerInterval);
 			},
@@ -76,7 +74,6 @@ const EditCoupon = () => {
 		});
 	};
 
-	
 	//
 	const [price, setPrice] = React.useState('price');
 	const [shipping, setShipping] = React.useState('accept');
@@ -108,16 +105,12 @@ const EditCoupon = () => {
 									) : currentCoupon.status === 'منتهي' ? (
 										<Fragment>
 											<div className='coupon-status pending'>{currentCoupon.status}</div>
-											<button className='enable-coupon-btn' >
-												إعادة تفعيل الكوبون
-											</button>
+											<button className='enable-coupon-btn'>إعادة تفعيل الكوبون</button>
 										</Fragment>
 									) : currentCoupon.status === 'معطل' ? (
 										<Fragment>
 											<div className='coupon-status disabled'>{currentCoupon.status}</div>
-											<button className='enable-coupon-btn' >
-												إعادة تفعيل الكوبون
-											</button>
+											<button className='enable-coupon-btn'>إعادة تفعيل الكوبون</button>
 										</Fragment>
 									) : (
 										''
@@ -210,35 +203,14 @@ const EditCoupon = () => {
 												تاريخ الانتهاء
 											</label>
 
+											<div className='date-icon'>
+												<DateIcon />
+											</div>
+
 											{currentCoupon.status === 'منتهي' || currentCoupon.status === 'معطل' ? (
-												<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
-													<DatePicker
-														placeholder='30/Sep/2022'
-														value={date}
-														onChange={(newValue) => {
-															setDate(newValue);
-														}}
-														components={{
-															OpenPickerIcon: DateIcon,
-														}}
-														disabled
-														renderInput={(params) => <TextField {...params} />}
-													/>
-												</LocalizationProvider>
+												<DatePicker selected={startDate} placeholderText='Sep/30/2022' onChange={(date) => setStartDate(date)} dateFormat='dd/MM/yyyy' disabled />
 											) : (
-												<LocalizationProvider dateAdapter={AdapterDayjs} dir='rtl'>
-													<DatePicker
-														placeholder='30/Sep/2022'
-														value={date}
-														onChange={(newValue) => {
-															setDate(newValue);
-														}}
-														components={{
-															OpenPickerIcon: DateIcon,
-														}}
-														renderInput={(params) => <TextField {...params} />}
-													/>
-												</LocalizationProvider>
+												<DatePicker selected={startDate} placeholderText='Sep/30/2022' onChange={(date) => setStartDate(date)} dateFormat='dd/MM/yyyy' />
 											)}
 										</div>
 

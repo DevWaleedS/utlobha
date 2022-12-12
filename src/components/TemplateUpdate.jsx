@@ -204,7 +204,7 @@ const TemplateUpdate = () => {
 						التعليقات والعملاء <span> (تستطيع تفعيل وتعطيل العملاء المميزين والتعليقات )</span>
 					</h4>
 					<div className='view-more-btn mx-4'>
-						<Link to='Comments' variant='contained'>
+						<Link to='Comments' variant='contained' >
 							<span>عرض التفاصيل</span>
 							<BsArrowLeft className='me-2' />
 						</Link>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -53,13 +52,6 @@ const ClientData = () => {
 	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
-	};
-
-	//
-	const confirmAlert = () => {
-		Swal.fire({
-			title: 'هل ترغب حقاً في إعادة تفعيل الكوبون !',
-		});
 	};
 
 	return (
@@ -250,6 +242,7 @@ const ClientData = () => {
 													</textarea>
 												</div>
 											</div>
+											<div></div>
 										</div>
 									</div>
 

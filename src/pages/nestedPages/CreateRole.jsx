@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -89,6 +92,30 @@ function EnhancedTableToolbar({ label }) {
 
 const CreateRole = () => {
 	const navigate = useNavigate();
+
+	// Sweet alert function
+	const succMessage = () => {
+		navigate('/Management/JobTitles');
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم انشاء دور جديد  بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
+	};
 
 	return (
 		<div className='' open={true}>
@@ -318,7 +345,7 @@ const CreateRole = () => {
 								<div className='btn-wrapper w-100'>
 									<button
 										onClick={() => {
-											navigate('/Management/JobTitles');
+											succMessage();
 										}}
 									>
 										حفظ واعتماد
