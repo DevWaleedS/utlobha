@@ -2,25 +2,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
 import { Link } from 'react-router-dom';
+
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel } from '@mui/material';
-// MUI
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 // Datepicker
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-
-import Select from '@mui/material/Select';
 
 // ICONS
 import howIcon from '../../data/Icons/icon_24_home.svg';
@@ -45,15 +40,29 @@ const style = {
 	height: '100%',
 	overflow: 'auto',
 	bgcolor: '#f8f9fa',
-
 	paddingBottom: '200px',
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+	PaperProps: {
+		style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		},
+	},
+};
+
+// select platform
+const paltforms = ['موقع المتجر', 'تطبيق المتجر', 'موقع وتطبيق المتجر'];
 
 const CreateOffer = () => {
 	const { isOpen } = useSelector((state) => state.VerifyModal);
 	const dispatch = useDispatch(false);
 
-	const [offerPlatform, setOfferPlatform] = React.useState('');
+	//
+	const [offerPlatform, setOfferPlatform] = React.useState([]);
 
 	const handleChange = (event) => {
 		setOfferPlatform(event.target.value);
@@ -171,17 +180,26 @@ const CreateOffer = () => {
 											</label>
 
 											<FormControl>
-												<Select className='select-offer-platform ' labelId='demo-simple-select-label' id='demo-simple-select' value={offerPlatform} onChange={handleChange} IconComponent={ArrowIconDown}>
-													<MenuItem value={'website'}>
+												<Select
+													className='select-offer-platform '
+													labelId='demo-simple-select-label'
+													id='demo-simple-select'
+													value={offerPlatform}
+													onChange={handleChange}
+													IconComponent={ArrowIconDown}
+													displayEmpty
+													inputProps={{ 'aria-label': 'Without label' }}
+												>
+													<MenuItem value=''>
 														<LaptopIcon />
 														<span className='me-3'>موقع المتجر</span>
 													</MenuItem>
-													<MenuItem value={'app'}>
+													<MenuItem value={2}>
 														<MobileIcon />
 														<span className='me-3'>تطبيق المتجر</span>
 													</MenuItem>
 
-													<MenuItem value={'app-and-website'}>
+													<MenuItem value={2}>
 														<MultiDevices />
 														<span className='me-3'>موقع و تطبيق المتجر</span>
 													</MenuItem>

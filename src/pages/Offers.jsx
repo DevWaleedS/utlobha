@@ -30,7 +30,7 @@ const Offers = () => {
 								</Link>
 							</li>
 							<li className='breadcrumb-item ' aria-current='page'>
-								التسويق 
+								التسويق
 							</li>
 							<li className='breadcrumb-item active' aria-current='page'>
 								العروض الخاصة
@@ -42,7 +42,13 @@ const Offers = () => {
 
 			<div className='row mb-5'>
 				<div className='add-offer-btn-wrapper d-flex justify-content-end '>
-					<button type='button' className='add-offer-btn' onClick={()=>{dispatch(openVerifyModal())}}>
+					<button
+						type='button'
+						className='add-offer-btn'
+						onClick={() => {
+							dispatch(openVerifyModal());
+						}}
+					>
 						<IoMdAdd />
 						انشاء عرض
 					</button>
@@ -51,7 +57,7 @@ const Offers = () => {
 
 			<div className='row'>
 				<div className='offers-table'>
-					<table class='table'>
+					<table className='table'>
 						<thead>
 							<tr>
 								<th scope='col'>
@@ -122,7 +128,7 @@ const Offers = () => {
 				</div>
 			</div>
 			{/** Create offers form */}
-			<CreateOffer/>
+			<CreateOffer />
 		</section>
 	);
 };
