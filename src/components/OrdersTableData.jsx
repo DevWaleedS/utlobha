@@ -62,7 +62,7 @@ const OrdersTableData = () => {
 
 												<ul className='dropdown-menu new-orders-dropdown-menu'>
 													<li>
-														<Link className='dropdown-item' to='Orders/OrderDetails'>
+														<Link className='dropdown-item' to='/Orders/OrderDetails'>
 															<ReportIcon className='report-icon' />
 														</Link>
 													</li>

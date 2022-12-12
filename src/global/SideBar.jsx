@@ -111,17 +111,16 @@ const SideBar = () => {
 						</MenuItem>
 					</NavLink>
 
-					<NavLink className='sub-menu-link' to='Marketing'>
+					<NavLink
+						className='sub-menu-link'
+						to='Marketing'
+						onClick={() => {
+							dispatch(openModal());
+						}}
+					>
 						<MenuItem>
 							<Shoping />
-							<span
-								className='me-2'
-								onClick={() => {
-									dispatch(openModal());
-								}}
-							>
-								التسويق عبر المشاهير
-							</span>
+							<span className='me-2'>التسويق عبر المشاهير</span>
 						</MenuItem>
 					</NavLink>
 					<NavLink className='sub-menu-link disabled-menu-link' to='MarketingCampaign'>
