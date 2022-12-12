@@ -3001,6 +3001,15 @@ textarea {
 
 .create-offer-form-wrapper .form-body .date-icon {
 	background-color: var(--primary-500);
+	position: absolute;
+	width: 90px;
+	height: 60px;
+	display: flex;
+	z-index: 1;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 0 8px 8px 0;
 }
 .offers-options .form-body .radio-box {
 	margin-right: -15px;
@@ -6972,6 +6981,15 @@ textarea {
 
 	.create-offer-form-wrapper .form-body .date-icon {
 		background-color: var(--primary-500);
+		position: absolute;
+	width: 90px;
+	height: 60px;
+	display: flex;
+	z-index: 1;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 0 8px 8px 0;
 	}
 	.offers-options .form-body .radio-box {
 		margin-right: -15px;
