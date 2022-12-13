@@ -51,12 +51,13 @@ import {
 } from './pages';
 
 // Import Nested Pages
-import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments, EditRole, UserData } from './pages/nestedPages';
+import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments, EditRole, UserData, EditCategory, EditProductPage, CreateRole } from './pages/nestedPages';
+
+// import EditProductPage from './pages/nestedPages/EditProductPage';
+// import CreateRole from './pages/nestedPages/CreateRole';
 
 // INDEX CSS FILE
 import './index.css';
-import EditProductPage from './pages/nestedPages/EditProductPage';
-import CreateRole from './pages/nestedPages/CreateRole';
 
 // App Routes
 const router = createBrowserRouter([
@@ -76,6 +77,11 @@ const router = createBrowserRouter([
 			{
 				path: 'Category',
 				element: <Category />,
+			},
+			// Category details page nested page for Category page
+			{
+				path: 'Category/EditCategory-:id',
+				element: <EditCategory />,
 			},
 
 			{

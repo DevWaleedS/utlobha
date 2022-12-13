@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 
@@ -25,8 +27,7 @@ import Swal from 'sweetalert2';
 
 // ICONS
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
-import EditCategoryPage from '../pages/nestedPages/EditCategoryPage';
-import { openEditCategoryPageModal } from '../store/slices/EditCategoryPage-slice';
+
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -174,6 +175,7 @@ EnhancedTableToolbar.propTypes = {
 export default function EnhancedTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CategoriesTablesData);
+
 	const dispatch = useDispatch(true);
 
 	const [order, setOrder] = React.useState('asc');
@@ -283,7 +285,7 @@ export default function EnhancedTable() {
 							{stableSort(data, getComparator(order, orderBy))
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
-									const isItemSelected = isSelected(row.productNumber);
+									const isItemSelected = isSelected(row.id);
 									const labelId = `enhanced-table-checkbox-${index}`;
 
 									return (
@@ -306,12 +308,12 @@ export default function EnhancedTable() {
 															},
 														}}
 														checked={isItemSelected}
-														onClick={(event) => handleClick(event, row.productNumber)}
+														onClick={(event) => handleClick(event, row.id)}
 														inputProps={{
 															'aria-labelledby': labelId,
 														}}
 													/>
-													{row.productNumber}
+													{row.id}
 												</div>
 											</TableCell>
 
@@ -336,7 +338,7 @@ export default function EnhancedTable() {
 													<Switch
 														// checked={row.opened}
 														onChange={() => {
-															const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
+															const findIndex = data.findIndex((item) => item.id === row.id);
 
 															const arr = [...data];
 
@@ -359,12 +361,14 @@ export default function EnhancedTable() {
 											<TableCell align='right'>
 												<div className='actions d-flex justify-content-evenly'>
 													<span>
-														<img src={row.editIcon} alt='edit' title='edit' onClick={() => dispatch(openEditCategoryPageModal())} />
+														<Link to={`EditCategory-${row.id}`} style={{ cursor: 'pointer' }}>
+															<img src={row.editIcon} alt='edit' title='edit' />
+														</Link>
 													</span>
 													<span>
 														<DeletteIcon
 															onClick={() => {
-																const findIndex = data.findIndex((item) => item.productNumber === row.productNumber);
+																const findIndex = data.findIndex((item) => item.id === row.id);
 																const arr = [...data];
 																arr.splice(findIndex, 1);
 																setData(arr);
@@ -395,8 +399,6 @@ export default function EnhancedTable() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
-			{/** EditCategoryPage modal */}
-			<EditCategoryPage />
 		</Box>
 	);
 }

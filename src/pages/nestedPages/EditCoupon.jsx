@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Sweet alert
 import Swal from 'sweetalert2';
@@ -14,7 +15,6 @@ import Modal from '@mui/material/Modal';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { FormControlLabel, Switch } from '@mui/material';
-import { useNavigate, useParams } from 'react-router-dom';
 
 // icons
 
@@ -35,9 +35,9 @@ const style = {
 const EditCoupon = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
+
 	//
 	const couponData = useSelector((state) => state.CouponTableData);
-
 	const coupon = couponData.filter((coupon) => {
 		return coupon.id === id;
 	});

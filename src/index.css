@@ -1122,6 +1122,7 @@ select {
 	justify-content: center;
 	border-radius: 20px;
 }
+
 .actions img {
 	cursor: pointer;
 }
@@ -1295,6 +1296,7 @@ nav.navigation {
 .coupon-form .add-category label {
 	display: none;
 }
+
 /* ------------------------------------------------------------------------------------ */
 
 /* Offers pAGE */
@@ -2739,11 +2741,48 @@ textarea {
 .add-form-wrapper form input[type='email'],
 .add-form-wrapper form textarea,
 .add-form-wrapper form select {
-	background-color: #efeff0 !important;
+	background-color: #efeff0;
+	font-size: 18px;
 }
 .add-form-wrapper form input::placeholder,
 .add-form-wrapper form textarea::placeholder {
 	color: var(--gray-400);
+}
+
+/* category  Tag input */
+.add-form-wrapper form .category-tag-input {
+	background-color: #fafafa !important ;
+	font-size: 18px;
+	padding: 0;
+	border: 1px solid #efeff0 !important;
+	box-shadow: 0 0 1px 1px var(--gray-200) !important;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.add-form-wrapper form .category-tag-input .ub-dspl_flex {
+	display: flex;
+	align-items: center;
+}
+.add-form-wrapper form .category-tag-input .ub-dspl_flex strong{
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.add-form-wrapper form .category-tag-input .ub-dspl_flex strong svg{
+	  width: 16px;
+    height: 16px;
+    border: 0.2em solid var(--black-400);
+    margin-right: 10px;
+}
+.add-form-wrapper form .category-tag-input input {
+	background-color: #fafafa !important;
+	width: 20%;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 .add-form-wrapper .form-footer button {
@@ -2766,6 +2805,7 @@ textarea {
 	border: 1px solid var(--second-500);
 	color: var(--second-500);
 }
+
 /* -------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Add Product Form style */
@@ -6788,7 +6828,7 @@ textarea {
 	.add-form-wrapper form input[type='email'],
 	.add-form-wrapper form textarea,
 	.add-form-wrapper form select {
-		background-color: #efeff0 !important;
+		background-color: #efeff0;
 		font-size: 18px;
 	}
 	.add-form-wrapper form input::placeholder,

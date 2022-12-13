@@ -7,7 +7,7 @@ import editIcon from '../../data/Icons/editt 2.svg';
 
 const categoriesDataTable = [
 	{
-		productNumber: '01',
+		id: '01',
 		idNumbers: 9586,
 		productName: 'جوالات',
 		subNumber: 4,
@@ -17,7 +17,7 @@ const categoriesDataTable = [
 		opened: false,
 	},
 	{
-		productNumber: '02',
+		id: '02',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -27,7 +27,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '03',
+		id: '03',
 		idNumbers: 996,
 		productName: 'لابتوتب',
 		subNumber: 6,
@@ -37,7 +37,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '04',
+		id: '04',
 		idNumbers: 186,
 		productName: 'جوالات',
 		subNumber: 12,
@@ -47,7 +47,7 @@ const categoriesDataTable = [
 		opened: false,
 	},
 	{
-		productNumber: '05',
+		id: '05',
 		idNumbers: 9586,
 		productName: 'لابتوتب',
 		subNumber: 6,
@@ -57,7 +57,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '06',
+		id: '06',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -67,7 +67,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '07',
+		id: '07',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -77,7 +77,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '08',
+		id: '08',
 		idNumbers: 9586,
 		productName: 'لابتوتب',
 		subNumber: 6,
@@ -87,7 +87,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '09',
+		id: '09',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -97,7 +97,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '10',
+		id: '10',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -107,7 +107,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '11',
+		id: '11',
 		idNumbers: 9586,
 		productName: 'لابتوتب',
 		subNumber: 6,
@@ -117,7 +117,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '12',
+		id: '12',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -127,7 +127,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '13',
+		id: '13',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -137,7 +137,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '14',
+		id: '14',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,
@@ -147,7 +147,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '15',
+		id: '15',
 		idNumbers: 9586,
 		productName: 'لابتوتب',
 		subNumber: 6,
@@ -157,7 +157,7 @@ const categoriesDataTable = [
 		opened: true,
 	},
 	{
-		productNumber: '16',
+		id: '16',
 		idNumbers: 9586,
 		productName: 'اكسسوارات',
 		subNumber: 4,

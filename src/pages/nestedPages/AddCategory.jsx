@@ -8,6 +8,9 @@ import { useDropzone } from 'react-dropzone';
 // sweet alert
 import Swal from 'sweetalert2';
 
+// Tag input
+import { TagInput } from 'evergreen-ui';
+
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -32,6 +35,9 @@ const AddCategory = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 	};
+
+	// to set the values for category tag input
+	const [values, setValues] = React.useState([]);
 
 	// Sweet alert function
 	const succMessage = () => {
@@ -155,7 +161,16 @@ const AddCategory = () => {
 										<label htmlFor='sub-categories'> التصنيفات الفرعية </label>
 									</div>
 									<div className='col-7'>
-										<input type='text' id='sub-categories' />
+										<TagInput
+											
+											id='sub-categories'
+											className='category-tag-input'
+											width='100%'
+											values={values}
+											onChange={(values) => {
+												setValues(values);
+											}}
+										/>
 									</div>
 								</div>
 							</div>

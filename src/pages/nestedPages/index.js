@@ -20,5 +20,7 @@ export { default as Comments } from './Comments';
 export { default as CreateRole } from './CreateRole';
 export { default as EditRole } from './EditRole';
 export { default as UserData } from './UserData';
-// export { default as SalesReport } from './SalesReport';
+export { default as EditCategory } from './EditCategory';
+export { default as EditProductPage } from './EditProductPage';
+
 // export { default as SalesReport } from './SalesReport';
