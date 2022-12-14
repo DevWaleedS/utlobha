@@ -9,7 +9,6 @@ import { DataBox, BigOrdersTable } from '../components';
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 
 
-
 const Orders = () => {
 	const details = useSelector((state) => state.ordersDetails);
 	return (
