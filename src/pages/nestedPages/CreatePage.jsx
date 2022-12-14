@@ -57,12 +57,30 @@ const CreatePage = () => {
 			showCloseButton: true,
 			timerProgressBar: true,
 			showConfirmButton: false,
-			didOpen: () => {
-				const b = Swal.getHtmlContainer().querySelector('b');
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft();
-				}, 100);
+
+			willClose: () => {
+				clearInterval(timerInterval);
 			},
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer');
+			}
+		});
+	};
+
+	const publishMessage = () => {
+		dispatch(closeVerifyModal());
+		let timerInterval;
+
+		Swal.fire({
+			title: 'تم نشر  الصفحة   بنجاح',
+			icon: 'success',
+			timer: 4000,
+			showCloseButton: true,
+			timerProgressBar: true,
+			showConfirmButton: false,
+
 			willClose: () => {
 				clearInterval(timerInterval);
 			},
@@ -219,7 +237,7 @@ const CreatePage = () => {
 									<button
 										className='create-page-btn share-btn'
 										onClick={() => {
-											dispatch(closeVerifyModal());
+											publishMessage();
 										}}
 									>
 										نشر

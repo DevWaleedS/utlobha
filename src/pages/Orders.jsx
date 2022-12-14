@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+// MUI
 import { DataBox, BigOrdersTable } from '../components';
 
+// Icons
 import arrowBack from '../data/Icons/icon-30-arrwos back.svg';
 
 
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import OrderDetails from './nestedPages/OrderDetails';
 
 const Orders = () => {
 	const details = useSelector((state) => state.ordersDetails);
@@ -43,8 +45,7 @@ const Orders = () => {
 				<BigOrdersTable />
 			</div>
 
-			{/** orders details page */}
-			<OrderDetails />
+		
 		</section>
 	);
 };
