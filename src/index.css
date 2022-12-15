@@ -4236,7 +4236,9 @@ textarea {
 .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
 	left: 0.875em !important;
 }
-
+.swal2-icon.swal2-success [class^='swal2-success-line'] {
+	height: 0.2em !important;
+}
 .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
 	top: 30px !important;
 	left: 8px !important;
@@ -4249,7 +4251,7 @@ textarea {
 }
 
 .swal2-icon.swal2-success .swal2-success-ring {
-	border: 0.25em solid var(--green-500) !important;
+	border: 0.2em solid var(--green-500) !important;
 }
 .swal2-icon.swal2-success [class^='swal2-success-line'] {
 	background-color: var(--green-500) !important;
@@ -8309,6 +8311,9 @@ textarea {
 	.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
 		left: 0.875em !important;
 	}
+	.swal2-icon.swal2-success [class^='swal2-success-line'] {
+		height: 0.2em !important;
+	}
 
 	.swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
 		top: 30px !important;
@@ -8322,7 +8327,7 @@ textarea {
 	}
 
 	.swal2-icon.swal2-success .swal2-success-ring {
-		border: 0.25em solid var(--green-500) !important;
+		border: 0.2em solid var(--green-500) !important;
 	}
 	.swal2-icon.swal2-success [class^='swal2-success-line'] {
 		background-color: var(--green-500) !important;
