@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -17,18 +18,16 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DatePickerCopm from './DatePickerCopm';
 import FilterSelect from './FilterSelect';
-
-import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-actions-info_outined.svg';
-import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
-import TablePagination from './TablePagination';
 import { Switch } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-
-
+import TablePagination from './TablePagination';
 
 // Sweet alert function
 import Swal from 'sweetalert2';
 
+// Icons
+import { ReactComponent as ReportIcon } from '../data/Icons/icon-24-actions-info_outined.svg';
+import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -216,46 +215,47 @@ export default function BigOrdersTable() {
 		}
 		setSelected([]);
 	};
-	
-function deleteItems() {
-	Swal.fire({
-		title: 'هل أنت متأكد!',
-		text: 'سيتم حذف جميع طلبات المتجر وهذةالخظوة غير قابلة للرجوع',
-		icon: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#02466a',
-		cancelButtonColor: '#ffffff',
-		confirmButtonText: 'تأكيد الحذف',
-		cancelButtonText: 'الغاء الحذف',
-	}).then((result) => {
-		// Delete ALL function
-		if (result.isConfirmed) {
-			const array = [...data];
-			selected.forEach((item, idx) => {
-				const findIndex = array.findIndex((i) => item === i.idx);
-				array.splice(findIndex, 1);
-			});
-			setData(array);
-			setSelected([]);
 
-			let timerInterval;
+	function deleteItems() {
+		Swal.fire({
+			title: 'هل أنت متأكد!',
+			text: 'سيتم حذف جميع طلبات المتجر وهذةالخظوة غير قابلة للرجوع',
+			icon: 'warning',
 
-			// success message
-			Swal.fire({
-				title: 'تم حذف جميع طلبات المتجر بنجاح',
-				icon: 'success',
-				timer: 4000,
-				showCloseButton: true,
-				timerProgressBar: true,
-				showConfirmButton: false,
+			showCancelButton: true,
+			confirmButtonColor: '#02466a',
+			cancelButtonColor: '#ffffff',
+			confirmButtonText: 'تأكيد الحذف',
+			cancelButtonText: 'الغاء الحذف',
+		}).then((result) => {
+			// Delete ALL function
+			if (result.isConfirmed) {
+				const array = [...data];
+				selected.forEach((item, idx) => {
+					const findIndex = array.findIndex((i) => item === i.idx);
+					array.splice(findIndex, 1);
+				});
+				setData(array);
+				setSelected([]);
 
-				willClose: () => {
-					clearInterval(timerInterval);
-				},
-			});
-		}
-	});
-}
+				let timerInterval;
+
+				// success message
+				Swal.fire({
+					title: 'تم حذف جميع طلبات المتجر بنجاح',
+					icon: 'success',
+					timer: 4000,
+					showCloseButton: true,
+					timerProgressBar: true,
+					showConfirmButton: false,
+
+					willClose: () => {
+						clearInterval(timerInterval);
+					},
+				});
+			}
+		});
+	}
 
 	const handleClick = (event, name) => {
 		const selectedIndex = selected.indexOf(name);
@@ -399,7 +399,6 @@ function deleteItems() {
 				</TableContainer>
 			</Paper>
 			<TablePagination />
-			
 		</Box>
 	);
 }
