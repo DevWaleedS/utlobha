@@ -4270,7 +4270,7 @@ textarea {
 	line-height: 3em !important;
 }
 .swal2-icon .swal2-icon-content {
-	display: none;
+display: none !important;
 }
 .swal2-icon.swal2-warning:after {
 	position: absolute;
@@ -8345,7 +8345,7 @@ textarea {
 		line-height: 3em !important;
 	}
 	.swal2-icon .swal2-icon-content {
-		display: none;
+		display: none !important;
 	}
 	.swal2-icon.swal2-warning:after {
 		position: absolute;
