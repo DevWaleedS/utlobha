@@ -227,7 +227,7 @@ export default function EnhancedTable() {
 				Swal.fire({
 					title: 'تم حذف جميع التصنيفات بنجاح',
 					icon: 'success',
-					timer: 400000,
+					timer: 4000,
 					showCloseButton: true,
 					timerProgressBar: true,
 					showConfirmButton: false,

@@ -224,7 +224,7 @@ export default function CustomersDataTable() {
 				Swal.fire({
 					title: 'تم حذف جميع البيانات  بنجاح',
 					icon: 'success',
-					timer: 400000,
+					timer: 4000,
 					showCloseButton: true,
 					timerProgressBar: true,
 					showConfirmButton: false,

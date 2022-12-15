@@ -235,7 +235,7 @@ export default function CartsTables() {
 				Swal.fire({
 					title: 'تم إضافه التصنيف بنجاح',
 					icon: 'success',
-					timer: 400000,
+					timer: 4000,
 					showCloseButton: true,
 					timerProgressBar: true,
 					showConfirmButton: false,

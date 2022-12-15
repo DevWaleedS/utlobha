@@ -221,7 +221,7 @@ export default function CommentsTable() {
 				Swal.fire({
 					title: 'تم حذف جميع التعليقات  بنجاح',
 					icon: 'success',
-					timer: 400000,
+					timer: 4000,
 					showCloseButton: true,
 					timerProgressBar: true,
 					showConfirmButton: false,

@@ -217,7 +217,7 @@ function deleteItems() {
 			Swal.fire({
 				title: 'تم حذف جميع الصفحات  بنجاح',
 				icon: 'success',
-				timer: 400000,
+				timer: 4000,
 				showCloseButton: true,
 				timerProgressBar: true,
 				showConfirmButton: false,
