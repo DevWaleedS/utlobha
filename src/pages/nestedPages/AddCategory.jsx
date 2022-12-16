@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeVerifyModal } from '../../store/slices/VerifyStoreModal-slice';
+import { useNavigate } from 'react-router-dom';
 
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
@@ -8,16 +7,23 @@ import { useDropzone } from 'react-dropzone';
 // sweet alert
 import Swal from 'sweetalert2';
 
-// Tag input
-import { TagInput } from 'evergreen-ui';
-
 // MUI
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import { Button } from '@mui/material';
 
 // ICONS
 import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
-
+import { IoIosArrowDown } from 'react-icons/io';
+import { AiOutlinePlus } from 'react-icons/ai';
+// Modal style
 const style = {
 	position: 'absolute',
 	top: '97px',
@@ -28,20 +34,43 @@ const style = {
 	overflow: 'auto',
 	bgcolor: '#fff',
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+	PaperProps: {
+		style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		},
+	},
+};
+
+const subCategories = ['سماعات هيدفون ', 'اكسسورات '];
+
 const AddCategory = () => {
-	const { isOpen } = useSelector((state) => state.VerifyModal);
-	const dispatch = useDispatch(false);
+	const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 	};
 
-	// to set the values for category tag input
-	const [values, setValues] = React.useState([]);
+	// To set the value from select input
+	const [category, setCategory] = React.useState([]);
+
+	const handleChange = (event) => {
+		const {
+			target: { value },
+		} = event;
+		setCategory(
+			// On autofill we get a stringified value.
+			typeof value === 'string' ? value.split(',') : value
+		);
+	};
 
 	// Sweet alert function
 	const succMessage = () => {
-		dispatch(closeVerifyModal());
+		navigate('/Category');
 		let timerInterval;
 
 		Swal.fire({
@@ -67,7 +96,7 @@ const AddCategory = () => {
 	const [icon, setIcon] = React.useState([]);
 
 	// Get some methods form useDropZone
-	const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: {
 			'image/*': ['jpg', 'png'],
 		},
@@ -106,8 +135,8 @@ const AddCategory = () => {
 	}, []);
 
 	return (
-		<div className='add-category-form' open={isOpen}>
-			<Modal open={isOpen} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+		<div className='add-category-form' open={true}>
+			<Modal open={true} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
 				<Box sx={style}>
 					<div className='add-form-wrapper'>
 						<div className='row '>
@@ -120,7 +149,7 @@ const AddCategory = () => {
 						</div>
 						<form onSubmit={handleSubmit}>
 							<div className='form-body'>
-								<div className='row mb-5'>
+								<div className='row mb-5 '>
 									<div className='col-3'>
 										<label htmlFor='add-icon'>ايقونة التصنيف</label>
 									</div>
@@ -153,7 +182,7 @@ const AddCategory = () => {
 										<label htmlFor='category-name'> أسم التصنيف </label>
 									</div>
 									<div className='col-7'>
-										<input type='text' id='category-name' placeholder='أدخل أسم التصنيف' />
+										<input type='text' id='category-name' placeholder=' أدخل أسم التصنيف الأساسي' />
 									</div>
 								</div>
 								<div className='row mb-5'>
@@ -161,16 +190,39 @@ const AddCategory = () => {
 										<label htmlFor='sub-categories'> التصنيفات الفرعية </label>
 									</div>
 									<div className='col-7'>
-										<TagInput
-											
-											id='sub-categories'
-											className='category-tag-input'
-											width='100%'
-											values={values}
-											onChange={(values) => {
-												setValues(values);
-											}}
-										/>
+										<FormControl sx={{ m: 0, width: '100%' }}>
+											<InputLabel id='demo-multiple-checkbox-label'>الكل</InputLabel>
+											<Select
+												IconComponent={IoIosArrowDown}
+												labelId='demo-multiple-checkbox-label'
+												id='demo-multiple-checkbox'
+												multiple
+												value={category}
+												onChange={handleChange}
+												input={<OutlinedInput />}
+												renderValue={(selected) => selected.join(', ')}
+												MenuProps={MenuProps}
+											>
+												{subCategories.map((name) => (
+													<MenuItem key={name} value={name}>
+														<Checkbox checked={category.indexOf(name) > -1} />
+														<ListItemText primary={name} />
+													</MenuItem>
+												))}
+												<MenuItem className='select-btn d-flex justify-content-center'>
+													<Button className='button'> أختر</Button>
+												</MenuItem>
+											</Select>
+										</FormControl>
+									</div>
+								</div>
+								<div className='row mb-5'>
+									<div className='col-3'></div>
+									<div className='col-7'>
+										<button className='add-new-cate-btn w-100' onClick={() => navigate('AddSubCategory')}>
+											<AiOutlinePlus />
+											<span className='me-2'>اضافة تصنيف فرعي جديد</span>
+										</button>
 									</div>
 								</div>
 							</div>
@@ -188,7 +240,7 @@ const AddCategory = () => {
 										</button>
 									</div>
 									<div className='col-4'>
-										<button className='close-btn' onClick={() => dispatch(closeVerifyModal())}>
+										<button className='close-btn' onClick={() => navigate('/Category')}>
 											إلغاء
 										</button>
 									</div>

@@ -51,7 +51,22 @@ import {
 } from './pages';
 
 // Import Nested Pages
-import { OrderDetails, CourseDetails, EditCoupon, ClientData, EditUserPage, JobTitles, Comments, EditRole, UserData, EditCategory, EditProductPage, CreateRole } from './pages/nestedPages';
+import {
+	OrderDetails,
+	CourseDetails,
+	EditCoupon,
+	ClientData,
+	EditUserPage,
+	JobTitles,
+	Comments,
+	EditRole,
+	UserData,
+	EditCategory,
+	EditProductPage,
+	CreateRole,
+	AddCategory,
+	AddSubCategory,
+} from './pages/nestedPages';
 
 // import EditProductPage from './pages/nestedPages/EditProductPage';
 // import CreateRole from './pages/nestedPages/CreateRole';
@@ -78,10 +93,25 @@ const router = createBrowserRouter([
 				path: 'Category',
 				element: <Category />,
 			},
+			// Add Category page nested page for Category page
+			{
+				path: 'Category/AddCategory',
+				element: <AddCategory />,
+			},
+			// AddSubCategory page nested page for AddCategory page
+			{
+				path: 'Category/AddCategory/AddSubCategory',
+				element: <AddSubCategory />,
+			},
 			// Category details page nested page for Category page
 			{
 				path: 'Category/EditCategory-:id',
 				element: <EditCategory />,
+			},
+
+			{
+				path: 'Category/EditCategory-:id/AddSubCategory',
+				element: <AddSubCategory />,
 			},
 
 			{

@@ -5,7 +5,6 @@ import SelectIndicator from './SelectIndicator';
 
 import { useDispatch } from 'react-redux';
 import { openVerifyModal } from '../store/slices/VerifyStoreModal-slice';
-import AddCategory from '../pages/nestedPages/AddCategory';
 
 const FormSearchWeight = ({ type }) => {
 	const dispatch = useDispatch(true);
@@ -16,16 +15,9 @@ const FormSearchWeight = ({ type }) => {
 
 	let data;
 	switch (type) {
-		case 'category':
-			data = {
-				placeHolder: 'ابحث في التصنيفات',
-				buttonValue: 'اضافه تصنيف',
-			};
-			break;
-
 		case 'product':
 			data = {
-				placeHolder: 'ابحث في المنتجات',
+				placeHolder: 'ابحث عن منتج',
 				buttonValue: '  اضافه منتج من السوق',
 			};
 			break;
@@ -72,9 +64,6 @@ const FormSearchWeight = ({ type }) => {
 					</div>
 				</div>
 			</form>
-
-			{/** add category form */}
-			<AddCategory />
 		</div>
 	);
 };

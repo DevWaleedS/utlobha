@@ -8,6 +8,9 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from '@mui/material';
 
+// Icon
+import { IoIosArrowDown } from 'react-icons/io';
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -24,7 +27,6 @@ const StoreTypes = ['ملابس ', 'حلويات ', 'الكترونيات ', 'م
 export default function MultipleSelectCheckmarks() {
 	const [personName, setPersonName] = React.useState([]);
 
-
 	const handleChange = (event) => {
 		const {
 			target: { value },
@@ -35,13 +37,12 @@ export default function MultipleSelectCheckmarks() {
 		);
 	};
 
-
-
 	return (
 		<div>
 			<FormControl sx={{ m: 1, width: 630 }}>
 				<InputLabel id='demo-multiple-checkbox-label'>نشاط المتجر</InputLabel>
 				<Select
+					IconComponent={IoIosArrowDown}
 					labelId='demo-multiple-checkbox-label'
 					id='demo-multiple-checkbox'
 					multiple
@@ -50,6 +51,7 @@ export default function MultipleSelectCheckmarks() {
 					input={<OutlinedInput label=' نشاط المتجر' />}
 					renderValue={(selected) => selected.join(', ')}
 					MenuProps={MenuProps}
+					
 				>
 					{StoreTypes.map((name) => (
 						<MenuItem key={name} value={name}>

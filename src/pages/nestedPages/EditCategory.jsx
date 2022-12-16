@@ -2,22 +2,28 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import { Button } from '@mui/material';
+
+// ICONS
+import CategoryImage from '../../data/Icons/person.jpg';
+import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
+import { IoIosArrowDown } from 'react-icons/io';
+import { AiOutlinePlus } from 'react-icons/ai';
+
 // import Dropzone Library
 import { useDropzone } from 'react-dropzone';
 
 // sweet alert
 import Swal from 'sweetalert2';
-
-// Tag input
-import { TagInput } from 'evergreen-ui';
-
-//
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-
-// icons
-import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
-import CategoryImage from '../../data/Icons/person.jpg';
 
 const style = {
 	position: 'absolute',
@@ -29,24 +35,45 @@ const style = {
 	overflow: 'auto',
 	bgcolor: '#fff',
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+	PaperProps: {
+		style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		},
+	},
+};
+
+const subCategories = ['سماعات هيدفون ', 'اكسسورات '];
+
 const EditCategory = () => {
 	const { id } = useParams();
-	console.log(id);
 	const navigate = useNavigate();
-
 	const categoriesData = useSelector((state) => state.CategoriesTablesData);
 	const categories = categoriesData.filter((product) => {
 		return product.id === id;
 	});
-	// const { isOpen } = useSelector((state) => state.editCategoryPageModal);
-	// const dispatch = useDispatch(false);
 
+
+	// To set the value from select input
+	const [subCategory, setSubCategory] = React.useState([]);
+	const handleChange = (event) => {
+		const {
+			target: { value },
+		} = event;
+		setSubCategory(
+			// On autofill we get a stringified value.
+			typeof value === 'string' ? value.split(',') : value
+		);
+	};
+
+	
 	const handleSubmit = (event) => {
 		event.preventDefault();
 	};
-
-	// to set the values for category tag input
-	const [values, setValues] = React.useState(['جوالات', 'أجهزة ذكية', 'iphone']);
 
 	// Sweet alert function
 	const succMessage = () => {
@@ -81,7 +108,7 @@ const EditCategory = () => {
 	const [icon, setIcon] = React.useState([]);
 
 	// Get some methods form useDropZone
-	const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: {
 			'image/*': ['jpg', 'png'],
 		},
@@ -176,15 +203,39 @@ const EditCategory = () => {
 											<label htmlFor='sub-categories'> التصنيفات الفرعية </label>
 										</div>
 										<div className='col-7'>
-											<TagInput
-												id='sub-categories'
-												className='category-tag-input'
-												width='100%'
-												values={values}
-												onChange={(values) => {
-													setValues(values);
-												}}
-											/>
+											<FormControl sx={{ m: 0, width: '100%' }}>
+												<InputLabel id='demo-multiple-checkbox-label'>الكل</InputLabel>
+												<Select
+													IconComponent={IoIosArrowDown}
+													labelId='demo-multiple-checkbox-label'
+													id='demo-multiple-checkbox'
+													multiple
+													value={subCategory}
+													onChange={handleChange}
+													input={<OutlinedInput />}
+													renderValue={(selected) => selected.join(', ')}
+													MenuProps={MenuProps}
+												>
+													{subCategories.map((name) => (
+														<MenuItem key={name} value={name}>
+															<Checkbox checked={subCategory.indexOf(name) > -1} />
+															<ListItemText primary={name} />
+														</MenuItem>
+													))}
+													<MenuItem className='select-btn d-flex justify-content-center'>
+														<Button className='button'> أختر</Button>
+													</MenuItem>
+												</Select>
+											</FormControl>
+										</div>
+									</div>
+									<div className='row mb-5'>
+										<div className='col-3'></div>
+										<div className='col-7'>
+											<button className='add-new-cate-btn w-100' onClick={() => navigate('AddSubCategory')}>
+												<AiOutlinePlus />
+												<span className='me-2'>اضافة تصنيف فرعي جديد</span>
+											</button>
 										</div>
 									</div>
 								</div>

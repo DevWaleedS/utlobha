@@ -33,16 +33,17 @@ const Pages = () => {
 						</nav>
 					</div>
 					<div className='col-6 d-flex justify-content-end'>
-						<div className='add-page-btn'></div>
-						<Button
-							variant='contained'
-							onClick={() => {
-								dispatch(openVerifyModal());
-							}}
-						>
-							<MdAdd />
-							<span>انشاء صفحة</span>
-						</Button>
+						<div className='add-page-btn'>
+							<Button
+								variant='contained'
+								onClick={() => {
+									dispatch(openVerifyModal());
+								}}
+							>
+								<MdAdd />
+								<span className='me-2'>انشاء صفحة</span>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>

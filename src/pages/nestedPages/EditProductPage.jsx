@@ -9,9 +9,18 @@ import { useDropzone } from 'react-dropzone';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import { Button } from '@mui/material';
 
 // icons and images
 import { ReactComponent as UploadIcon } from '../../data/Icons/icon-24-uplad.svg';
+import { IoIosArrowDown } from 'react-icons/io';
 
 // close page modal function
 import { useNavigate, useParams } from 'react-router-dom';
@@ -26,6 +35,20 @@ const style = {
 	overflow: 'auto',
 	bgcolor: '#fff',
 };
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+	PaperProps: {
+		style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		},
+	},
+};
+
+const subCategories = ['سماعات هيدفون ', 'اكسسورات '];
+
 const EditProductPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -36,6 +59,24 @@ const EditProductPage = () => {
 	const Products = ProductData.filter((coupon) => {
 		return coupon.productNumber === id;
 	});
+
+	// To set the value from select input
+	const [subCategory, setSubCategory] = React.useState([]);
+	const [category, setCategory] = React.useState('');
+
+	const handleCategoryChange = (event) => {
+		setCategory(event.target.value);
+	};
+
+	const handleChange = (event) => {
+		const {
+			target: { value },
+		} = event;
+		setSubCategory(
+			// On autofill we get a stringified value.
+			typeof value === 'string' ? value.split(',') : value
+		);
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -74,7 +115,7 @@ const EditProductPage = () => {
 	const [icon, setIcon] = React.useState([]);
 
 	// Get some methods form useDropZone
-	const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: {
 			'image/*': ['jpg', 'png'],
 		},
@@ -180,20 +221,47 @@ const EditProductPage = () => {
 											<label htmlFor='product-category'> التصنيف </label>
 										</div>
 										<div className='col-7'>
-											<select className='form-select' id='product-category' value={currentProduct.productCategory}>
-												<option defaultValue={'الكل'}>الكل</option>
-												<option value={'اجهزة جوال'}>اجهزة جوال </option>
-												<option value={'اكسسوارات'}>اكسسوارات</option>
-												<option value={'لابتوب'}>لابتوب</option>
-											</select>
+											<FormControl sx={{ m: 0, width: '100%' }}>
+												<InputLabel id='demo-multiple-checkbox-label sub-category'>الكل</InputLabel>
+												<Select IconComponent={IoIosArrowDown} labelId='demo-multiple-checkbox-label' id='demo-multiple-checkbox' value={category} onChange={handleCategoryChange}>
+													<MenuItem value={'اكسسوارات'}>اكسسوارات</MenuItem>
+													<MenuItem value={'اجهزة جوال'}>اجهزة جوال</MenuItem>
+													<MenuItem value={'لابتوب'}>لابتوب</MenuItem>
+													<MenuItem value={' باوربنك'}> باوربنك</MenuItem>
+												</Select>
+											</FormControl>
 										</div>
 									</div>
 									<div className='row mb-5'>
 										<div className='col-3'>
 											<label htmlFor='sub-category'> التصنيفات الفرعية </label>
 										</div>
+
 										<div className='col-7'>
-											<input type='text' id='sub-category' value={' جوالات   أجهزة ذكية   iphone'} />
+											<FormControl sx={{ m: 0, width: '100%' }}>
+												<InputLabel id='demo-multiple-checkbox-label sub-category'>الكل</InputLabel>
+												<Select
+													IconComponent={IoIosArrowDown}
+													labelId='demo-multiple-checkbox-label'
+													id='demo-multiple-checkbox'
+													multiple
+													value={subCategory}
+													onChange={handleChange}
+													input={<OutlinedInput />}
+													renderValue={(selected) => selected.join(', ')}
+													MenuProps={MenuProps}
+												>
+													{subCategories.map((name) => (
+														<MenuItem key={name} value={name}>
+															<Checkbox checked={subCategory.indexOf(name) > -1} />
+															<ListItemText primary={name} />
+														</MenuItem>
+													))}
+													<MenuItem className='select-btn d-flex justify-content-center'>
+														<Button className='button'> أختر</Button>
+													</MenuItem>
+												</Select>
+											</FormControl>
 										</div>
 									</div>
 									<div className='row mb-5'>

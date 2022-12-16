@@ -22,6 +22,7 @@ import CommentsTableDataSlice from './slices/CommentsTable-slice';
 import jobTitleDataSlice from './slices/jobTitle-slice'
 
 
+
 export const store = configureStore({
 	reducer: {
 		details: DetailsSlice,
@@ -45,5 +46,6 @@ export const store = configureStore({
 		AddNewUserModal: AddNewUserSlice,
 		CommentsTable: CommentsTableDataSlice,
 		jobTitleData: jobTitleDataSlice,
+
 	},
 });

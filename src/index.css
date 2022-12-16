@@ -223,7 +223,9 @@ p {
 	-ms-border-radius: 0 !important;
 	-o-border-radius: 0 !important;
 }
-
+.MuiFormLabel-root.Mui-focused {
+	display: none !important;
+}
 .form-check-input.checkbox:checked[type='checkbox'] {
 	background-color: var(--primary-400) !important;
 }
@@ -236,6 +238,9 @@ p {
 	background-color: var(--green-400) !important;
 }
 
+button svg {
+	font-size: 24px;
+}
 select,
 input,
 textarea,
@@ -1195,9 +1200,18 @@ nav.navigation {
 }
 /* ------------------------------------------------------------------------------------ */
 /* products page */
+.products .input-group .search-input {
+	width: 30%;
+}
+.products .input-group .select-input {
+	width: 41%;
+	margin-left: 30px !important;
+}
 .products .mange-file {
 	width: 98%;
 	margin: 0 auto;
+	padding: 25px 16px;
+	padding-left: 0;
 }
 .products .mange-file button,
 .upload-files label {
@@ -1213,31 +1227,30 @@ nav.navigation {
 	-o-border-radius: 10px;
 }
 .products .export-files {
-	width: 18%;
-	margin-left: 16px;
+	width: 14%;
+	margin-left: 26px;
 }
 .products .mange-file .export-btn {
-	background-color: var(--second-600);
+	background-color: #03787a;
 	width: 100%;
 	color: var(--white-300);
 }
 .upload-files {
-	width: 18%;
-	margin-left: 16px;
+	width: 14%;
+	margin-left: 26px;
 }
 .upload-files .upload-files-input {
 	display: none;
 }
 .upload-files label {
-	background-color: var(--black-100);
+	background-color: #d3d3d3;
 	width: 100%;
-
 	cursor: pointer;
 }
 .drop-files {
-	flex: 1 1;
-	width: 55%;
+	width: 40%;
 	height: 55px !important ;
+	margin-left: 45px;
 	color: var(--gray-600) !important;
 	border: 2px dashed var(--black-300) !important;
 	display: flex;
@@ -1249,6 +1262,13 @@ nav.navigation {
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
 	cursor: pointer;
+}
+.add-new-product {
+	width: 22%;
+}
+.add-new-product .add-new-product-btn {
+	background-color: #1dbbbe;
+	color: var(--white-300);
 }
 
 .drop-files p {
@@ -1271,7 +1291,7 @@ nav.navigation {
 }
 .filter-wrapper .date-picker-col .date-picker .rs-picker-date .rs-picker-toggle.rs-btn .rs-picker-toggle-caret,
 .filter-wrapper .rs-picker-daterange .rs-picker-toggle.rs-btn .rs-picker-toggle-caret {
-	background: var(--second-300) !important;
+	background: #00ccf2 !important;
 }
 .filter-btn-col {
 	width: 20%;
@@ -1281,7 +1301,7 @@ nav.navigation {
 }
 
 .filter-wrapper .filter-select {
-	background: var(--second-300) !important;
+	background: #00ccf2 !important;
 	color: var(--white-100);
 	height: 55px;
 	text-align: center;
@@ -1736,7 +1756,6 @@ nav.navigation {
 }
 
 /* Order number */
-
 .order-rate-number {
 	padding: 30px;
 	color: var(--black-200);
@@ -1745,6 +1764,23 @@ nav.navigation {
 }
 
 /* Pages styles */
+.add-page-btn {
+	width: 220px;
+}
+.add-page-btn button {
+	background-color: #237eae !important;
+	color: var(--white-100);
+	width: 100%;
+	font-size: 20px;
+	max-width: 100%;
+	height: 60px;
+	border: 0;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
 
 .pages-search-bx .MuiFormControl-root {
 	width: 100%;
@@ -2143,19 +2179,24 @@ nav.navigation {
 	-ms-border-radius: 5px;
 	-o-border-radius: 5px;
 }
-.select-store-type .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+.select-store-type .MuiOutlinedInput-input {
 	padding: 14.5px 14px;
 }
 .select-store-type .MuiFormLabel-root {
 	color: var(--black-600) !important;
 	font-weight: 400 !important;
 	font-size: 20px;
-	left: 30px !important;
+	right: 50px !important;
+	transform-origin: top right !important;
 }
-.select-store-type .MuiSvgIcon-root {
+
+.select-store-type .MuiSelect-icon {
 	display: block !important;
+	position: absolute;
+	right: 590px !important;
+	top: calc(50% - 0.5em);
+	pointer-events: none;
 	color: var(--second-500);
-	right: 600px !important;
 }
 .select-store-type .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
 	border: none !important;
@@ -2478,15 +2519,20 @@ textarea {
 /* Management and users page  */
 
 .management-page .add-page-btn button {
-	width: 180px;
-	height: 50px;
+	width: 100%;
+	height: 62px;
 	box-shadow: none;
+	font-size: 22px;
 }
 
 .management-page .add-page-btn .outline {
 	background-color: var(--white-100) !important;
 	color: var(--primary-500);
-	border: 2px solid var(--primary-200) !important;
+	border: 2px solid var(--primary-500) !important;
+}
+.management-page .add-page-btn .roles-btn {
+	background-color:var(--primary-500) !important;
+	width: 85%;
 }
 .management-page .table-filter .table-title {
 	background: var(--white-100);
@@ -2506,23 +2552,22 @@ textarea {
 	font-weight: 600;
 	color: #000;
 }
-.table-filter .filter-user-input-group input,
-.table-filter .filter-user-input-group select {
+.table-filter .filter-user-input-group input {
 	position: relative;
 	background-color: transparent;
 	border: 1px solid var(--gray-100) !important;
-	height: 55px;
+	height: 62.65px;
 	width: 100%;
-	font-size: 20px;
+	font-size: 18px;
 	padding: 0 20px;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-ms-border-radius: 10px;
-	-o-border-radius: 10px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
 }
 .table-filter .filter-user-input-group input:focus,
-.table-filter .filter-user-input-group select:focus {
+.table-filter .filter-user-selector .MuiOutlinedInput-notchedOutline:focus {
 	border: 1px solid var(--gray-200) !important;
 	box-shadow: 0 0 5px 0 var(--gray-200) !important;
 }
@@ -2532,9 +2577,26 @@ textarea {
 .table-filter .filter-user-input-group input::placeholder {
 	color: var(--gray-300);
 }
+/* ------------------------- filter-user-selector -------------- */
+.table-filter .filter-user-selector .MuiOutlinedInput-notchedOutline {
+	border: 1px solid var(--gray-100) !important;
+	/* height: 62.65px !important; */
+	border-radius: 8px !important;
+	-webkit-border-radius: 8px !important;
+	-moz-border-radius: 8px !important;
+	-ms-border-radius: 8px !important;
+	-o-border-radius: 8px !important;
+}
+.table-filter .filter-user-selector .MuiSelect-icon {
+	position: absolute;
+	right: 510px !important;
+	top: calc(50% - 0.5em);
+	pointer-events: none;
+	color: var(--second-500) !important;
+}
 .filter-user-input-group .search-icon {
 	position: relative;
-	top: 40px;
+	top: 45px;
 	right: 20px;
 }
 .filter-user-input-group .search-icon svg {
@@ -2776,42 +2838,40 @@ textarea {
 .add-form-wrapper form textarea::placeholder {
 	color: var(--gray-400);
 }
-
-/* category  Tag input */
-.add-form-wrapper form .category-tag-input {
-	background-color: #fafafa !important ;
+.add-form-wrapper form .MuiOutlinedInput-notchedOutline {
 	font-size: 18px;
 	padding: 0;
 	border: 1px solid #efeff0 !important;
 	box-shadow: 0 0 1px 1px var(--gray-200) !important;
-	border-radius: 8px;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	-ms-border-radius: 8px;
-	-o-border-radius: 8px;
+	border-radius: 8px !important;
+	-webkit-border-radius: 8px !important;
+	-moz-border-radius: 8px !important;
+	-ms-border-radius: 8px !important;
+	-o-border-radius: 8px !important;
 }
-.add-form-wrapper form .category-tag-input .ub-dspl_flex {
-	display: flex;
-	align-items: center;
+.add-form-wrapper form .MuiOutlinedInput-notchedOutline:hover {
+	border: 1px solid #efeff0 !important;
 }
-.add-form-wrapper form .category-tag-input .ub-dspl_flex strong {
-	padding: 16px;
-	border-radius: 20px;
-	display: flex;
-	justify-content: space-between;
+.add-form-wrapper form .MuiFormLabel-root {
+	color: var(--black-600) !important;
+	font-weight: 400 !important;
+	font-size: 20px;
+	right: 50px !important;
+	transform-origin: top right !important;
 }
-.add-form-wrapper form .category-tag-input .ub-dspl_flex strong svg {
-	width: 16px;
-	height: 16px;
-	border: 0.2em solid var(--black-400);
-	margin-right: 10px;
+.MuiFormLabel-root.Mui-focused {
+	display: none !important;
 }
-.add-form-wrapper form .category-tag-input input {
-	background-color: #fafafa !important;
-	width: 20%;
-	border: none !important;
-	box-shadow: none !important;
+
+.add-form-wrapper form .MuiSelect-icon {
+	display: block !important;
+	position: absolute;
+	right: 570px !important;
+	top: calc(50% - 0.5em);
+	pointer-events: none;
+	z-index: 1;
 }
+
 /* ------------------- */
 .add-form-wrapper .form-footer button {
 	width: 100%;
@@ -3282,6 +3342,11 @@ textarea {
 	border-bottom: 1px solid var(--gray-100);
 	padding: 20px;
 }
+.create-pages-form-wrapper .form-body .check-box-inputs .wrapper .body.page-category {
+	height: calc(334px - 75px);
+	overflow-y: auto;
+}
+
 .create-pages-form-wrapper .form-body .check-box-inputs .wrapper .body .checkbox-row {
 	padding: 18px;
 	padding-right: 12px;
@@ -3293,7 +3358,7 @@ textarea {
 .create-pages-form-wrapper .form-body .check-box-inputs .wrapper input,
 .create-pages-form-wrapper .form-body .check-box-inputs .wrapper button {
 	background-color: var(--white-100) !important;
-	border: 1px solid var(--second-500) !important;
+	border: 1px solid #237eae !important;
 	height: 65px;
 	border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -3303,10 +3368,10 @@ textarea {
 }
 .create-pages-form-wrapper .form-body .check-box-inputs .wrapper input {
 	padding: 20px;
-	caret-color: var(--second-500);
+	caret-color: #237eae;
 }
 .create-pages-form-wrapper .form-body .check-box-inputs .wrapper button {
-	color: var(--second-500);
+	color: #237eae;
 	font-weight: 400;
 	font-size: 24px;
 }
@@ -4218,6 +4283,11 @@ textarea {
 	height: 13em !important;
 	top: -40% !important;
 }
+
+.swal2-close:focus {
+	outline: none !important;
+	box-shadow: none !important;
+}
 .swal2-title {
 	font-weight: 500 !important;
 	font-size: 26px !important;
@@ -4226,28 +4296,30 @@ textarea {
 	background-color: var(--green-500) !important;
 	height: 1rem !important;
 }
-.swal2-success {
+.swal2-icon.swal2-success {
+	border: transparent !important;
 	position: absolute !important;
-	top: 40px !important;
-	right: 25px !important;
-	width: 3em !important;
-	height: 3em !important;
+	top: 50px !important;
+	right: 35px !important;
+	width: 2em !important;
+	height: 2em !important;
 }
-.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
-	left: 0.875em !important;
+.swal2-icon.swal2-success [class^='swal2-success-circular-line'],
+.swal2-success-fix {
+	display: none !important;
 }
 .swal2-icon.swal2-success [class^='swal2-success-line'] {
 	height: 0.2em !important;
 }
 .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
-	top: 30px !important;
-	left: 8px !important;
+	top: 19px !important;
+	left: 5px !important;
 	width: 0.5625em !important;
 }
 .swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
-	top: 1.375em !important;
-	right: 0.5em !important;
-	width: 1.9375em !important;
+	top: 15px !important;
+	right: 3px !important;
+	width: 1.3em !important;
 }
 
 .swal2-icon.swal2-success .swal2-success-ring {
@@ -4422,6 +4494,12 @@ textarea {
 		width: 100%;
 	}
 }
+@media screen and (min-width: 992px) {
+	/*  .select-store-type */
+	.select-store-type .MuiSelect-icon {
+		right: 320px !important;
+	}
+}
 
 @media screen and (min-width: 1024px) {
 	.category,
@@ -4476,8 +4554,8 @@ textarea {
 		padding: 1.5rem !important;
 	}
 
-	.select-store-type .MuiSvgIcon-root {
-		right: 400px !important;
+	.select-store-type .MuiSelect-icon {
+		right: 420px !important;
 	}
 
 	/* ----------------------------------- */
@@ -4523,6 +4601,11 @@ textarea {
 	}
 	.analyse-box svg {
 		font-size: 14px;
+	}
+
+	/* table-filter  */
+	.table-filter .filter-user-selector .MuiSelect-icon {
+		right: 325px !important;
 	}
 	/* Styles  for all modal */
 	/* nested-pages-modal */
@@ -5462,10 +5545,22 @@ textarea {
 	}
 	/* ------------------------------------------------------------------------------------ */
 	/* products page */
+
+	.products .input-group .search-input {
+		width: 30%;
+	}
+	.products .input-group .select-input {
+		width: 41%;
+		margin-left: 30px !important;
+	}
+
 	.products .mange-file {
 		width: 98%;
 		margin: 0 auto;
+		padding: 25px 16px;
+		padding-left: 0;
 	}
+
 	.products .mange-file button,
 	.upload-files label {
 		display: flex;
@@ -5480,31 +5575,30 @@ textarea {
 		-o-border-radius: 10px;
 	}
 	.products .export-files {
-		width: 18%;
-		margin-left: 16px;
+		width: 14%;
+		margin-left: 26px;
 	}
 	.products .mange-file .export-btn {
-		background-color: var(--second-600);
+		background-color: #03787a;
 		width: 100%;
 		color: var(--white-300);
 	}
 	.upload-files {
-		width: 18%;
-		margin-left: 16px;
+		width: 14%;
+		margin-left: 26px;
 	}
 	.upload-files .upload-files-input {
 		display: none;
 	}
 	.upload-files label {
-		background-color: var(--black-100);
+		background-color: #d3d3d3;
 		width: 100%;
-
 		cursor: pointer;
 	}
 	.drop-files {
-		flex: 1 1;
-		width: 55%;
+		width: 40%;
 		height: 55px !important ;
+		margin-left: 45px;
 		color: var(--gray-600) !important;
 		border: 2px dashed var(--black-300) !important;
 		display: flex;
@@ -5518,6 +5612,14 @@ textarea {
 		cursor: pointer;
 	}
 
+	.add-new-product {
+		width: 22%;
+	}
+
+	.add-new-product .add-new-product-btn {
+		background-color: #1dbbbe;
+		color: var(--white-300);
+	}
 	.drop-files p {
 		color: var(--black-200);
 		font-weight: 500;
@@ -5539,7 +5641,7 @@ textarea {
 
 	.filter-wrapper .date-picker-col .date-picker .rs-picker-date .rs-picker-toggle.rs-btn .rs-picker-toggle-caret,
 	.filter-wrapper .rs-picker-daterange .rs-picker-toggle.rs-btn .rs-picker-toggle-caret {
-		background: var(--second-300) !important;
+		background: #00ccf2 !important;
 	}
 
 	.filter-btn-col {
@@ -5550,7 +5652,7 @@ textarea {
 	}
 
 	.filter-wrapper .filter-select {
-		background: var(--second-300) !important;
+		background: #00ccf2 !important;
 		color: var(--white-100);
 		height: 55px;
 		text-align: center;
@@ -6357,20 +6459,26 @@ textarea {
 		-ms-border-radius: 5px;
 		-o-border-radius: 5px;
 	}
-	.select-store-type .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+	.select-store-type .MuiOutlinedInput-input {
 		padding: 14.5px 14px;
 	}
 	.select-store-type .MuiFormLabel-root {
 		color: var(--black-600) !important;
 		font-weight: 400 !important;
 		font-size: 20px;
-		left: 30px !important;
+		right: 50px !important;
+		transform-origin: top right !important;
 	}
-	.select-store-type .MuiSvgIcon-root {
+
+	.select-store-type .MuiSelect-icon {
 		display: block !important;
+		position: absolute;
+		right: 590px !important;
+		top: calc(50% - 0.5em);
+		pointer-events: none;
 		color: var(--second-500);
-		right: 600px !important;
 	}
+
 	.select-store-type .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
 		border: none !important;
 		border-radius: 10px;
@@ -6690,17 +6798,20 @@ textarea {
 	/* --------------------------------------------------------------------------------------------------- */
 
 	/* Management and users page  */
-
 	.management-page .add-page-btn button {
-		width: 180px;
-		height: 50px;
+		width: 100%;
+		height: 62px;
 		box-shadow: none;
 	}
 
 	.management-page .add-page-btn .outline {
 		background-color: var(--white-100) !important;
 		color: var(--primary-500);
-		border: 2px solid var(--primary-200) !important;
+		border: 2px solid var(--primary-500) !important;
+	}
+	.management-page .add-page-btn .roles-btn {
+		background-color:var(--primary-500) !important;
+		width: 85%;
 	}
 	.management-page .table-filter .table-title {
 		background: var(--white-100);
@@ -6720,23 +6831,23 @@ textarea {
 		font-weight: 600;
 		color: #000;
 	}
-	.table-filter .filter-user-input-group input,
-	.table-filter .filter-user-input-group select {
+	.table-filter .filter-user-input-group input {
 		position: relative;
 		background-color: transparent;
 		border: 1px solid var(--gray-100) !important;
-		height: 55px;
+		height: 62.65px;
 		width: 100%;
-		font-size: 20px;
+		font-size: 18px;
 		padding: 0 20px;
-		border-radius: 10px;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		-ms-border-radius: 10px;
-		-o-border-radius: 10px;
+		border-radius: 8px;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		-ms-border-radius: 8px;
+		-o-border-radius: 8px;
 	}
+
 	.table-filter .filter-user-input-group input:focus,
-	.table-filter .filter-user-input-group select:focus {
+	.table-filter .filter-user-selector .MuiOutlinedInput-notchedOutline:focus {
 		border: 1px solid var(--gray-200) !important;
 		box-shadow: 0 0 5px 0 var(--gray-200) !important;
 	}
@@ -6746,9 +6857,27 @@ textarea {
 	.table-filter .filter-user-input-group input::placeholder {
 		color: var(--gray-300);
 	}
+
+	/* ------------- filter-user-selector ---------------- */
+	.table-filter .filter-user-selector .MuiOutlinedInput-notchedOutline {
+		border: 1px solid var(--gray-100) !important;
+		/* height: 62.65px !important; */
+		border-radius: 8px !important;
+		-webkit-border-radius: 8px !important;
+		-moz-border-radius: 8px !important;
+		-ms-border-radius: 8px !important;
+		-o-border-radius: 8px !important;
+	}
+	.table-filter .filter-user-selector .MuiSelect-icon {
+		position: absolute;
+		right: 510px !important;
+		top: calc(50% - 0.5em);
+		pointer-events: none;
+		color: var(--second-500) !important;
+	}
 	.filter-user-input-group .search-icon {
 		position: relative;
-		top: 40px;
+		top: 45px;
 		right: 20px;
 	}
 	.filter-user-input-group .search-icon svg {
@@ -6921,40 +7050,53 @@ textarea {
 		color: var(--gray-400);
 	}
 
-	/* category  Tag input */
-	.add-form-wrapper form .category-tag-input {
-		background-color: #fafafa !important ;
+	.add-form-wrapper form .MuiOutlinedInput-notchedOutline {
 		font-size: 18px;
 		padding: 0;
 		border: 1px solid #efeff0 !important;
 		box-shadow: 0 0 1px 1px var(--gray-200) !important;
+		border-radius: 8px !important;
+		-webkit-border-radius: 8px !important;
+		-moz-border-radius: 8px !important;
+		-ms-border-radius: 8px !important;
+		-o-border-radius: 8px !important;
+	}
+	.add-form-wrapper form .MuiOutlinedInput-notchedOutline:hover {
+		border: 1px solid #efeff0 !important;
+	}
+	.add-form-wrapper form .MuiFormLabel-root {
+		color: var(--black-600) !important;
+		font-weight: 400 !important;
+		font-size: 20px;
+		right: 50px !important;
+		transform-origin: top right !important;
+	}
+
+	.add-form-wrapper form .MuiSelect-icon {
+		display: block !important;
+		position: absolute;
+		right: 570px !important;
+		top: calc(50% - 0.5em);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.add-form-wrapper form .add-new-cate-btn {
+		background-color: #fafafa !important ;
+		border: 2px dashed var(--gray-300) !important;
+		color: var(--black-400);
+		font-size: 20px;
+		font-weight: 400;
+		height: 60px;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		border-radius: 8px;
 		-webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
 		-ms-border-radius: 8px;
 		-o-border-radius: 8px;
-	}
-	.add-form-wrapper form .category-tag-input .ub-dspl_flex {
-		display: flex;
-		align-items: center;
-	}
-	.add-form-wrapper form .category-tag-input .ub-dspl_flex strong {
-		padding: 16px;
-		border-radius: 20px;
-		display: flex;
-		justify-content: space-between;
-	}
-	.add-form-wrapper form .category-tag-input .ub-dspl_flex strong svg {
-		width: 16px;
-		height: 16px;
-		border: 0.2em solid var(--black-400);
-		margin-right: 10px;
-	}
-	.add-form-wrapper form .category-tag-input input {
-		background-color: #fafafa !important;
-		width: 20%;
-		border: none !important;
-		box-shadow: none !important;
 	}
 	/* ------------------- */
 
@@ -7357,6 +7499,10 @@ textarea {
 	.create-pages-form-wrapper .form-body .check-box-inputs .wrapper .body .checkbox-row {
 		border-bottom: 1px solid var(--gray-100);
 		padding: 20px;
+	}
+	.create-pages-form-wrapper .form-body .check-box-inputs .wrapper .body.page-category {
+		height: calc(334px - 75px);
+		overflow-y: auto;
 	}
 	.create-pages-form-wrapper .form-body .check-box-inputs .wrapper .body .checkbox-row {
 		padding: 18px;
@@ -8293,6 +8439,10 @@ textarea {
 		height: 13em !important;
 		top: -40% !important;
 	}
+	.swal2-close:focus {
+		outline: none !important;
+		box-shadow: none !important;
+	}
 	.swal2-title {
 		font-weight: 500 !important;
 		font-size: 26px !important;
@@ -8301,29 +8451,31 @@ textarea {
 		background-color: var(--green-500) !important;
 		height: 1rem !important;
 	}
-	.swal2-success {
+	.swal2-icon.swal2-success {
+		border: transparent !important;
 		position: absolute !important;
-		top: 40px !important;
-		right: 25px !important;
-		width: 3em !important;
-		height: 3em !important;
+		top: 50px !important;
+		right: 35px !important;
+		width: 2em !important;
+		height: 2em !important;
 	}
-	.swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
-		left: 0.875em !important;
+	.swal2-icon.swal2-success [class^='swal2-success-circular-line'],
+	.swal2-success-fix {
+		display: none !important;
 	}
 	.swal2-icon.swal2-success [class^='swal2-success-line'] {
 		height: 0.2em !important;
 	}
 
 	.swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
-		top: 30px !important;
-		left: 8px !important;
+		top: 19px !important;
+		left: 5px !important;
 		width: 0.5625em !important;
 	}
 	.swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
-		top: 1.375em !important;
-		right: 0.5em !important;
-		width: 1.9375em !important;
+		top: 15px !important;
+		right: 3px !important;
+		width: 1.3em !important;
 	}
 
 	.swal2-icon.swal2-success .swal2-success-ring {

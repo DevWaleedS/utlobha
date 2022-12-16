@@ -69,7 +69,13 @@ function EnhancedTableHead(props) {
 					{' '}
 					رقم الطلب
 				</TableCell>
-				<TableCell sx={{ color: '#02466a' }} align='center'>
+				<TableCell
+					sx={{ color: '#02466a' }}
+					align='right'
+					style={{
+						paddingRight: '70px',
+					}}
+				>
 					الاسم
 				</TableCell>
 				<TableCell align='center' sx={{ color: '#02466a' }}>
@@ -344,7 +350,17 @@ export default function BigOrdersTable() {
 
 											<TableCell align='center'>
 												<div className='sub-categories'>
-													<span class='status' style={{ backgroundColor: row.bgColor, color: row.color }}>
+													<span
+														class='status d-flex justify-content-center align-items-center'
+														style={{
+															backgroundColor: row.bgColor,
+															color: row.color,
+															borderRadius: '16px',
+															padding: '5px 25px',
+															fontWeight: 500,
+															width: '120px',
+														}}
+													>
 														{row.stats}
 													</span>
 												</div>

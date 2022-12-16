@@ -182,7 +182,19 @@ const CreatePage = () => {
 											<div className='title'>
 												<h4>تصنيف الصفحة</h4>
 											</div>
-											<div className='body '>
+											<div className='body page-category '>
+												<div className='checkbox-row'>
+													<Checkbox id='blog' />
+													<label htmlFor='blog'>المدونة</label>
+												</div>
+												<div className='checkbox-row'>
+													<Checkbox id='priv' />
+													<label htmlFor='priv'>سياسة الخصوصية</label>
+												</div>
+												<div className='checkbox-row'>
+													<Checkbox id='public' />
+													<label htmlFor='public'>عام</label>
+												</div>
 												<div className='checkbox-row'>
 													<Checkbox id='blog' />
 													<label htmlFor='blog'>المدونة</label>
@@ -201,7 +213,7 @@ const CreatePage = () => {
 									<div className='col-6'>
 										<div className='wrapper'>
 											<div className='title'>
-												<h4> ربط (تاج)</h4>
+												<h4> الكلمات المفتاحية </h4>
 											</div>
 											<div className='body '>
 												<div className='row p-4'>

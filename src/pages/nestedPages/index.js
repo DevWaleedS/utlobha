@@ -2,6 +2,7 @@ export { default as SalesReports } from './SalesReports';
 export { default as CustomersReports } from './CustomersReports';
 
 export { default as AddCategory } from './AddCategory';
+export { default as AddSubCategory } from './AddSubCategory';
 export { default as AddProduct } from './AddProduct';
 export { default as AddCoupon } from './AddCoupon';
 export { default as EditCoupon } from './EditCoupon';
@@ -23,4 +24,6 @@ export { default as UserData } from './UserData';
 export { default as EditCategory } from './EditCategory';
 export { default as EditProductPage } from './EditProductPage';
 
-// export { default as SalesReport } from './SalesReport';
+// export { default as AddSubCategory } from './AddSubCategory';
+// export { default as AddSubCategory } from './AddSubCategory';
+// export { default as AddSubCategory } from './AddSubCategory';
