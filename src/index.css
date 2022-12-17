@@ -4442,7 +4442,7 @@ textarea {
 /* -------------------------------------------------------------------------------------------------------------------------------- */
 /* user-details-page */
 .edit-user-body {
-	padding-bottom: 0;
+	padding-bottom: 0 !important;;
 }
 .user-details-title {
 	background-color: #ebebeb;
@@ -8739,7 +8739,7 @@ textarea {
 	/* -------------------------------------------------------------------------------------------------------------------------------- */
 /* user-details-page */
 .edit-user-body {
-	padding-bottom: 0;
+	padding-bottom: 0 !important;;
 }
 .user-details-title {
 	background-color: #ebebeb;
