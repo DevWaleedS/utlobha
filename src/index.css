@@ -4404,7 +4404,7 @@ textarea {
 }
 
 /* warning alert  */
-
+.swal2-html-container {overflow: hidden !important;}
 .swal2-icon.swal2-warning {
 	background-image: url(./data/Icons/warning.png);
 	background-position: center;
@@ -8703,6 +8703,7 @@ textarea {
 	}
 
 	/* warning alert  */
+	.swal2-html-container {overflow: hidden !important;}
 	.swal2-icon.swal2-warning {
 		background-image: url(./data/Icons/warning.png);
 		background-position: center;
