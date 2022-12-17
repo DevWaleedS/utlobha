@@ -23,7 +23,20 @@ const ordersDataTable = [
 		icon: person,
 		name: '  خالد الأحمدي',
 		stats: '  جاري التجهيز',
-		location: 'الرياض',
+		location: 'جدة',
+		price: 12,
+		total: 84,
+
+		bgColor: '#ffecd1c7',
+		color: '#ff9f1a',
+	},
+	{
+		id: '03',
+		number: ' 0052',
+		icon: person,
+		name: '  خالد الأحمدي',
+		stats: '  جاري التجهيز',
+		location: 'الدمام',
 		price: 12,
 		total: 84,
 
@@ -32,7 +45,7 @@ const ordersDataTable = [
 	},
 
 	{
-		id: '03',
+		id: '04',
 		number: ' 0052',
 		icon: person,
 		name: '  ولاء محمد المحمدي',
@@ -45,7 +58,7 @@ const ordersDataTable = [
 		color: '#46c7ca',
 	},
 	{
-		id: '04',
+		id: '05',
 		number: ' 0052',
 		icon: person,
 		name: 'أسيل عبد الرحمن',
@@ -58,7 +71,7 @@ const ordersDataTable = [
 		color: '#928fd5',
 	},
 	{
-		id: '05',
+		id: '06',
 		number: ' 0052',
 		icon: person,
 		name: '     محمود ابراهيم',
@@ -71,7 +84,20 @@ const ordersDataTable = [
 		color: '#9df1ba',
 	},
 	{
-		id: '06',
+		id: '07',
+		number: ' 0052',
+		icon: person,
+		name: '     محمود ابراهيم',
+		stats: ' ملغي',
+		location: 'جدة',
+		price: 52,
+		total: 124,
+
+		bgColor: '#ffebeb',
+		color: '#ff7b7b',
+	},
+	{
+		id: '08',
 		number: ' 0052',
 		icon: person,
 		name: '     محمود ابراهيم',

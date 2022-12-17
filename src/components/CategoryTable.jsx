@@ -28,7 +28,6 @@ import Swal from 'sweetalert2';
 // ICONS
 import { ReactComponent as DeletteIcon } from '../data/Icons/icon-24-delete.svg';
 
-
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;
@@ -176,13 +175,13 @@ export default function EnhancedTable() {
 	// Get Data From Redux Store
 	const rows = useSelector((state) => state.CategoriesTablesData);
 
-	const dispatch = useDispatch(true);
+
 
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
 	const [selected, setSelected] = React.useState([]);
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [rowsPerPage, setRowsPerPage] = React.useState(10);
 	const [data, setData] = React.useState(rows);
 
 	const handleRequestSort = (property) => {

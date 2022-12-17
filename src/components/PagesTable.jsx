@@ -172,7 +172,7 @@ export default function PagesTable() {
 	const [orderBy, setOrderBy] = React.useState('calories');
 	const [selected, setSelected] = React.useState([]);
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(5);
+	const [rowsPerPage, setRowsPerPage] = React.useState(7);
 	const [data, setData] = React.useState(rows);
 
 	const handleRequestSort = (property) => {
