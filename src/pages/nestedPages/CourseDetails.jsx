@@ -21,9 +21,9 @@ const CourseDetails = () => {
 						<nav aria-label='breadcrumb'>
 							<ol className='breadcrumb'>
 								<li className='breadcrumb-item'>
-									<img src={arrowBack} alt='' />
 									<Link to='/' className='me-2'>
-										الرئيسية
+										<img src={arrowBack} alt='' />
+										<span className='me-2'> الرئيسية</span>
 									</Link>
 								</li>
 								<li className='breadcrumb-item ' aria-current='page'>

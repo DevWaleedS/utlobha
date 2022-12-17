@@ -123,12 +123,7 @@ function EnhancedTableToolbar(props) {
 								</IconButton>
 							</Tooltip>
 
-							<Tooltip className='switch-all'>
-								<IconButton>
-									<Switch />
-									تعطيل الكل
-								</IconButton>
-							</Tooltip>
+						
 						</div>
 					)}
 				</div>

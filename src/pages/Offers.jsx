@@ -12,11 +12,9 @@ import { useDispatch } from 'react-redux';
 
 const Offers = () => {
 	const dispatch = useDispatch(true);
-	const [checked, setChecked] = React.useState(true);
 
-	const handleChange = (event) => {
-		setChecked(event.target.checked);
-	};
+	const [checked, setChecked] = React.useState();
+
 	return (
 		<section className='offers-page p-3'>
 			<div className='head-category'>
@@ -82,7 +80,7 @@ const Offers = () => {
 											</div>
 										</div>
 										<div className='toggle-offer-switch'>
-											<Switch checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }} />
+											<Switch defaultChecked value={checked} onChange={() => setChecked(!checked)} inputProps={{ 'aria-label': 'controlled' }} />
 										</div>
 									</div>
 								</th>
@@ -100,7 +98,7 @@ const Offers = () => {
 											</div>
 										</div>
 										<div className='toggle-offer-switch'>
-											<Switch checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }} />
+											<Switch defaultChecked value={checked} onChange={() => setChecked(!checked)} inputProps={{ 'aria-label': 'controlled' }} />
 										</div>
 									</div>
 								</th>
@@ -118,7 +116,7 @@ const Offers = () => {
 											</div>
 										</div>
 										<div className='toggle-offer-switch'>
-											<Switch checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }} />
+											<Switch defaultChecked value={checked} onChange={() => setChecked(!checked)} inputProps={{ 'aria-label': 'controlled' }} />
 										</div>
 									</div>
 								</th>

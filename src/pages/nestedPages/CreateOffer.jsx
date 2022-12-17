@@ -96,16 +96,22 @@ const CreateOffer = () => {
 								<nav aria-label='breadcrumb'>
 									<ol className='breadcrumb'>
 										<li className='breadcrumb-item'>
-											<img src={howIcon} alt='' />
-											<Link to='/' className='me-2'>
-												الرئيسية
+										<Link to='/' className='me-2'>
+										<img src={howIcon} alt='' />
+												<span className='me-2'> الرئيسية</span>
 											</Link>
 										</li>
-										<li className='breadcrumb-item ' aria-current='page'>
-											التسويق
-										</li>
-										<li className='breadcrumb-item ' aria-current='page'>
-											العروض الخاصة
+
+										<li
+											className='breadcrumb-item '
+											aria-current='page'
+											onClick={() => {
+												dispatch(closeVerifyModal());
+											}}
+										>
+											<Link to='/Offers' className='me-2'>
+												العروض الخاصة
+											</Link>
 										</li>
 										<li className='breadcrumb-item active' aria-current='page'>
 											انشاء عرض جديد
