@@ -59,13 +59,13 @@ const TopBar = () => {
 									</Box>
 									<ul className='dropdown-menu'>
 										<li className=''>
-											<Link className='dropdown-item d-flex justify-content-end align-items-center' to='_'>
+											<Link className='dropdown-item d-flex justify-content-end align-items-center' to='UserDetails'>
 												<span className='me-2'>حسابي</span>
 												<UserIcon />
 											</Link>
 										</li>
 										<li className=''>
-											<Link className='dropdown-item d-flex justify-content-end align-items-center' to='_'>
+											<Link className='dropdown-item d-flex justify-content-end align-items-center' to=''>
 												<span className='me-2'>تسجيل الخروج</span>
 												<LogOutIcon />
 											</Link>

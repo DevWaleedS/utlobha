@@ -64,7 +64,7 @@ const AddCustomer = () => {
 	const [userImage, setUserImage] = React.useState([]);
 
 	// Get some methods form useDropZone
-	const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+	const { getRootProps, getInputProps } = useDropzone({
 		accept: {
 			'image/*': [],
 		},

@@ -66,6 +66,8 @@ import {
 	CreateRole,
 	AddCategory,
 	AddSubCategory,
+	UserDetails,
+	EditUserDetails,
 } from './pages/nestedPages';
 
 // import EditProductPage from './pages/nestedPages/EditProductPage';
@@ -208,6 +210,16 @@ const router = createBrowserRouter([
 			{
 				path: 'Management/info-:id',
 				element: <UserData />,
+			},
+
+			{
+				path: 'UserDetails',
+				element: <UserDetails />,
+			},
+			// Nested EditUserDetails from userDetails
+			{
+				path: 'UserDetails/EditUserDetails',
+				element: <EditUserDetails />,
 			},
 
 			// nested job title page
