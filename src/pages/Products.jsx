@@ -14,21 +14,25 @@ const Products = () => {
 			</div>
 
 			<div className='row mb-3'>
-				<div className='mange-file d-flex justify-content-start bg-white '>
-					<div className='export-files'>
-						<button className='export-btn' type='button'>
-							تصدير
-						</button>
+				<div className='mange-file d-flex justify-content-between bg-white '>
+					<div className='export-upload-btn-group d-flex justify-content-between'>
+						<div className='export-files'>
+							<button className='export-btn' type='button'>
+								تصدير
+							</button>
+						</div>
+						<div className='upload-files'>
+							<label htmlFor='fileUpload'>
+								<input type='file' id='fileUpload' className='upload-files-input' />
+								رفع ملف
+							</label>
+						</div>
 					</div>
-					<div className='upload-files'>
-						<label htmlFor='fileUpload'>
-							<input type='file' id='fileUpload' className='upload-files-input' />
-							رفع ملف
-						</label>
-					</div>
-					<div className='drop-files'>
+
+					<div className='drop-files '>
 						<DropCSVFiles />
 					</div>
+
 					<div className=' add-new-product'>
 						<button
 							className=' add-new-product-btn w-100'
