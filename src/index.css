@@ -1322,9 +1322,9 @@ nav.navigation {
 	cursor: pointer;
 }
 .drop-files {
-	width: 40%;
 	height: 55px !important ;
-	margin-left: 45px;
+	margin-left: 48px;
+	width: 42%;
 	color: var(--gray-600) !important;
 	border: 2px dashed var(--black-300) !important;
 	display: flex;
@@ -2880,7 +2880,7 @@ textarea {
 	-o-border-radius: 0;
 }
 .add-form-wrapper form label {
-	font-size: 22px;
+	font-size: 20px;
 	font-weight: 500;
 }
 .add-form-wrapper form input,
@@ -4404,7 +4404,9 @@ textarea {
 }
 
 /* warning alert  */
-.swal2-html-container {overflow: hidden !important;}
+.swal2-html-container {
+	overflow: hidden !important;
+}
 .swal2-icon.swal2-warning {
 	background-image: url(./data/Icons/warning.png);
 	background-position: center;
@@ -5813,9 +5815,12 @@ textarea {
 		cursor: pointer;
 	}
 	.drop-files {
-		width: 40%;
+		
 		height: 55px !important ;
-		margin-left: 45px;
+	
+		margin-left: 48px;
+    width: 42%;
+
 		color: var(--gray-600) !important;
 		border: 2px dashed var(--black-300) !important;
 		display: flex;
@@ -7236,7 +7241,7 @@ textarea {
 		padding: 30px;
 	}
 	.add-form-wrapper form label {
-		font-size: 22px;
+		font-size: 20px;
 		font-weight: 500;
 	}
 	.add-form-wrapper form input,
@@ -8703,7 +8708,9 @@ textarea {
 	}
 
 	/* warning alert  */
-	.swal2-html-container {overflow: hidden !important;}
+	.swal2-html-container {
+		overflow: hidden !important;
+	}
 	.swal2-icon.swal2-warning {
 		background-image: url(./data/Icons/warning.png);
 		background-position: center;
