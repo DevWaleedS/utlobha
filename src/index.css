@@ -5815,11 +5815,8 @@ textarea {
 	.drop-files {
 		
 		height: 55px !important ;
-		
-
 		margin-left: 48px;
     width: 42%;
-		
 		color: var(--gray-600) !important;
 		border: 2px dashed var(--black-300) !important;
 		display: flex;
