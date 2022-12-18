@@ -1322,9 +1322,9 @@ nav.navigation {
 	cursor: pointer;
 }
 .drop-files {
+	width: 40%;
 	height: 55px !important ;
-	margin-left: 48px;
-	width: 42%;
+	margin-left: 45px;
 	color: var(--gray-600) !important;
 	border: 2px dashed var(--black-300) !important;
 	display: flex;
@@ -4404,9 +4404,7 @@ textarea {
 }
 
 /* warning alert  */
-.swal2-html-container {
-	overflow: hidden !important;
-}
+.swal2-html-container {overflow: hidden !important;}
 .swal2-icon.swal2-warning {
 	background-image: url(./data/Icons/warning.png);
 	background-position: center;
@@ -5817,10 +5815,11 @@ textarea {
 	.drop-files {
 		
 		height: 55px !important ;
-	
+		
+
 		margin-left: 48px;
     width: 42%;
-
+		
 		color: var(--gray-600) !important;
 		border: 2px dashed var(--black-300) !important;
 		display: flex;
@@ -8708,9 +8707,7 @@ textarea {
 	}
 
 	/* warning alert  */
-	.swal2-html-container {
-		overflow: hidden !important;
-	}
+	.swal2-html-container {overflow: hidden !important;}
 	.swal2-icon.swal2-warning {
 		background-image: url(./data/Icons/warning.png);
 		background-position: center;
