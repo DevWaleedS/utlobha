@@ -1287,7 +1287,6 @@ nav.navigation {
 	width: 98%;
 	margin: 0 auto;
 	padding: 25px 16px;
-	
 }
 .products .mange-file button,
 .upload-files label {
@@ -1594,7 +1593,7 @@ nav.navigation {
 .seo-weight-edit-box .input-bx {
 	width: 700px;
 	max-width: 100%;
-	margin: 0 auto;
+	margin: 0px 263px;
 }
 
 .seo-weight-edit-box .MuiFormControl-root {
@@ -2039,8 +2038,8 @@ nav.navigation {
 /* template pages styles */
 
 .template-edit-box h4 span {
-	font-size: 18px;
-	color: var(--black-200);
+	font-size: 16px;
+	color: #67747b;
 	font-weight: 400;
 }
 
@@ -2124,7 +2123,7 @@ nav.navigation {
 .add-banners-bts-wrapper label {
 	padding: 0 50px 0 0;
 	margin-left: 74px;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 500;
 }
 .add-banners-bts-wrapper .wrapper {
@@ -4831,6 +4830,17 @@ textarea {
 	.table-filter .filter-user-selector .MuiSelect-icon {
 		right: 325px !important;
 	}
+
+	/* Template */
+	.seo-weight-edit-box .input-bx {
+		width: 475px;
+		max-width: 100%;
+		margin: 0px 263px;
+	}
+	.banners-preview-container {
+		width: 100%;
+		height: 138px;
+	}
 	/* Styles  for all modal */
 	/* nested-pages-modal */
 	.nested-pages-modal {
@@ -4946,6 +4956,17 @@ textarea {
 	}
 	.comp-title {
 		padding: 0 20px;
+	}
+
+	/* Template */
+	.seo-weight-edit-box .input-bx {
+		width: 700px;
+		max-width: 100%;
+		margin: 0px 263px;
+	}
+	.banners-preview-container {
+		width: 100%;
+		height: 203px;
 	}
 	/* Style for all modal  */
 	/* nested-pages-modal */
@@ -5779,7 +5800,6 @@ textarea {
 		width: 98%;
 		margin: 0 auto;
 		padding: 25px 16px;
-		
 	}
 
 	.products .mange-file button,
@@ -6093,7 +6113,7 @@ textarea {
 	.seo-weight-edit-box .input-bx {
 		width: 700px;
 		max-width: 100%;
-		margin: 0 auto;
+		margin: 0px 263px;
 	}
 
 	.seo-weight-edit-box .MuiFormControl-root {
@@ -6471,12 +6491,10 @@ textarea {
 	/* ------------------------------------------------------------------------------------------------ */
 
 	/* template pages styles */
-	.template-page {
-	}
 
 	.template-edit-box h4 span {
-		font-size: 18px;
-		color: var(--black-200);
+		font-size: 16px;
+		color: #67747b;
 		font-weight: 400;
 	}
 
@@ -6525,7 +6543,7 @@ textarea {
 	/* Update banners */
 	.banners-preview-container {
 		width: 100%;
-		height: 200px;
+		height: 203px;
 		margin: 0 -24px;
 		margin-bottom: 10px;
 		border: 1px solid var(--white-400);
@@ -6538,7 +6556,7 @@ textarea {
 	}
 
 	.banners-preview-container .banner-preview {
-		height: 200px;
+		height: 203px;
 		width: 100%;
 		overflow: hidden;
 		border-radius: 18px;
@@ -6560,7 +6578,7 @@ textarea {
 	.add-banners-bts-wrapper label {
 		padding: 0 50px 0 0;
 		margin-left: 74px;
-		font-size: 24px;
+		font-size: 18px;
 		font-weight: 500;
 	}
 	.add-banners-bts-wrapper .wrapper {

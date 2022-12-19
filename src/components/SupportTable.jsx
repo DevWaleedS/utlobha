@@ -9,14 +9,13 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-// import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Switch from '@mui/material/Switch';
+
 
 
 import TablePagination from './TablePagination';
@@ -104,9 +103,7 @@ function EnhancedTableToolbar(props) {
 				sx={{
 					pl: { sm: 2 },
 					pr: { xs: 1, sm: 1 },
-					...(numSelected > 0 && {
-						bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-					}),
+					
 					display: 'flex',
 					justifyContent: 'space-between',
 					flexDirection: 'row-reverse',
